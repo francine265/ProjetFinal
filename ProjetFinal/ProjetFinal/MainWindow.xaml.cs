@@ -28,9 +28,43 @@ namespace ProjetFinal
             this.InitializeComponent();
         }
 
-        private void myButton_Click(object sender, RoutedEventArgs e)
+        private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
-            myButton.Content = "Clicked";
+            var item = (NavigationViewItem)args.SelectedItem;
+
+            switch (item.Tag)
+            {
+                case "Admin":
+                    mainFrame.Navigate(typeof(PageAdmin));
+                    break;
+                case "Chauffeur":
+                    mainFrame.Navigate(typeof(PageChauffeur));
+                    break;
+                case "Client":
+                    mainFrame.Navigate(typeof(PageClient));
+                    break;
+                case "Accueil":
+                    mainFrame.Navigate(typeof(PageAccueil));
+                    break;
+                case "Creation":
+                    mainFrame.Navigate(typeof(PageCreationCompte));
+                    break;
+
+                default:
+                    break;
+
+            }
+            try
+            {
+                tblHeader.Text = item.Content.ToString();
+            }
+            catch (Exception)
+            {
+                tblHeader.Text = "vide";
+
+            };
         }
+
     }
+    
 }

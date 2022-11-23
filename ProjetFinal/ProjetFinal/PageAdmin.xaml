@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="ProjetFinal.PageAdmin"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProjetFinal"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel Margin="10">
+
+        <!--Ajouter une ville-->
+        <StackPanel x:Name="stckVille" Margin="0,0,0,30">
+            <TextBlock x:Name="tbAjoutVille" Text="Ajouter une ville:"/>
+
+            <StackPanel  VerticalAlignment="Top" HorizontalAlignment="Left"  Orientation="Horizontal" Spacing="10" Margin="10">
+                <TextBox x:Name="tbxAjoutVille"/>
+                <Button x:Name="btnAjoutVille" Content="Ajouter"  Click="btnAjoutVille_Click"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!--Trajets Actuels -->
+        <StackPanel x:Name="stckTrajetsActuels" Margin="0,0,0,30">
+            <TextBlock x:Name="tbTrajetsActuels" Text="Trajets Actuels:"/>
+        </StackPanel>
+
+        <!--Trajets Terminés -->
+        <StackPanel x:Name="stckTrajetsTermines" Margin="0,0,0,30">
+            <TextBlock x:Name="tbTrajetTermines" Text="Trajets Terminés:"/>
+        </StackPanel>
+
+    </StackPanel>
+</Page>
