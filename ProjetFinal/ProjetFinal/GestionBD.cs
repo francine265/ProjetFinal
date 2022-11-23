@@ -44,7 +44,7 @@ namespace ProjetFinal
 
                 while (r.Read())// read renvoie un booleen donc tant que ca renvoi quelque chose
                 {
-                    liste.Add(new Trajets()// car la classe client n'a pas de constructeur(voir cours)
+                    liste.Add(new Trajets()// car la classe Trajets n'a pas de constructeur(voir cours)
                     {
                         Num_Trajet= (int)r["id"],
                         Ville_Depart = r.GetString(1),
