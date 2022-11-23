@@ -13,7 +13,7 @@
                     SelectionChanged="NavigationView_SelectionChanged">
 
         <NavigationView.Header>
-            <TextBlock x:Name="tblHeader">Page d'accueil</TextBlock>
+            <TextBlock x:Name="tblHeader">Page d'accueil2df</TextBlock>
         </NavigationView.Header>
 
         <NavigationView.MenuItems>
