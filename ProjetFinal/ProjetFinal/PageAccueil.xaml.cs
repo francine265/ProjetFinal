@@ -23,9 +23,11 @@ namespace ProjetFinal
     /// </summary>
     public sealed partial class PageAccueil : Page
     {
-        public PageAccueil()
+        public PageAccueil(CalendarDatePicker calendarDatePicker)
         {
             this.InitializeComponent();
+           
+           // tbltexte.Text = calendarDatePicker.Date.Value.ToString("dddd dd MMMM");
         }
     }
 }

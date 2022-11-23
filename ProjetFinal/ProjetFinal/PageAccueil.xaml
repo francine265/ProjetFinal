@@ -10,5 +10,10 @@
 
     <Grid>
 
+        <StackPanel>
+            <TextBlock x:Name="tbltexte"/>
+            <CalendarDatePicker PlaceholderText="Pick a date" Header="Calendar" />
+        </StackPanel>
+
     </Grid>
 </Page>

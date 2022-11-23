@@ -28,6 +28,11 @@ namespace ProjetFinal
             this.InitializeComponent();
         }
 
+        private Frame GetMainFrame()
+        {
+            return mainFrame;
+        }
+
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             var item = (NavigationViewItem)args.SelectedItem;
