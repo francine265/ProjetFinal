@@ -12,7 +12,11 @@
     <EnableMsixTooling>true</EnableMsixTooling>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="PagePrincipale.xaml" />
+    <None Remove="PageAccueil.xaml" />
+    <None Remove="PageAdmin.xaml" />
+    <None Remove="PageChauffeur.xaml" />
+    <None Remove="PageClient.xaml" />
+    <None Remove="PageCreationCompte.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,7 +45,27 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
-    <Page Update="PagePrincipale.xaml">
+    <Page Update="PageAccueil.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="PageAdmin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="PageChauffeur.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="PageClient.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="PageCreationCompte.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
