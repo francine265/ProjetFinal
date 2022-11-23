@@ -7,9 +7,39 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
-        <TextBlock></TextBlock>
-        <Button></Button>
-    </StackPanel>
+
+    <NavigationView PaneTitle="FriendZoneExpress" PaneDisplayMode="Auto" IsSettingsVisible="False" 
+        IsBackButtonVisible="Visible"
+                    SelectionChanged="NavigationView_SelectionChanged">
+
+        <NavigationView.Header>
+            <TextBlock x:Name="tblHeader">Page d'accueil</TextBlock>
+        </NavigationView.Header>
+
+        <NavigationView.MenuItems>
+            <AutoSuggestBox Width="200"  PlaceholderText="Rechercher" QueryIcon="Find"></AutoSuggestBox>
+            <NavigationViewItemHeader Content="Menu"></NavigationViewItemHeader>
+
+            <NavigationViewItem Content="Accueil" Tag="Accueil" Icon="Home"/>
+            <NavigationViewItem Content="Créer un compte" Tag="Creation" Icon="AddFriend" />
+
+            <NavigationViewItemSeparator />
+
+            <NavigationViewItem Content="Admin" Tag="Admin" Icon="Admin"/>
+            <NavigationViewItem Content="Chauffeur" Tag="Chauffeur" Icon="ContactInfo"/>
+
+            <NavigationViewItemSeparator />
+            <NavigationViewItem Content="Client" Tag="Client" Icon="Contact"/>
+
+
+        </NavigationView.MenuItems>
+
+        <NavigationView.PaneFooter>
+            <NavigationViewItem Name="iDeconnexion" Content="Déconnexion" Icon="LeaveChat" />
+        </NavigationView.PaneFooter>
+
+        <Frame x:Name="mainFrame"/>
+
+
+    </NavigationView>
 </Window>

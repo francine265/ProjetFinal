@@ -1,0 +1,51 @@
+﻿<Page
+    x:Class="ProjetFinal.PageCreationCompte"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProjetFinal"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+    <StackPanel HorizontalAlignment="Center" Margin="20">
+
+        <TextBlock x:Name="titreCreation" Text="Création de compte" FontSize="25" Margin="0,0,0,15"/>
+
+        <!-- Radio choisir Chauffeur/Client -->
+        <StackPanel Margin="20,0,00,30">
+            <RadioButtons Header="Choissisez votre role"  x:Name="rbConnexion" 
+                          SelectedIndex="0" SelectionChanged="rbConnexion_SelectionChanged">
+                <x:String>client</x:String>
+                <x:String>chauffeur</x:String>
+            </RadioButtons>
+        </StackPanel>
+
+        <TextBlock x:Name="headerFormulaire" Text="selectionnez un role pour afficher le formulaire d'enregistrement" FontSize="20" Margin="0,0,0,15"/>
+
+
+        <!-- Formulaire du Chauffeur -->
+        <StackPanel x:Name="formChauffeur" Visibility="Collapsed" Margin="20,0,00,0">
+            <TextBox x:Name="tbxNomChauffeur" Header="Nom du chauffeur:"/>
+            <TextBox x:Name="tbxPrenomChauffeur" Header="Prénom du chauffeur:"/>
+            <TextBox x:Name="tbxEmailChauffeur" Header="Email:"/>
+            <TextBox x:Name="tbxPermisChauffeur" Header="Matricule du permis:"/>
+            <TextBox x:Name="tbxGenreChauffeur" Header="Genre:"/>
+            <TextBox x:Name="tbxAgeChauffeur" Header="Age:"/>
+        </StackPanel>
+
+        <!-- Formulaire du Client -->
+        <StackPanel x:Name="formClient" Visibility="Collapsed" Margin="20,0,00,0">
+            <TextBox x:Name="tbxNomClient" Header="Nom du client:"/>
+            <TextBox x:Name="tbxPrenomClient" Header="Prénom du client:"/>
+            <TextBox x:Name="tbxEmailClient" Header="Email:"/>
+            <TextBox x:Name="tbxGenreClient" Header="Genre:"/>
+            <TextBox x:Name="tbxAdresseClient" Header="Adresse:"/>
+            <TextBox x:Name="tbxTelephoneClient" Header="Numéro du téléphone:"/>
+
+        </StackPanel>
+
+        <Button Margin="20" x:Name="btnSumbit" Content="Valider" Click="btnSumbit_Click"/>
+    </StackPanel>
+</Page>
