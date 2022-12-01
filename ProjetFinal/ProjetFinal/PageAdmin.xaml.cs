@@ -30,7 +30,9 @@ namespace ProjetFinal
 
         private void btnAjoutVille_Click(object sender, RoutedEventArgs e)
         {
+            //ville vi = cmb.SelectedItem as ville;
 
+            Singleton.getInstance().Ajouterville(cmb.SelectedItem.ToString());
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

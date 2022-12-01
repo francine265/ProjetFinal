@@ -82,7 +82,7 @@ namespace ProjetFinal
                 MySqlCommand commande = new MySqlCommand();
                 commande.Connection = con;
                
-                commande.CommandText = "insert into compagnie values(@choixville) ";
+                commande.CommandText = "insert into compagnie values(null,null,null,null,@choixville) ";
 
                 commande.Parameters.AddWithValue("@choixville", choixville);
                 
