@@ -19,7 +19,7 @@ namespace ProjetFinal
 
         public Singleton()
         {
-            con = new MySqlConnection("Server=cours.cegep3r.info;Database=a2022_420326ri_eq1;Uid=2100781;Pwd=2100781;");
+            con = new MySqlConnection("Server=cours.cegep3r.info;Database=a2022_420326ri_eq17;Uid=2100781;Pwd=2100781;");
             liste = new ObservableCollection<Trajet>();
         }
         public static Singleton getInstance()
@@ -71,6 +71,34 @@ namespace ProjetFinal
 
             }
             return liste;
+
+        }
+
+        public void Ajouterville(string choixville)
+        {
+
+            try
+            {
+                MySqlCommand commande = new MySqlCommand();
+                commande.Connection = con;
+               
+                commande.CommandText = "insert into compagnie values(@choixville) ";
+
+                commande.Parameters.AddWithValue("@choixville", choixville);
+                
+
+                con.Open();
+                commande.Prepare();
+                int i = commande.ExecuteNonQuery();
+
+                con.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                con.Close();
+            }
+
 
         }
     }

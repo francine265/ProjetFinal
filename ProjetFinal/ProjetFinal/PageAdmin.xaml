@@ -15,7 +15,16 @@
             <TextBlock x:Name="tbAjoutVille" Text="Ajouter une ville:"/>
 
             <StackPanel  VerticalAlignment="Top" HorizontalAlignment="Left"  Orientation="Horizontal" Spacing="10" Margin="10">
-                <TextBox x:Name="tbxAjoutVille"/>
+                <ComboBox x:Name="cmb" SelectionChanged="ComboBox_SelectionChanged" Header="Villes" PlaceholderText="Pick a town" Width="200">
+                    <x:String>Batiscan</x:String>
+                    <x:String>la Tuque</x:String>
+                    <x:String>Louiseville</x:String>
+                    <x:String>Maskinongé</x:String>
+                    <x:String>Mékinac</x:String>
+                    <x:String>Saint-Tite</x:String>
+                    <x:String>Shawinigan</x:String>
+                    <x:String>Trois-Rivières</x:String>
+                </ComboBox>
                 <Button x:Name="btnAjoutVille" Content="Ajouter"  Click="btnAjoutVille_Click"/>
             </StackPanel>
         </StackPanel>
