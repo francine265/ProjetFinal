@@ -73,5 +73,33 @@ namespace ProjetFinal
             return liste;
 
         }
+
+        public void Ajouterville(string choixville)
+        {
+
+            try
+            {
+                MySqlCommand commande = new MySqlCommand();
+                commande.Connection = con;
+
+                commande.CommandText = "insert into compagnie values(@choixville) ";
+
+                commande.Parameters.AddWithValue("@choixville", choixville);
+
+
+                con.Open();
+                commande.Prepare();
+                int i = commande.ExecuteNonQuery();
+
+                con.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                con.Close();
+            }
+
+
+        }
     }
 }
