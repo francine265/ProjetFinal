@@ -15,7 +15,7 @@ namespace ProjetFinal
         String ville_Arrivee;
       /*  DateTime heure_Depart;
         DateTime heure_Arrivee;*/
-        DateTime date_Trajet;
+        String date_Trajet;
         double prix_Trajet;
         String heureDepartString;
         String heureArriveeString;
@@ -34,7 +34,7 @@ namespace ProjetFinal
             this.HeureArriveeString = "";
             this.HeureDepartString = "";
           
-            this.date_Trajet = new DateTime();
+            this.date_Trajet = "";
             this.prix_Trajet = 0;
             this.arret = "";
             this.nombre_Place_dispo = 0;
@@ -42,7 +42,7 @@ namespace ProjetFinal
             this.num_Conducteur = 0;
         }
 
-        public Trajets(int num_Trajet, string ville_Depart, string ville_Arrivee, int _adebut, int _moisdebut, int _jourdebut, double prix_Trajet, string arret, int nombre_Place_dispo, string etat, int num_Conducteur , String _heureDepartString,
+        public Trajets(int num_Trajet, string ville_Depart, string ville_Arrivee, string _adebut, double prix_Trajet, string arret, int nombre_Place_dispo, string etat, int num_Conducteur , String _heureDepartString,
        String _heureArriveeString)
         {
             this.num_Trajet = num_Trajet;
@@ -50,7 +50,7 @@ namespace ProjetFinal
             this.ville_Arrivee = ville_Arrivee;
             /*this.heure_Depart = new DateTime( hour, minute,second);
             this.heure_Arrivee = new DateTime(_hour, _minute, _second); */
-            this.date_Trajet = new DateTime( _adebut,  _moisdebut,  _jourdebut);
+            this.date_Trajet ="";
             this.prix_Trajet = prix_Trajet;
             this.arret = arret;
             this.nombre_Place_dispo = nombre_Place_dispo;
@@ -65,7 +65,7 @@ namespace ProjetFinal
         public string Ville_Arrivee { get => ville_Arrivee; set => ville_Arrivee = value; }
       /*  public DateTime Heure_Depart { get => heure_Depart; set => heure_Depart = value; }
         public DateTime Heure_Arrivee { get => heure_Arrivee; set => heure_Arrivee = value; }*/
-        public DateTime Date_Trajet { get => date_Trajet; set => date_Trajet = value; }
+        public String Date_Trajet { get => date_Trajet; set => date_Trajet = value; }
         public double Prix_Trajet { get => prix_Trajet; set => prix_Trajet = value; }
 
         public String Arret { get => arret; set => arret = value; }
