@@ -32,12 +32,14 @@ namespace ProjetFinal
         {
             //ville vi = cmb.SelectedItem as ville;
 
-            Singleton.getInstance().Ajouterville(cmb.SelectedItem.ToString());
+            Singleton.getInstance().Ajouterville(cmb.SelectedItem.ToString() ,email.Text);
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
 
+
+        private void btn_Click(object sender, RoutedEventArgs e)
+        {
+            lv.ItemsSource = Singleton.getInstance().GetTrajets();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Asn1.X509;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,13 +15,13 @@ namespace ProjetFinal
 
 
         MySqlConnection con;
-        ObservableCollection<Trajet> liste;
+        ObservableCollection<Trajets> listeTrajetsencours;
         static Singleton singleton = null;  // creation et initialisation d'un objet static gestionBD de la class GestionBD
 
         public Singleton()
         {
             con = new MySqlConnection("Server=cours.cegep3r.info;Database=a2022_420326ri_eq17;Uid=2100781;Pwd=2100781;");
-            liste = new ObservableCollection<Trajet>();
+            listeTrajetsencours = new ObservableCollection<Trajets>();
         }
         public static Singleton getInstance()
         {
@@ -31,32 +32,43 @@ namespace ProjetFinal
         }
 
 
-        public ObservableCollection<Trajet> GetTrajets()
+        public ObservableCollection<Trajets> GetTrajets()
         {
-            liste.Clear();
+            listeTrajetsencours.Clear();
             try
             {
 
-                MySqlCommand commande = new MySqlCommand();
+                MySqlCommand commande = new MySqlCommand("trajet_encours");
                 commande.Connection = con;
-                commande.CommandText = "Select * from trajet";
+                commande.CommandType = System.Data.CommandType.StoredProcedure;
+                //commande.CommandText = "Select * from trajet where etat = en cours";
                 con.Open();
                 MySqlDataReader r = commande.ExecuteReader();
 
                 while (r.Read())
                 {
+                    String d = r.GetString("heure_Depart");
+                    String d1 = r.GetString("heure_Arrivee");
+                    string d2 = r.GetString("date_Trajet");
+
+                    
 
 
-                    liste.Add(new Trajet()
+                    listeTrajetsencours.Add(new Trajets()
                     {
-                        //Id = (int)r.GetInt32(0),
-                        //Nom = r.GetString(1),
-                        //Prenom = r.GetString(2),
-                        //Email = r.GetString(3),
-                    });
+                        Num_Trajet = r.GetInt32(0),
+                        Ville_Depart =r.GetString(1),
+                        Ville_Arrivee =r.GetString(2),
+                        HeureDepartString = d,
+                        HeureArriveeString = d1,
+                       Date_Trajet =d2,
+                        Prix_Trajet= r.GetInt32(6),
+                        Arret =r.GetString(7),
+                       Nombre_Place_dispo=r.GetInt32(8),
+                        Etat =r.GetString(9),
+                    Num_Conducteur =r.GetInt32(10)
+    });
 
-
-                    //lvliste.Items. System.Threading.Thread.Sleep(100);Add(r["id"] + " " + r["nom"] + " "+ r["prenom"] + " " + r["email"]);
                 }
 
                 r.Close();
@@ -70,11 +82,11 @@ namespace ProjetFinal
                     con.Close();
 
             }
-            return liste;
+            return listeTrajetsencours;
 
         }
 
-        public void Ajouterville(string choixville)
+        public void Ajouterville(string choixville , string email)
         {
 
             try
@@ -82,10 +94,12 @@ namespace ProjetFinal
                 MySqlCommand commande = new MySqlCommand();
                 commande.Connection = con;
                
-                commande.CommandText = "insert into compagnie values(null,null,null,null,@choixville) ";
+                commande.CommandText = "insert into administrateur values(null,@email,@choixville) ";
 
+              
+                commande.Parameters.AddWithValue("@email", email);
                 commande.Parameters.AddWithValue("@choixville", choixville);
-                
+
 
                 con.Open();
                 commande.Prepare();
@@ -101,5 +115,7 @@ namespace ProjetFinal
 
 
         }
+
+
     }
 }

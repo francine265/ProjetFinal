@@ -11,11 +11,13 @@
     <StackPanel Margin="10">
 
         <!--Ajouter une ville-->
-        <StackPanel x:Name="stckVille" Margin="0,0,0,30">
+        <StackPanel  Margin="20">
             <TextBlock x:Name="tbAjoutVille" Text="Ajouter une ville:"/>
 
-            <StackPanel  VerticalAlignment="Top" HorizontalAlignment="Left"  Orientation="Horizontal" Spacing="10" Margin="10">
-                <ComboBox x:Name="cmb" SelectionChanged="ComboBox_SelectionChanged" Header="Villes" PlaceholderText="Pick a town" Width="200">
+            <StackPanel x:Name="formEmployer" Background="AliceBlue" Margin="20,0,00,0" Padding="15" Visibility="Visible">
+                <TextBlock x:Name="tbl" Text="Entrez votre Email"/>
+                <TextBox x:Name="email" Header="Email:"/>
+                <ComboBox x:Name="cmb"  Header="Villes" PlaceholderText="Pick a town" Width="200" Margin="5,5,5,5">
                     <x:String>Batiscan</x:String>
                     <x:String>la Tuque</x:String>
                     <x:String>Louiseville</x:String>
@@ -26,7 +28,16 @@
                     <x:String>Trois-Rivières</x:String>
                 </ComboBox>
                 <Button x:Name="btnAjoutVille" Content="Ajouter"  Click="btnAjoutVille_Click"/>
+           
             </StackPanel>
+        </StackPanel>
+
+        <StackPanel>
+
+            <TextBlock Text="Affichage des Trajets en cours"></TextBlock>
+            
+            <Button x:Name="btn" Click="btn_Click" FontFamily="algerian" FontSize="25" Background="AliceBlue">AFFICHER</Button>
+            <GridView x:Name="lv"/>
         </StackPanel>
 
         <!--Trajets Actuels -->
