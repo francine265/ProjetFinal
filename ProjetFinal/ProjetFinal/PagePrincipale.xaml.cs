@@ -26,6 +26,17 @@ namespace ProjetFinal
         public PagePrincipale()
         {
             this.InitializeComponent();
+            lvListe.ItemsSource= GestionBD.getInstance().GetTrajets();
+        }
+
+        private void Rechercher_Click(object sender, RoutedEventArgs e)
+        {
+         /*   calendar1.Text = datePicker.Date.Date.ToString(" yyyy MM dd");
+         
+datePicker.SelectedDate = DateTimeOffset.Now;
+            datePicker.MaxYear = new DateTimeOffset(new DateTime(2022, 1, 1));
+         */
+
         }
     }
 }

@@ -8,13 +8,14 @@
     mc:Ignorable="d">
 
 
-    <NavigationView PaneTitle="FriendZoneExpress" PaneDisplayMode="Auto" IsSettingsVisible="False" 
+    <NavigationView Background="LightBlue" PaneTitle="FriendZoneExpress" PaneDisplayMode="Auto" IsSettingsVisible="False" 
         IsBackButtonVisible="Visible"
                     SelectionChanged="NavigationView_SelectionChanged">
 
-        <NavigationView.Header>
-            <TextBlock x:Name="tblHeader">Page d'accueil2df</TextBlock>
-        </NavigationView.Header>
+       
+        <NavigationView.PaneCustomContent>
+            <Image Source="https://as1.ftcdn.net/v2/jpg/00/45/57/68/500_F_45576851_9y70Ycgi9nOQXiirXsAdfoqK9GsvgRIg.jpg" Height="200" Width="200"></Image>
+        </NavigationView.PaneCustomContent>
 
         <NavigationView.MenuItems>
             <AutoSuggestBox Width="200"  PlaceholderText="Rechercher" QueryIcon="Find"></AutoSuggestBox>

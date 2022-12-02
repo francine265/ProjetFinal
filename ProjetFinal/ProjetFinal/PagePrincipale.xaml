@@ -5,10 +5,120 @@
     xmlns:local="using:ProjetFinal"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <ScrollViewer>
 
-    </Grid>
+
+        <StackPanel Orientation="Vertical" Background="LightBlue">
+
+            <StackPanel Margin="50,100,100,50">
+                <TextBlock HorizontalAlignment="Center" x:Name="tbtexte" Text="Covoiturage pour la planète "  FontSize="25"></TextBlock>
+            </StackPanel>
+           
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+    
+                </Grid.ColumnDefinitions>
+                
+
+
+                <StackPanel Grid.Column="0" Grid.Row="0" Margin="10,20,20,20">
+                    <TextBox x:Name="depart" Text="Depart"   Margin="5,5,5,10" HorizontalAlignment="Stretch">
+
+                    </TextBox>
+
+                </StackPanel>
+                <StackPanel Grid.Column="1" Grid.Row="0" Margin="10,20,20,20">
+                    <TextBox x:Name="Arrivee" Text="arrivée"   Margin="5,5,5,10" HorizontalAlignment="Stretch">
+
+                    </TextBox>
+
+                </StackPanel>
+                <StackPanel Grid.Column="2" Grid.Row="0" Margin="10,20,20,20">
+                    <CalendarDatePicker x:Name="calendar1" HorizontalAlignment="Stretch" />
+                </StackPanel>
+
+              
+
+            </Grid>
+            <StackPanel HorizontalAlignment="Center"  >
+
+                <Button x:Name="Rechercher" Click="Rechercher_Click" Content="Rechercher" Background="LightPink"></Button>
+
+            </StackPanel>
+            <GridView x:Name="lvListe" BackgroundSizing="InnerBorderEdge"   BorderThickness="10" BorderBrush="Beige" >
+
+                <GridView.ItemTemplate>
+
+                    <DataTemplate x:DataType="local:Trajets">
+                        
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                          
+                            <StackPanel Orientation="Vertical" Background="Beige"
+                                Margin="5" HorizontalAlignment="Stretch"   >
+                                <TextBlock Text="ville de depart: "  Margin="5,5,5,10">
+                                    
+                                </TextBlock>
+                                <TextBlock Text="Ville d'arrivée: "  Margin="5,5,5,10">
+
+                                </TextBlock>
+                                <TextBlock Text="heure de Depart: "  Margin="5,5,5,10">
+
+                                </TextBlock>
+                                <TextBlock Text="heure d'arrivée: "  Margin="5,5,5,10">
+
+                                </TextBlock>
+                                <TextBlock Text="Nombres de places: "  Margin="5,5,5,10">
+
+                                </TextBlock>
+                                <TextBlock Text="Prix du Trajet: "  Margin="5,5,5,10">
+
+                                </TextBlock>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" HorizontalAlignment="Stretch" Background="HotPink" Margin="5">
+                                <TextBlock Text="{x:Bind Ville_Depart,Mode=OneWay}" Margin="5,5,5,10"/>
+                                <TextBlock Text="{x:Bind Ville_Arrivee}" Margin="5,5,5,10"/>
+                                <TextBlock Text="{x:Bind HeureDepartString}" Margin="5,5,5,10"/>
+                                <TextBlock Text="{x:Bind HeureArriveeString}" Margin="5,5,5,10"/>
+                                <TextBlock Text="{x:Bind Nombre_Place_dispo}" Margin="5,5,5,10"/>
+                                <TextBlock Text="{x:Bind Prix_Trajet}" Margin="5,5,5,10"/>
+
+
+
+                            </StackPanel>
+
+                        </Grid>
+                    </DataTemplate >
+
+
+                </GridView.ItemTemplate>
+
+            </GridView>
+
+        </StackPanel>
+    </ScrollViewer>
 </Page>

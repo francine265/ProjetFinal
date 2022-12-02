@@ -44,7 +44,7 @@ namespace ProjetFinal
                     mainFrame.Navigate(typeof(PageClient));
                     break;
                 case "Accueil":
-                    mainFrame.Navigate(typeof(PageAccueil));
+                    mainFrame.Navigate(typeof(PagePrincipale));
                     break;
                 case "Creation":
                     mainFrame.Navigate(typeof(PageCreationCompte));
@@ -54,7 +54,7 @@ namespace ProjetFinal
                     break;
 
             }
-            try
+        /*    try
             {
                 tblHeader.Text = item.Content.ToString();
             }
@@ -62,7 +62,7 @@ namespace ProjetFinal
             {
                 tblHeader.Text = "vide";
 
-            };
+            };*/
         }
 
     }
