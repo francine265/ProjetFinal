@@ -31,11 +31,48 @@ namespace ProjetFinal
 
         private void Rechercher_Click(object sender, RoutedEventArgs e)
         {
-         /*   calendar1.Text = datePicker.Date.Date.ToString(" yyyy MM dd");
-         
-datePicker.SelectedDate = DateTimeOffset.Now;
-            datePicker.MaxYear = new DateTimeOffset(new DateTime(2022, 1, 1));
-         */
+            DateTime d1= new DateTime();
+            int valide = 0;
+            try
+            {
+                d1 = calendar1.Date.Value.Date;
+            }
+            catch (InvalidOperationException ex)
+            {
+                erreurCalendar.Visibility = Visibility.Visible;
+                valide += 1;
+            }
+            if( (depart.Text == "Depart") || (depart.Text==""))
+            {
+                valide += 1;
+                erreurd.Visibility=Visibility.Visible;    
+
+            }
+            if((Arrivee.Text == "")||(Arrivee.Text== "arrivée"))
+            {
+                valide += 1;
+                erreurA.Visibility=Visibility.Visible;
+            }
+        
+            if (valide == 0)
+            {
+                //datePicker.SelectedDate = DateTimeOffset.Now;
+                DateTime d = calendar1.Date.Value.DateTime;
+                lvListe.ItemsSource = GestionBD.getInstance().RechercheTrajet(d, depart.Text, Arrivee.Text);
+                if(lvListe.Items.Count == 0)
+                {
+                    nondispo.Visibility = Visibility.Visible;
+                    
+
+                }
+            }
+
+            // calendar1.Text = datePicker.Date.Date.ToString(" yyyy MM dd");
+
+  /* datePicker.SelectedDate = DateTimeOffset.Now;
+               datePicker.MaxYear = new DateTimeOffset(new DateTime(2022, 1, 1));
+            */
+          
 
         }
     }

@@ -33,22 +33,22 @@ namespace ProjetFinal
             {
                 lvliste.Clear();// pour vider la liste
 
-                MySqlCommand commande = new MySqlCommand();
+                MySqlCommand commande = new MySqlCommand("Affiche_Trajet");
                 commande.Connection = con;// indique le chemin à commande 
-              
+                commande.CommandType = System.Data.CommandType.StoredProcedure;
 
-                commande.CommandText = "Select * from trajet";// ce qu,il faut aller chercher
 
+                
                 con.Open();// ouvre la connection 
-                MySqlDataReader r = commande.ExecuteReader();// permet de lire le retour qui ewst stocké dans r
-               // r.Read();
-                // tblTexte.Text = r["nom"].ToString();// ici nom aurait pu etre remplacé par un nombre(position ou numero de colonne) ici on a indiqué le nom de colonne
-               
+                //commande.Prepare();// empêche les caractères spéciaux donc prends tout ca comme chaine de caractères
+                int i = commande.ExecuteNonQuery();
+                MySqlDataReader r = commande.ExecuteReader();
+
                 while (r.Read())// read renvoie un booleen donc tant que ca renvoi quelque chose
                 {
                    //  DateTime d = new DateTime();
                 String d1 = r.GetString("heure_Depart");
-                  String d2= r.GetString("heure_Arrivee");
+                String d2= r.GetString("heure_Arrivee");
 
                     //d.AddHours(d1.Hour);
                     // d.AddMinutes(d1.Minute);
@@ -61,12 +61,12 @@ namespace ProjetFinal
                /* d2.AddMinutes(Arrive.Minute);
                 d2.AddSeconds(Arrive.Second);*/
 
-                DateTime date = new DateTime();
-                DateTime dateTrajet = r.GetDateTime("date_Trajet");
+            //    DateTime date = new DateTime();
+               string dateTrajet = r.GetString("date_Trajet");
 
-                date.AddYears(dateTrajet.Year);
-                date.AddMonths(dateTrajet.Month);
-                date.AddDays(dateTrajet.Day);
+              //  date.AddYears(dateTrajet.Year);
+              //  date.AddMonths(dateTrajet.Month);
+              //  date.AddDays(dateTrajet.Day);
                     lvliste.Add(new Trajets()// car la classe Trajets n'a pas de constructeur(voir cours)
                     {
 
@@ -76,7 +76,7 @@ namespace ProjetFinal
                         Ville_Arrivee = r.GetString(2),
                         HeureDepartString = d1,
                         HeureArriveeString = d2,
-                       Date_Trajet= date,
+                       Date_Trajet= dateTrajet,
                         Prix_Trajet=r.GetDouble(6),
                         Arret= r.GetString(7),
                         Nombre_Place_dispo= (int)r["nombre_Place_dispo"],
@@ -97,6 +97,78 @@ namespace ProjetFinal
             }
             return lvliste;
         }
+        public ObservableCollection<Trajets> RechercheTrajet(DateTime dated,string villede , string villea)
+        {
+            lvliste.Clear();
+            try
+            {
+
+
+                MySqlCommand commande = new MySqlCommand("Recherche_Trajet");
+                commande.Connection = con;// indique le chemin à commande 
+                commande.CommandType = System.Data.CommandType.StoredProcedure;
+
+                commande.Parameters.AddWithValue("@datedeb", dated.ToString("yyyy-MM-dd"));// met l'id dans l'espace qui lui a été réservé
+                commande.Parameters.AddWithValue("@villed", villede);
+                commande.Parameters.AddWithValue("@villea", villea);
+
+
+
+                con.Open();// ouvre la connection 
+                //commande.Prepare();// empêche les caractères spéciaux donc prends tout ca comme chaine de caractères
+                int i = commande.ExecuteNonQuery();
+                MySqlDataReader r = commande.ExecuteReader();// permet de lire le retour qui ewst stocké dans r
+
+                //   public static bool TryParseExact(string? s, string? format, out DateOnly result);
+
+                while (r.Read())
+                 
+                {
+
+
+                    /* DateOnly d = new DateOnly();
+                     DateTime dateTime = r.GetDateTime("debut");
+
+                     d.AddYears(dateTime.Year);
+                     d.AddMonths(dateTime.Month);
+                     d.AddDays(dateTime.Day);
+ */
+                    string dateTrajet1 = r.GetString("date_Trajet");
+                    lvliste.Add(new Trajets()
+                    {
+
+                        Num_Trajet = (int)r["num_Trajet"],
+                        Ville_Depart = r.GetString(1),
+                        Ville_Arrivee = r.GetString(2),
+                        HeureDepartString = r.GetString("heure_Depart"),
+                        HeureArriveeString = r.GetString("heure_Arrivee"),
+                        Date_Trajet = dateTrajet1,
+                        Prix_Trajet = r.GetDouble(6),
+                        Arret = r.GetString(7),
+                        Nombre_Place_dispo = (int)r["nombre_Place_dispo"],
+                        Etat = r.GetString(9),
+                        Num_Conducteur = (int)r["num_Conducteur"],
+
+                    });
+
+                } 
+                //if (r.Read() == false)
+                //{
+                //    PagePrincipale.nondispo.text
+                //}
+
+                r.Close();
+                con.Close();
+            }
+
+            catch (MySqlException ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+            }
+            return lvliste;
+        }
+
 
     }
 }
