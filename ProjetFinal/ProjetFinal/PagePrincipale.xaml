@@ -76,7 +76,7 @@
 
                 </TextBlock>
             </StackPanel>
-            <GridView x:Name="lvListe" BackgroundSizing="InnerBorderEdge"   BorderThickness="10" BorderBrush="Beige" >
+            <GridView x:Name="lvListe" BackgroundSizing="InnerBorderEdge" SelectionChanged="lvListe_SelectionChanged"  BorderThickness="10" BorderBrush="Beige" >
 
                 <GridView.ItemTemplate>
 

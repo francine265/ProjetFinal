@@ -8,8 +8,8 @@
     mc:Ignorable="d">
 
 
-    <NavigationView Background="LightBlue" PaneTitle="FriendZoneExpress" PaneDisplayMode="Auto" IsSettingsVisible="False" 
-        IsBackButtonVisible="Visible"
+    <NavigationView Background="LightBlue" PaneTitle="FriendZoneExpress" PaneDisplayMode="Auto" IsSettingsVisible="false" 
+        IsBackButtonVisible="Visible" IsBackEnabled="True"
                     SelectionChanged="NavigationView_SelectionChanged">
 
        
@@ -36,7 +36,7 @@
         </NavigationView.MenuItems>
 
         <NavigationView.PaneFooter>
-            <NavigationViewItem Name="iDeconnexion" Content="Déconnexion" Icon="LeaveChat" />
+            <NavigationViewItem Name="iConnexion" Content="Connexion" Tag="Connexion" Icon="OtherUser" />
         </NavigationView.PaneFooter>
 
         <Frame x:Name="mainFrame"/>

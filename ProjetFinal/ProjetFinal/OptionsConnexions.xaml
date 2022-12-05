@@ -1,0 +1,30 @@
+﻿<Page
+    x:Class="ProjetFinal.OptionsConnexions"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProjetFinal"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Margin="10,20,20,20"  >
+            <TextBlock x:Name="titre" Text="Veillez vous connecter !" Foreground="Red" FontSize="25">
+                
+            </TextBlock>
+        </StackPanel>
+        <Button x:Name="connClient" Content="Se Connecter en tant que Client" Background="BlueViolet" Click="connClient_Click">
+
+        </Button>
+
+        <Button x:Name="ConnChauffeur" Content="Se Connecter en tant que Chauffeur" Background="BlueViolet" Click="ConnChauffeur_Click">
+
+        </Button>
+        <Button x:Name="Connadmin" Content="Se Connecter en tant qu'admin" Background="BlueViolet" Click="Connadmin_Click">
+
+        </Button>
+
+
+    </StackPanel>
+</Page>

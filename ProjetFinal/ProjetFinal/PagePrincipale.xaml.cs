@@ -70,5 +70,11 @@ namespace ProjetFinal
           
 
         }
+
+        private void lvListe_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+            this.Frame.Navigate(typeof(OptionsConnexions));
+        }
     }
 }

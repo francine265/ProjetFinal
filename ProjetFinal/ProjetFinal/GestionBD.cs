@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
 using Org.BouncyCastle.Asn1.Cms;
 using System;
 using System.Collections.Generic;
@@ -115,7 +116,7 @@ namespace ProjetFinal
 
 
                 con.Open();// ouvre la connection 
-                //commande.Prepare();// empêche les caractères spéciaux donc prends tout ca comme chaine de caractères
+                commande.Prepare();// empêche les caractères spéciaux donc prends tout ca comme chaine de caractères
                 int i = commande.ExecuteNonQuery();
                 MySqlDataReader r = commande.ExecuteReader();// permet de lire le retour qui ewst stocké dans r
 
@@ -167,6 +168,59 @@ namespace ProjetFinal
                     con.Close();
             }
             return lvliste;
+        }
+
+        public Boolean connexionClient(string email,string passwrd)
+        {
+            MySqlCommand commande = new MySqlCommand("connexionClient");
+            commande.Connection = con;// indique le chemin à commande 
+            commande.CommandType = System.Data.CommandType.StoredProcedure;// ce qu,il faut aller chercher
+            commande.Parameters.AddWithValue("@mail", email);
+            commande.Parameters.AddWithValue("@motpass", passwrd);
+
+            con.Open();// ouvre la connection 
+            commande.Prepare();// empêche les caractères spéciaux donc prends tout ca comme chaine de caractères
+            int i = commande.ExecuteNonQuery();
+            MySqlDataReader r = commande.ExecuteReader();
+            try
+            {
+
+
+                //MySqlCommand commande = new MySqlCommand("connexionClient");
+                //commande.Connection = con;// indique le chemin à commande 
+                //commande.CommandType = System.Data.CommandType.StoredProcedure;// ce qu,il faut aller chercher
+                //commande.Parameters.AddWithValue("@mail", email);
+                //commande.Parameters.AddWithValue("@motpass", passwrd);
+
+                //con.Open();// ouvre la connection 
+                //commande.Prepare();// empêche les caractères spéciaux donc prends tout ca comme chaine de caractères
+                //int i = commande.ExecuteNonQuery();
+                //MySqlDataReader r = commande.ExecuteReader();
+                r.Read();
+                //while (r.Read())// read renvoie un booleen donc tant que ca renvoi quelque chose
+                //{
+                //    liste.Add(new Clients()// car la classe client n'a pas de constructeur(voir cours)
+                //    {
+                //        Id = (int)r["id"],
+                //        Nom = r.GetString(1),
+                //        Prenom = r.GetString(2),
+                //        Email = r.GetString(3),
+                //    });
+                //    //System.Threading.Thread.Sleep(1000); // pour faire une pause pendant 1 seconde
+                //    //lvListe.Items.Add(r["id"] + " " + r["nom"] + " " + r["prenom"]);// pour l'id on pourrait aussi r.getint32(0) pour afficher l'id
+                //}
+
+                r.Close();
+                con.Close();
+              
+            }
+            catch (MySqlException ex)
+            {
+              
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+            }
+            return r.Read();
         }
 
 
