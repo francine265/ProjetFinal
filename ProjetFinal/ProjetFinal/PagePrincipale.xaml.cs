@@ -67,11 +67,6 @@ namespace ProjetFinal
                 }
             }
 
-            // calendar1.Text = datePicker.Date.Date.ToString(" yyyy MM dd");
-
-  /* datePicker.SelectedDate = DateTimeOffset.Now;
-               datePicker.MaxYear = new DateTimeOffset(new DateTime(2022, 1, 1));
-            */
           
 
         }
