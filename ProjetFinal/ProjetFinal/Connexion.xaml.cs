@@ -46,8 +46,13 @@ namespace ProjetFinal
             {
                 if(GestionBD.getInstance().connexionClient(email.Text, epassword.Text)==true)
                 {
-
+                    this.Frame.Navigate(typeof(PageClient));
                 }
+                else
+                {
+                    erreuremailpass.Visibility=Visibility.Visible;
+                }
+                
                 //GestionBD.getInstance().connexionClient(email.Text,epassword.Text);
 
             }

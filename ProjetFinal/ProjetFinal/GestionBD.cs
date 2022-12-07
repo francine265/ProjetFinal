@@ -29,7 +29,7 @@ namespace ProjetFinal
             return gestionBD;
         }
         public ObservableCollection<Trajets> GetTrajets()
-        {
+        {con.Close();
             try
             {
                 lvliste.Clear();// pour vider la liste
@@ -40,7 +40,7 @@ namespace ProjetFinal
 
 
                 
-                con.Open();// ouvre la connection 
+               con.Open();// ouvre la connection 
                 //commande.Prepare();// empêche les caractères spéciaux donc prends tout ca comme chaine de caractères
                 int i = commande.ExecuteNonQuery();
                 MySqlDataReader r = commande.ExecuteReader();
@@ -78,7 +78,7 @@ namespace ProjetFinal
                         HeureDepartString = d1,
                         HeureArriveeString = d2,
                        Date_Trajet= dateTrajet,
-                        Prix_Trajet=r.GetDouble(6),
+                        Prix_Trajet=r.GetString(6),
                         Arret= r.GetString(7),
                         Nombre_Place_dispo= (int)r["nombre_Place_dispo"],
                         Etat= r.GetString(9),
@@ -96,6 +96,7 @@ namespace ProjetFinal
                 if (con.State == System.Data.ConnectionState.Open)
                     con.Close();
             }
+            //con.Close();
             return lvliste;
         }
         public ObservableCollection<Trajets> RechercheTrajet(DateTime dated,string villede , string villea)
@@ -144,7 +145,7 @@ namespace ProjetFinal
                         HeureDepartString = r.GetString("heure_Depart"),
                         HeureArriveeString = r.GetString("heure_Arrivee"),
                         Date_Trajet = dateTrajet1,
-                        Prix_Trajet = r.GetDouble(6),
+                        Prix_Trajet = r.GetString(6),
                         Arret = r.GetString(7),
                         Nombre_Place_dispo = (int)r["nombre_Place_dispo"],
                         Etat = r.GetString(9),
@@ -170,58 +171,93 @@ namespace ProjetFinal
             return lvliste;
         }
 
-        public Boolean connexionClient(string email,string passwrd)
+        public Boolean connexionClient(string emaile,string passwrd)
         {
+            con.Close();
+
             MySqlCommand commande = new MySqlCommand("connexionClient");
             commande.Connection = con;// indique le chemin à commande 
             commande.CommandType = System.Data.CommandType.StoredProcedure;// ce qu,il faut aller chercher
-            commande.Parameters.AddWithValue("@mail", email);
+            commande.Parameters.AddWithValue("@mail", emaile);
             commande.Parameters.AddWithValue("@motpass", passwrd);
 
             con.Open();// ouvre la connection 
-            commande.Prepare();// empêche les caractères spéciaux donc prends tout ca comme chaine de caractères
+            //commande.Prepare();// empêche les caractères spéciaux donc prends tout ca comme chaine de caractères
             int i = commande.ExecuteNonQuery();
             MySqlDataReader r = commande.ExecuteReader();
+ 
+
+            return r.Read();
+
+
+
+
+
+        }
+        public ObservableCollection<Trajets> detailtrajet()
+        {
+            con.Close();
+
             try
             {
+                lvliste.Clear();// pour vider la liste
+
+                MySqlCommand commande = new MySqlCommand("DetailsTrajet");
+                commande.Connection = con;// indique le chemin à commande 
+                commande.CommandType = System.Data.CommandType.StoredProcedure;
 
 
-                //MySqlCommand commande = new MySqlCommand("connexionClient");
-                //commande.Connection = con;// indique le chemin à commande 
-                //commande.CommandType = System.Data.CommandType.StoredProcedure;// ce qu,il faut aller chercher
-                //commande.Parameters.AddWithValue("@mail", email);
-                //commande.Parameters.AddWithValue("@motpass", passwrd);
 
-                //con.Open();// ouvre la connection 
+                con.Open();// ouvre la connection 
                 //commande.Prepare();// empêche les caractères spéciaux donc prends tout ca comme chaine de caractères
-                //int i = commande.ExecuteNonQuery();
-                //MySqlDataReader r = commande.ExecuteReader();
-                r.Read();
-                //while (r.Read())// read renvoie un booleen donc tant que ca renvoi quelque chose
-                //{
-                //    liste.Add(new Clients()// car la classe client n'a pas de constructeur(voir cours)
-                //    {
-                //        Id = (int)r["id"],
-                //        Nom = r.GetString(1),
-                //        Prenom = r.GetString(2),
-                //        Email = r.GetString(3),
-                //    });
-                //    //System.Threading.Thread.Sleep(1000); // pour faire une pause pendant 1 seconde
-                //    //lvListe.Items.Add(r["id"] + " " + r["nom"] + " " + r["prenom"]);// pour l'id on pourrait aussi r.getint32(0) pour afficher l'id
-                //}
+                int i = commande.ExecuteNonQuery();
+                MySqlDataReader r = commande.ExecuteReader();
+
+                while (r.Read())// read renvoie un booleen donc tant que ca renvoi quelque chose
+                {
+                 
+                    String d1 = r.GetString("heure_Depart");
+                    String d2 = r.GetString("heure_Arrivee");
+                    string dateTrajet = r.GetString("date_Trajet");
+
+                    lvliste.Add(new Trajets()// car la classe Trajets n'a pas de constructeur(voir cours)
+                    {
+
+                        Num_Trajet = (int)r["num_Trajet"],
+                        Ville_Depart = r.GetString(1),
+                        Ville_Arrivee = r.GetString(2),
+                        HeureDepartString = d1,
+                        HeureArriveeString = d2,
+                        Date_Trajet = dateTrajet,
+                        Prix_Trajet = r.GetString(6),
+                        Arret = r.GetString(7),
+                        Nombre_Place_dispo = (int)r["nombre_Place_dispo"],
+                        Etat = r.GetString(9),
+                        Num_Conducteur = (int)r["num_Conducteur"],
+                        Nom_Conducteur=r.GetString(11),
+                        Num_tel_Conducteur=r.GetString(12),
+                    
+                    });
+
+                }
 
                 r.Close();
                 con.Close();
-              
+
             }
             catch (MySqlException ex)
             {
-              
                 if (con.State == System.Data.ConnectionState.Open)
                     con.Close();
             }
-            return r.Read();
+            //con.Close();
+            return lvliste;
+
+
+
+
         }
+
 
 
     }

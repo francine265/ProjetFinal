@@ -8,7 +8,144 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <ScrollViewer>
 
-    </Grid>
+
+        <StackPanel Orientation="Vertical" Background="LightBlue">
+
+            <StackPanel Margin="50,100,100,50">
+                <TextBlock HorizontalAlignment="Center" x:Name="tbtexte" Text="Covoiturage pour la planète "  FontSize="25"></TextBlock>
+            </StackPanel>
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+
+                </Grid.ColumnDefinitions>
+
+
+
+                <StackPanel Grid.Column="0" Grid.Row="0" Margin="10,20,20,20">
+                    <TextBox x:Name="depart" Text="Depart"   Margin="5,5,5,10" HorizontalAlignment="Stretch">
+
+                    </TextBox>
+                    <TextBlock x:Name="erreurd" Text="Veillez entrer la ville de depart"  Foreground="red"  Visibility="Collapsed" ></TextBlock>
+
+                </StackPanel>
+                <StackPanel Grid.Column="1" Grid.Row="0" Margin="10,20,20,20">
+                    <TextBox x:Name="Arrivee" Text="arrivée"   Margin="5,5,5,10" HorizontalAlignment="Stretch">
+
+                    </TextBox>
+                    <TextBlock x:Name="erreurA" Text="Veillez entrer la ville d'arrivée"  Foreground="red" Visibility="Collapsed" ></TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Grid.Row="0" Margin="10,20,20,20">
+                    <CalendarDatePicker x:Name="calendar1" HorizontalAlignment="Stretch" />
+                    <TextBlock x:Name="erreurCalendar" Text="Veillez entrer une date" Visibility="Collapsed" ></TextBlock>
+                </StackPanel>
+
+
+
+
+            </Grid>
+
+            <StackPanel HorizontalAlignment="Center"  >
+
+                <Button x:Name="Rechercher" Click="Rechercher_Click" Content="Rechercher" Background="LightPink"  Margin="10,20,20,20"></Button>
+
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Background="Beige" HorizontalAlignment="Center"
+                                Margin="5"   >
+                <TextBlock x:Name="nondispo"  Text="Aucun Trajet disponible "  Margin="10,20,20,20"  Foreground="Red" Visibility="Collapsed">
+
+                </TextBlock>
+            </StackPanel>
+            <GridView x:Name="lvListe" BackgroundSizing="InnerBorderEdge" SelectionChanged="lvListe_SelectionChanged"  BorderThickness="10" BorderBrush="Beige" >
+
+                <GridView.ItemTemplate>
+
+                    <DataTemplate x:DataType="local:Trajets">
+
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" Orientation="Vertical"
+                                Margin="5" HorizontalAlignment="Stretch" >
+
+                                <Image Source="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" Height="150" />
+                                <TextBlock x:Name="xnomchauffeur" Text="{x:Bind Nom_Conducteur}">
+                                    
+                                </TextBlock>
+                                <TextBlock Text="{x:Bind Num_tel_Conducteur}" Margin="5,5,5,10">
+                                    
+                                </TextBlock>
+                               
+
+                            </StackPanel>
+
+
+                            <StackPanel Grid.Column="1" Orientation="Vertical" Background="Beige"
+                                Margin="5" HorizontalAlignment="Stretch"   >
+                                <TextBlock Text="ville de depart: "  Margin="5,5,5,10">
+
+                                </TextBlock>
+                                <TextBlock Text="Ville d'arrivée: "  Margin="5,5,5,10">
+
+                                </TextBlock>
+                                <TextBlock Text="heure de Depart: "  Margin="5,5,5,10">
+
+                                </TextBlock>
+                                <TextBlock Text="heure d'arrivée: "  Margin="5,5,5,10">
+
+                                </TextBlock>
+                                <TextBlock Text="Nombres de places: "  Margin="5,5,5,10">
+
+                                </TextBlock>
+                                <TextBlock Text="Prix du Trajet: "  Margin="5,5,5,10">
+
+                                </TextBlock>
+                                <TextBlock Text="{x:Bind Date_Trajet}" Margin="5,5,5,10"/>
+                                <Button x:Name="reserver" Click="reserver_Click" Foreground="OldLace" Background="Orchid" Content="Reserver"></Button>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" HorizontalAlignment="Stretch" Background="HotPink" Margin="5">
+                                <TextBlock Text="{x:Bind Ville_Depart,Mode=OneWay}" Margin="5,5,5,10"/>
+                                <TextBlock Text="{x:Bind Ville_Arrivee}" Margin="5,5,5,10"/>
+                                <TextBlock Text="{x:Bind HeureDepartString}" Margin="5,5,5,10"/>
+                                <TextBlock Text="{x:Bind HeureArriveeString}" Margin="5,5,5,10"/>
+                                <TextBlock Text="{x:Bind Nombre_Place_dispo}" Margin="5,5,5,10"/>
+                                <TextBlock Text="{x:Bind Prix_Trajet}"  Margin="5,5,5,10"/>
+                                
+
+
+
+                            </StackPanel>
+
+                        </Grid>
+                    </DataTemplate >
+
+
+                </GridView.ItemTemplate>
+
+            </GridView>
+
+        </StackPanel>
+    </ScrollViewer>
 </Page>

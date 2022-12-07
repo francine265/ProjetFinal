@@ -82,8 +82,11 @@
                 <Button x:Name="seConnecter" Content="Se Connecter" Background="Red" Click="seConnecter_Click">
                     
                 </Button>
-                
-            </StackPanel>
+                    <TextBlock x:Name="erreuremailpass" Text="Adresse Mail ou mot de passe non valide" Foreground="Red" Visibility="Collapsed">
+
+                    </TextBlock>
+
+                </StackPanel>
             
         </Grid>
             
