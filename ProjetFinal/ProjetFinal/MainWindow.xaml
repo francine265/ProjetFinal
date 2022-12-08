@@ -22,6 +22,7 @@
 
             <NavigationViewItem Content="Accueil" Tag="Accueil" Icon="Home"/>
             <NavigationViewItem Content="Créer un compte" Tag="Creation" Icon="AddFriend" />
+            <NavigationViewItem Content="Connéxion" Tag="Con" Icon="DisconnectDrive"/>
 
             <NavigationViewItemSeparator />
 

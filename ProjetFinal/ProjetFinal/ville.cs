@@ -13,6 +13,7 @@ namespace ProjetFinal
         String choixville;
         int num_administrateur;
         string email;
+        string password;
        
         public ville()
         {
@@ -22,7 +23,7 @@ namespace ProjetFinal
             
         }
 
-        public ville(string choixville ,string email , int num_administrateur)
+        public ville(string choixville, string email, int num_administrateur, string password)
         {
             this.choixville = choixville;
         }
@@ -30,10 +31,11 @@ namespace ProjetFinal
         public string Choixville { get => choixville; set => choixville = value; }
         public int Num_administrateur { get => num_administrateur; set => num_administrateur = value; }
         public string Email { get => email; set => email = value; }
+        public string Password { get => password; set => password = value; }
 
         public override string ToString()
         {
-            return choixville  + " " + num_administrateur + " " + email;
+            return choixville  + " " + num_administrateur + " " + email + " " + password;
         }
 
 

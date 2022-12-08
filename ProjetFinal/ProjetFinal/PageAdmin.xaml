@@ -8,16 +8,21 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel Margin="10">
+    <ScrollViewer Background="AliceBlue">
+
+    <StackPanel Margin="10" HorizontalAlignment="Center">
 
         <!--Ajouter une ville-->
         <StackPanel  Margin="20">
-            <TextBlock x:Name="tbAjoutVille" Text="Ajouter une ville:"/>
+            <TextBlock x:Name="tbAjoutVille" Text="Ajouter une ville" FontSize="25" FontFamily="algerian"/>
 
-            <StackPanel x:Name="formEmployer" Background="AliceBlue" Margin="20,0,00,0" Padding="15" Visibility="Visible">
-                <TextBlock x:Name="tbl" Text="Entrez votre Email"/>
-                <TextBox x:Name="email" Header="Email:"/>
-                <ComboBox x:Name="cmb"  Header="Villes" PlaceholderText="Pick a town" Width="200" Margin="5,5,5,5">
+            <StackPanel x:Name="formville" Background="AliceBlue" Margin="20,0,00,0" Padding="15" Visibility="Visible">
+             
+                    <TextBox x:Name="email" Header="Email"/>
+                    <TextBlock x:Name="erreuremail" Text="Vous devez entrer votre mail" Foreground="Red" FontSize="15" FontFamily="algerian" Visibility="Collapsed"/>
+                    <TextBox x:Name="passwood" Header=" Mot de Passe"/>
+                    <TextBlock x:Name="erreurpassword" Text=" Entrez votre Mot de Passe"  Foreground="Red" FontSize="15" FontFamily="algerian" Visibility="Collapsed"/>
+                    <ComboBox x:Name="cmb"  Header="Villes" PlaceholderText="Pick a town" Width="200" Margin="5,5,5,5">
                     <x:String>Batiscan</x:String>
                     <x:String>la Tuque</x:String>
                     <x:String>Louiseville</x:String>
@@ -27,28 +32,123 @@
                     <x:String>Shawinigan</x:String>
                     <x:String>Trois-Rivières</x:String>
                 </ComboBox>
-                <Button x:Name="btnAjoutVille" Content="Ajouter"  Click="btnAjoutVille_Click"/>
-           
+                    <TextBlock x:Name="erreurcmb" Text="Vous devez entrer une ville" Foreground="Red" FontSize="15" FontFamily="algerian" Visibility="Collapsed"/>
+                    <Button x:Name="btnAjoutVille" Content="Ajouter" Background="LightCyan" Click="btnAjoutVille_Click"/>
+             </StackPanel>
+                <TextBlock x:Name="tbl_texte" Text="Ajout d'une ville" Visibility="Collapsed" FontFamily="20"/>
             </StackPanel>
-        </StackPanel>
 
-        <StackPanel>
+        <StackPanel Margin="5,5,5,5" VerticalAlignment="Stretch">
 
-            <TextBlock Text="Affichage des Trajets en cours"></TextBlock>
+            <TextBlock Text="Cliquez Sur Afficher pour les Trajets en cours" FontFamily="algerian" FontSize="25" Margin="10,10,10,10" Foreground="Chocolate"></TextBlock>
             
             <Button x:Name="btn" Click="btn_Click" FontFamily="algerian" FontSize="25" Background="AliceBlue">AFFICHER</Button>
-            <GridView x:Name="lv"/>
-        </StackPanel>
 
-        <!--Trajets Actuels -->
-        <StackPanel x:Name="stckTrajetsActuels" Margin="0,0,0,30">
-            <TextBlock x:Name="tbTrajetsActuels" Text="Trajets Actuels:"/>
-        </StackPanel>
+                <CalendarDatePicker x:Name="calender1" HorizontalAlignment="Stretch" Header="choississez la premiere date"/>
+                <TextBlock x:Name="erreurcalender1" Text="Vous devez entrer la date 1" Foreground="Red" FontSize="15" FontFamily="algerian" Visibility="Collapsed"/>
+                <CalendarDatePicker x:Name="caleder2" HorizontalAlignment="Stretch" Header="choississez la deuxieme date"/>
+                <TextBlock x:Name="erreurcalender2" Text="Vous devez entrer la date 2" Foreground="Red" FontSize="15" FontFamily="algerian" Visibility="Collapsed"/>
 
-        <!--Trajets Terminés -->
-        <StackPanel x:Name="stckTrajetsTermines" Margin="0,0,0,30">
-            <TextBlock x:Name="tbTrajetTermines" Text="Trajets Terminés:"/>
-        </StackPanel>
+                <Button x:Name="bt" Click="bt_Click" Content="Trajet en cours et Terminé" Background="LightCyan" Margin="5,5,5,5"/>
+
+                <CalendarDatePicker x:Name="calender3" HorizontalAlignment="Stretch" Header="choississez la premiere date"/>
+                <TextBlock x:Name="erreurcalender3" Text="Vous devez entrer la date 3" Foreground="Red" FontSize="15" FontFamily="algerian" Visibility="Collapsed"/>
+                <CalendarDatePicker x:Name="calender4" HorizontalAlignment="Stretch" Header="choississez la deuxieme date" Margin="10,10,10,10"/>
+                <TextBlock x:Name="erreurcalender4" Text="Vous devez entrer la date 4" Foreground="Red" FontSize="15" FontFamily="algerian" Visibility="Collapsed"/>
+
+                <Button x:Name="button" Content="Revenue Entreprises" Background="LightCyan" Click="button_Click"/>
+
+
+            </StackPanel>
+
+        <GridView x:Name="lv" BackgroundSizing="InnerBorderEdge"   BorderThickness="10"  >
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="local:Trajets">
+
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Orientation="Vertical"
+                                Margin="5" HorizontalAlignment="Stretch"   >
+                            <TextBlock Text="Numero Conducteur: "  Margin="5,5,5,10">
+                            </TextBlock>
+                            <TextBlock Text="Numero du Trajet: "  Margin="5,5,5,10">
+                             </TextBlock>
+                             <TextBlock Text="ville de depart: "  Margin="5,5,5,10">
+                            </TextBlock>
+                            <TextBlock Text="Ville d'arrivée: "  Margin="5,5,5,10">
+                            </TextBlock>
+                            <TextBlock Text="heure de Depart: "  Margin="5,5,5,10">
+                            </TextBlock>
+                            <TextBlock Text="heure d'arrivée: "  Margin="5,5,5,10">
+                            </TextBlock>
+                            <TextBlock Text="Nombres de places: "  Margin="5,5,5,10">
+                            </TextBlock>
+                            <TextBlock Text="Prix du Trajet: "  Margin="5,5,5,10">
+                            </TextBlock>
+                            <TextBlock Text="Etat du Trajet: "  Margin="5,5,5,10">
+                            </TextBlock>
+                                <TextBlock Text="Date du Trajet: "  Margin="5,5,5,10">
+                                </TextBlock>
+                                
+                        </StackPanel>
+                            <StackPanel Grid.Column="1" HorizontalAlignment="Stretch" Margin="5">
+                                <TextBlock Text="{x:Bind Num_Conducteur,Mode=OneWay}" Margin="5,5,5,10"/>
+                                <TextBlock Text="{x:Bind Num_Trajet,Mode=OneWay}" Margin="5,5,5,10"/>
+                                <TextBlock Text="{x:Bind Ville_Depart,Mode=OneWay}" Margin="5,5,5,10"/>
+                                <TextBlock Text="{x:Bind Ville_Arrivee,Mode=OneWay}" Margin="5,5,5,10"/>
+                                <TextBlock Text="{x:Bind HeureDepartString, Mode=OneWay}" Margin="5,5,5,10"/>
+                                <TextBlock Text="{x:Bind HeureArriveeString,Mode=OneWay}" Margin="5,5,5,10"/>
+                                <TextBlock Text="{x:Bind Nombre_Place_dispo,Mode=OneWay}" Margin="5,5,5,10"/>
+                                <TextBlock Text="{x:Bind Prix_Trajet,Mode=OneWay}" Margin="5,5,5,10"/>
+                                <TextBlock Text="{x:Bind Etat,Mode=OneWay}" Margin="5,5,5,10"/>
+                                <TextBlock Text="{x:Bind Date_Trajet}" Margin="5,5,5,10"/>
+                            </StackPanel>
+                        </Grid>
+                </DataTemplate >
+            </GridView.ItemTemplate>
+        </GridView>
+
+
+
+            <GridView x:Name="lvliste" BackgroundSizing="InnerBorderEdge"   BorderThickness="10"  >
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="local:Trajets">
+
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Orientation="Vertical"
+                                Margin="5" HorizontalAlignment="Stretch"   >
+                                <TextBlock Text="Num_Trajet: "  Margin="5,5,5,10"/>
+                                <TextBlock Text="Ville Depart: "  Margin="5,5,5,10"/> 
+                                <TextBlock Text="Ville Arrivee: "  Margin="5,5,5,10"/>
+                                <TextBlock Text="Conducteur: "  Margin="5,5,5,10"/>
+                                <TextBlock Text="Montant Total: "  Margin="5,5,5,10"/>
+                                <TextBlock Text="Montant Chauffeur: "  Margin="5,5,5,10"/>
+                                <TextBlock Text="Montant Compagnie: "  Margin="5,5,5,10"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" HorizontalAlignment="Stretch" Margin="5">
+                                <TextBlock Text="{x:Bind Num_Trajet,Mode=OneWay}" Margin="5,5,5,10"/>
+                                <TextBlock Text="{x:Bind Ville_Depart,Mode=OneWay}" Margin="5,5,5,10"/>
+                                <TextBlock Text="{x:Bind Ville_Arrivee,Mode=OneWay}" Margin="5,5,5,10"/>
+                                <TextBlock Text="{x:Bind Conducteur,Mode=OneWay}" Margin="5,5,5,10"/>
+                                <TextBlock Text="{x:Bind Montant_total,Mode=OneWay}" Margin="5,5,5,10"/>
+                                <TextBlock Text="{x:Bind Montant_chauffeur,Mode=OneWay}" Margin="5,5,5,10"/>
+                                <TextBlock Text="{x:Bind Montant_compagnie,Mode=OneWay}" Margin="5,5,5,10"/>
+                               
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate >
+                </GridView.ItemTemplate>
+            </GridView>
+
+        
 
     </StackPanel>
+    </ScrollViewer>
 </Page>

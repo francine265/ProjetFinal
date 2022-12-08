@@ -5,6 +5,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using MySqlX.XDevAPI.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,13 +27,56 @@ namespace ProjetFinal
         public PageAdmin()
         {
             this.InitializeComponent();
+           
+           
         }
 
         private void btnAjoutVille_Click(object sender, RoutedEventArgs e)
         {
             //ville vi = cmb.SelectedItem as ville;
 
-            Singleton.getInstance().Ajouterville(cmb.SelectedItem.ToString() ,email.Text);
+           
+            DateTime d = new DateTime();
+            int valide = 0;
+
+            if (email.Text.Trim() == "")
+            {
+
+
+                erreuremail.Visibility = Visibility.Visible;
+                valide += 1;
+
+            }
+            if (passwood.Text.Trim() == "")
+            {
+
+
+                erreurpassword.Visibility = Visibility.Visible;
+                valide += 1;
+
+            }
+
+            if (cmb.SelectedValue == null)
+            {
+
+
+                erreurcmb.Visibility = Visibility.Visible;
+                valide += 1;
+
+            }
+
+
+            if (valide == 0)
+            {
+
+                Singleton.getInstance().Ajouterville(cmb.SelectedItem.ToString(), email.Text ,passwood.Text);
+                formville.Visibility = Visibility.Collapsed;
+                tbl_texte.Visibility = Visibility.Visible;
+
+            }
+
+
+           
         }
 
 
@@ -40,6 +84,103 @@ namespace ProjetFinal
         private void btn_Click(object sender, RoutedEventArgs e)
         {
             lv.ItemsSource = Singleton.getInstance().GetTrajets();
+        }
+
+        private void bt_Click(object sender, RoutedEventArgs e)
+        {
+
+            DateTime d1 = new DateTime();
+            DateTime d2 = new DateTime();
+            int valide = 0;
+
+
+            try
+            {
+                /// d1 = calendar.Date.Value.Date;
+                /// 
+                 d1 = calender1.Date.Value.DateTime;
+                
+
+            }
+            catch (InvalidOperationException ex)
+            {
+                erreurcalender1.Visibility = Visibility.Visible;
+                valide += 1;
+            }
+
+            try
+            {
+                /// d1 = calendar.Date.Value.Date;
+                /// 
+                
+                d2 = caleder2.Date.Value.DateTime;
+
+            }
+            catch (InvalidOperationException ex)
+            {
+                erreurcalender2.Visibility = Visibility.Visible;
+                valide += 1;
+            }
+
+
+
+            if (valide == 0)
+            {
+                lv.ItemsSource = Singleton.getInstance().GetTrajetsdate(d1, d2);
+            }
+           
+            //d2 = caleder2.Date.Value.DateTime;
+
+           
+            
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+
+            DateTime d3 = new DateTime();
+            DateTime d4 = new DateTime();
+            int valide = 0;
+
+
+            try
+            {
+                /// d1 = calendar.Date.Value.Date;
+                /// 
+                d3 = calender3.Date.Value.DateTime;
+               
+
+            }
+            catch (InvalidOperationException ex)
+            {
+                erreurcalender3.Visibility = Visibility.Visible;
+                valide += 1;
+            }
+
+            try
+            {
+                /// d1 = calendar.Date.Value.Date;
+                /// 
+
+                d4 = calender4.Date.Value.DateTime;
+
+            }
+            catch (InvalidOperationException ex)
+            {
+                erreurcalender4.Visibility = Visibility.Visible;
+                valide += 1;
+            }
+
+
+
+            if (valide == 0)
+            {
+                lvliste.ItemsSource = Singleton.getInstance().Montant(d3, d4);
+            }
+
+            //d2 = caleder2.Date.Value.DateTime;
+
+            
         }
     }
 }

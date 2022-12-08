@@ -54,7 +54,9 @@ namespace ProjetFinal
                 case "Creation":
                     mainFrame.Navigate(typeof(PageCreationCompte));
                     break;
-
+                case "Con":
+                    mainFrame.Navigate(typeof(pageConAdmin));
+                    break ;
                 default:
                     break;
 
