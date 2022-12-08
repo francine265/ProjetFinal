@@ -60,7 +60,7 @@
                 </TextBlock>
             </StackPanel>
             <StackPanel Orientation="Vertical" Grid.Column="3" Margin="5,5,5,10">
-                <TextBox x:Name="email" HorizontalAlignment="Stretch">
+                    <TextBox x:Name="email" Text="honliassoYohann73@gmail.com" HorizontalAlignment="Stretch">
 
                 </TextBox>
                     <TextBlock x:Name="erreuremail" Text="Adresse Mail Requise" Foreground="Red" Visibility="Collapsed">
@@ -70,9 +70,9 @@
                 </StackPanel>
 
             <StackPanel Orientation="Vertical" Grid.Column="3" Grid.Row="1" Margin="5,5,5,10">
-                <TextBox x:Name="epassword" HorizontalAlignment="Stretch" >
+                <PasswordBox x:Name="epassword" Password="nounou12" HorizontalAlignment="Stretch" >
 
-                </TextBox>
+                </PasswordBox>
                     <TextBlock x:Name="erreurpassword" Text="mot de passe Requis" Foreground="Red" Visibility="Collapsed">
                           
                     </TextBlock>
@@ -117,7 +117,7 @@
                 <TextBlock x:Name="inscription" Text="Vous n'avez pas encore de Compte? " Margin="5,5,5,10">
                     
                 </TextBlock>
-                <Button x:Name="einscription" Content="S'inscrire" Margin="5,5,5,10" Background="Gray">
+                <Button x:Name="einscription" Click="einscription_Click" Content="S'inscrire" Margin="5,5,5,10" Background="Gray">
                     
                 </Button>
                 

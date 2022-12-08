@@ -26,7 +26,12 @@ namespace ProjetFinal
         public MainWindow()
         {
             this.InitializeComponent();
+            GestionBD.getInstance().NviAdmin = nviAdmin;
+            GestionBD.getInstance().NviChauffeur = nviChauffeur;
+            GestionBD.getInstance().NviClient = nviClient;
+            GestionBD.getInstance().NviDeConnexion = nviDeConnexion;
             mainFrame.Navigate(typeof(PagePrincipale));
+
         }
 
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -51,7 +56,10 @@ namespace ProjetFinal
                     mainFrame.Navigate(typeof(PageCreationCompte));
                     break;
                 case "Connexion":
-                    mainFrame.Navigate(typeof(Connexion));
+                    mainFrame.Navigate(typeof(OptionsConnexions));
+                    break;
+                case "DeConnexion":
+                    mainFrame.Navigate(typeof(PagePrincipale));
                     break;
 
                 default:
@@ -69,6 +77,20 @@ namespace ProjetFinal
             };*/
         }
 
+        private void NavigationView_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
+        }
+
+        private void NavigationView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
+        {
+            if (mainFrame.CanGoBack)
+            {
+                mainFrame.GoBack();
+            }
+
+
+        }
     }
     
 }

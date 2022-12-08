@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Microsoft.UI.Xaml.Controls;
+using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI;
 using Org.BouncyCastle.Asn1.Cms;
 using System;
@@ -16,12 +17,23 @@ namespace ProjetFinal
         ObservableCollection<Trajets> lvliste;// pas automatique , on le fait car on fera un select de liste plustard
         static GestionBD gestionBD = null;// ce qui crée le singleton pour avoir un seul objet à utiliser
 
+        NavigationViewItem nviAdmin;
+        NavigationViewItem nviChauffeur;
+        NavigationViewItem nviClient;
+        NavigationViewItem nviDeConnexion;
+        
+
         int idUtilisateur;
         string nom, prenom;
 
         public int IdUtilisateur { get => idUtilisateur; set => idUtilisateur = value; }
         public string Nom { get => nom; set => nom = value; }
         public string Prenom { get => prenom; set => prenom = value; }
+        internal ObservableCollection<Trajets> Lvliste { get => lvliste;  }
+        public NavigationViewItem NviAdmin { get => nviAdmin; set => nviAdmin = value; }
+        public NavigationViewItem NviChauffeur { get => nviChauffeur; set => nviChauffeur = value; }
+        public NavigationViewItem NviClient { get => nviClient; set => nviClient = value; }
+        public NavigationViewItem NviDeConnexion { get => nviDeConnexion; set => nviDeConnexion = value; }
 
         public GestionBD()
         {
@@ -308,6 +320,40 @@ namespace ProjetFinal
 
 
 
+        }
+        public long Checksouscrit( int numTrajet)
+        {
+            long compteur=-1;
+            try
+            {
+
+
+                MySqlCommand commande = new MySqlCommand("Checksouscrit");
+                commande.Connection = con;// indique le chemin à commande 
+                commande.CommandType = System.Data.CommandType.StoredProcedure;
+
+                commande.Parameters.AddWithValue("@numCl", idUtilisateur);// met l'id dans l'espace qui lui a été réservé
+                commande.Parameters.AddWithValue("@numTraj", numTrajet);
+
+
+
+
+                con.Open();// ouvre la connection 
+                commande.Prepare();// empêche les caractères spéciaux donc prends tout ca comme chaine de caractères
+              compteur = (Int64)commande.ExecuteScalar();
+
+                
+
+
+                con.Close();
+            }
+
+            catch (MySqlException ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+            }
+            return compteur;
         }
 
 

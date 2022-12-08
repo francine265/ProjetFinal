@@ -8,8 +8,8 @@
     mc:Ignorable="d">
 
 
-    <NavigationView Background="LightBlue" PaneTitle="FriendZoneExpress" PaneDisplayMode="Auto" IsSettingsVisible="false" 
-        IsBackButtonVisible="Visible" IsBackEnabled="True"
+    <NavigationView Background="LightBlue" PaneTitle="FriendZoneExpress"  PaneDisplayMode="Auto" IsSettingsVisible="false" 
+        IsBackButtonVisible="Visible" IsBackEnabled="True" BackRequested="NavigationView_BackRequested" IsEnabledChanged="NavigationView_IsEnabledChanged"
                     SelectionChanged="NavigationView_SelectionChanged">
 
        
@@ -21,23 +21,23 @@
             <AutoSuggestBox Width="200"  PlaceholderText="Rechercher" QueryIcon="Find"></AutoSuggestBox>
             <NavigationViewItemHeader Content="Menu"></NavigationViewItemHeader>
 
-            <NavigationViewItem Content="Accueil" Tag="Accueil" Icon="Home"/>
-            <NavigationViewItem Content="Créer un compte" Tag="Creation" Icon="AddFriend" />
+            <NavigationViewItem x:Name="nviAccueil" Content="Accueil" Tag="Accueil" Icon="Home"/>
+            <NavigationViewItem x:Name="nviCreationCompte" Content="Créer un compte" Tag="Creation" Icon="AddFriend" />
 
             <NavigationViewItemSeparator />
 
-            <NavigationViewItem Content="Admin" Tag="Admin" Icon="Admin"/>
-            <NavigationViewItem Content="Chauffeur" Tag="Chauffeur" Icon="ContactInfo"/>
+            <NavigationViewItem x:Name="nviAdmin" Content="Admin" Tag="Admin" Icon="Admin"/>
+            <NavigationViewItem x:Name="nviChauffeur" Content="Chauffeur" Tag="Chauffeur" Icon="ContactInfo"/>
 
             <NavigationViewItemSeparator />
-            <NavigationViewItem Content="Client" Tag="Client" Icon="Contact"/>
-
-
+            <NavigationViewItem x:Name="nviClient" Content="Client" Tag="Client" Icon="Contact"/>
+            <NavigationViewItemSeparator />
+            <NavigationViewItem x:Name="nviDeConnexion" Content="Se deConnecter" Tag="DeConnexion" Icon="LeaveChat" />
+            <NavigationViewItem x:Name="nviConnexion" Content="Connexion" Tag="Connexion" Icon="OtherUser" />
         </NavigationView.MenuItems>
 
-        <NavigationView.PaneFooter>
-            <NavigationViewItem Name="iConnexion" Content="Connexion" Tag="Connexion" Icon="OtherUser" />
-        </NavigationView.PaneFooter>
+        
+       
 
         <Frame x:Name="mainFrame"/>
 

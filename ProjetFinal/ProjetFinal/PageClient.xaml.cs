@@ -85,61 +85,77 @@ namespace ProjetFinal
 
         private async void reserver_Click(object sender, RoutedEventArgs e)
         {
-            int index = lvListe.SelectedIndex;
-            Button b = sender as Button;
-            int num = Convert.ToInt32(b.Tag);
-          
+            Trajets t = ((FrameworkElement)sender).DataContext as Trajets;
 
-                Trajets t = GestionBD.getInstance().detailtrajet()[index];
-                if (t.Nombre_Place_dispo > 0)
+            if (GestionBD.getInstance().Checksouscrit(t.Num_Trajet)== 1)
+            {
+                ContentDialog dialog3 = new ContentDialog();
+                dialog3.XamlRoot = stk.XamlRoot;
+                dialog3.Title = "Attention!";
+                dialog3.CloseButtonText = "Ok";
+                dialog3.Content = "Vous êtes dejà inscrit à ce trajet";
+                 await dialog3.ShowAsync();
+                return;
+            }
+
+           
+
+           // Button b = sender as Button;
+          //  int num = Convert.ToInt32(b.Tag);
+
+
+
+            if (t.Nombre_Place_dispo > 0)
+            {
+
+
+                ContentDialog dialog = new ContentDialog();
+                dialog.XamlRoot = stk.XamlRoot;
+                dialog.Title = "Attention!";
+                dialog.PrimaryButtonText = "Oui";
+                dialog.SecondaryButtonText = "Non";
+                dialog.CloseButtonText = "Annuler";
+                dialog.DefaultButton = ContentDialogButton.Primary;
+                dialog.Content = "voulez-vous vraiment réserver ce trajet?";
+
+                ContentDialogResult resultat = await dialog.ShowAsync();
+
+                if (resultat == ContentDialogResult.Primary)
                 {
-
-
-                    ContentDialog dialog = new ContentDialog();
-                    dialog.XamlRoot = stk.XamlRoot;
-                    dialog.Title = "Attention!";
-                    dialog.PrimaryButtonText = "Oui";
-                    dialog.SecondaryButtonText = "Non";
-                    dialog.CloseButtonText = "Annuler";
-                    dialog.DefaultButton = ContentDialogButton.Primary;
-                    dialog.Content = "voulez-vous vraiment réserver ce trajet?";
-
-                    ContentDialogResult resultat = await dialog.ShowAsync();
-
-                    if (resultat == ContentDialogResult.Primary)
-                    {
-                        GestionBD.getInstance().Reservationtrajet(num);
-                        ContentDialog dialog2 = new ContentDialog();
-                        dialog2.XamlRoot = stk.XamlRoot;
-                        dialog2.Title = "Inscription au trajet Réussi!";
-                        dialog2.PrimaryButtonText = "ok";
-                        ContentDialogResult resultat2 = await dialog2.ShowAsync();
-                        if (resultat2 == ContentDialogResult.Primary)
-                        {
-                            this.Frame.Navigate(typeof(PageClient));
-                        }
-                    }
-                }
-                else
-                {
-                    
-
-                    ContentDialog dialogindispo = new ContentDialog();
-                    dialogindispo.XamlRoot = stk.XamlRoot;
-                    dialogindispo.Title = "Desolé :( ";
-                    dialogindispo.PrimaryButtonText = "Ok";
-
-                    dialogindispo.DefaultButton = ContentDialogButton.Primary;
-                    dialogindispo.Content = "Ce trajet est dejà complet!";
-                    ContentDialogResult resultatindispo = await dialogindispo.ShowAsync();
-                    if (resultatindispo == ContentDialogResult.Primary)
+                    GestionBD.getInstance().Reservationtrajet(t.Num_Trajet);
+                    ContentDialog dialog2 = new ContentDialog();
+                    dialog2.XamlRoot = stk.XamlRoot;
+                    dialog2.Title = "Inscription au trajet Réussi!";
+                    dialog2.PrimaryButtonText = "ok";
+                    ContentDialogResult resultat2 = await dialog2.ShowAsync();
+                    if (resultat2 == ContentDialogResult.Primary)
                     {
                         this.Frame.Navigate(typeof(PageClient));
                     }
+                }
+            }
+            else
+            {
+
+
+                ContentDialog dialogindispo = new ContentDialog();
+                dialogindispo.XamlRoot = stk.XamlRoot;
+                dialogindispo.Title = "Desolé :( ";
+                dialogindispo.PrimaryButtonText = "Ok";
+
+                dialogindispo.DefaultButton = ContentDialogButton.Primary;
+                dialogindispo.Content = "Ce trajet est dejà complet!";
+                ContentDialogResult resultatindispo = await dialogindispo.ShowAsync();
+                if (resultatindispo == ContentDialogResult.Primary)
+                {
                     this.Frame.Navigate(typeof(PageClient));
                 }
-
+                this.Frame.Navigate(typeof(PageClient));
             }
+
+        }
+
+      
 
 
 

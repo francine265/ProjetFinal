@@ -26,6 +26,10 @@ namespace ProjetFinal
         public PagePrincipale()
         {
             this.InitializeComponent();
+            GestionBD.getInstance().NviAdmin.Visibility=Visibility.Collapsed;
+            GestionBD.getInstance().NviChauffeur.Visibility=Visibility.Collapsed;
+            GestionBD.getInstance().NviClient.Visibility=Visibility.Collapsed;
+            GestionBD.getInstance().NviDeConnexion.Visibility=Visibility.Collapsed;
             lvListe.ItemsSource= GestionBD.getInstance().GetTrajets();
         }
 

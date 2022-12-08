@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <!--<StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
         <StackPanel Margin="10,20,20,20"  >
             <TextBlock x:Name="titre" Text="Veillez vous connecter !" Foreground="Red" FontSize="25">
                 
@@ -27,4 +27,34 @@
 
 
     </StackPanel>
+-->
+    <Grid Background="LightBlue">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button HorizontalAlignment="Center" Grid.Column="1" x:Name="connClient" FontSize="17" Foreground="White" Background="Orange" Click="connClient_Click">
+            <StackPanel>
+                <Image Margin="10" Source="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" Height="150" />
+                <TextBlock Text="Se Connecter en tant que Client"></TextBlock>
+            </StackPanel>
+        </Button>
+
+        <Button HorizontalAlignment="Center" Grid.Column="2" x:Name="ConnChauffeur" FontSize="15" Foreground="White" Background="Blue" Click="ConnChauffeur_Click">
+            <StackPanel>
+                <Image Margin="10" Source="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" Height="150" />
+                <TextBlock Text="Se Connecter en tant que Chauffeur"></TextBlock>
+            </StackPanel>
+        </Button>
+        <Button HorizontalAlignment="Center"  Grid.Column="3" x:Name="Connadmin" FontSize="17" Foreground="White" Background="DeepPink" Click="Connadmin_Click">
+            <StackPanel>
+                <Image Margin="10" Source="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" Height="150" />
+                <TextBlock Text="Se Connecter en tant qu'admin"></TextBlock>
+            </StackPanel>
+        </Button>
+    </Grid>
 </Page>

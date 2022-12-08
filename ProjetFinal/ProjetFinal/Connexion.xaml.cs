@@ -37,15 +37,19 @@ namespace ProjetFinal
                 erreuremail.Visibility = Visibility.Visible;
                 valide += 1;
             }
-            if(epassword.Text=="")
+            if(epassword.Password=="")
             {
                 valide += 1;
                 erreurpassword.Visibility = Visibility.Visible;
             }
             if (valide == 0)
             {
-                if(GestionBD.getInstance().connexionClient(email.Text, epassword.Text)==true)
+                if(GestionBD.getInstance().connexionClient(email.Text, epassword.Password)==true)
                 {
+                    GestionBD.getInstance().NviAdmin.Visibility = Visibility.Collapsed;
+                    GestionBD.getInstance().NviClient.Visibility = Visibility.Collapsed;
+                    GestionBD.getInstance().NviChauffeur.Visibility = Visibility.Collapsed;
+                    GestionBD.getInstance().NviDeConnexion.Visibility = Visibility.Visible;
                     this.Frame.Navigate(typeof(PageClient));
                 }
                 else
@@ -56,6 +60,11 @@ namespace ProjetFinal
                 //GestionBD.getInstance().connexionClient(email.Text,epassword.Text);
 
             }
+        }
+
+        private void einscription_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(PageCreationCompte));
         }
     }
 }
