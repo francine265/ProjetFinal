@@ -5,10 +5,13 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml.Shapes;
+using MySqlX.XDevAPI.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -31,6 +34,8 @@ namespace ProjetFinal
 
         private void lvListe_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            
+
 
         }
 
@@ -78,9 +83,67 @@ namespace ProjetFinal
 
     }
 
-        private void reserver_Click(object sender, RoutedEventArgs e)
+        private async void reserver_Click(object sender, RoutedEventArgs e)
         {
+            int index = lvListe.SelectedIndex;
+            Button b = sender as Button;
+            int num = Convert.ToInt32(b.Tag);
+          
 
-        }
+                Trajets t = GestionBD.getInstance().detailtrajet()[index];
+                if (t.Nombre_Place_dispo > 0)
+                {
+
+
+                    ContentDialog dialog = new ContentDialog();
+                    dialog.XamlRoot = stk.XamlRoot;
+                    dialog.Title = "Attention!";
+                    dialog.PrimaryButtonText = "Oui";
+                    dialog.SecondaryButtonText = "Non";
+                    dialog.CloseButtonText = "Annuler";
+                    dialog.DefaultButton = ContentDialogButton.Primary;
+                    dialog.Content = "voulez-vous vraiment réserver ce trajet?";
+
+                    ContentDialogResult resultat = await dialog.ShowAsync();
+
+                    if (resultat == ContentDialogResult.Primary)
+                    {
+                        GestionBD.getInstance().Reservationtrajet(num);
+                        ContentDialog dialog2 = new ContentDialog();
+                        dialog2.XamlRoot = stk.XamlRoot;
+                        dialog2.Title = "Inscription au trajet Réussi!";
+                        dialog2.PrimaryButtonText = "ok";
+                        ContentDialogResult resultat2 = await dialog2.ShowAsync();
+                        if (resultat2 == ContentDialogResult.Primary)
+                        {
+                            this.Frame.Navigate(typeof(PageClient));
+                        }
+                    }
+                }
+                else
+                {
+                    
+
+                    ContentDialog dialogindispo = new ContentDialog();
+                    dialogindispo.XamlRoot = stk.XamlRoot;
+                    dialogindispo.Title = "Desolé :( ";
+                    dialogindispo.PrimaryButtonText = "Ok";
+
+                    dialogindispo.DefaultButton = ContentDialogButton.Primary;
+                    dialogindispo.Content = "Ce trajet est dejà complet!";
+                    ContentDialogResult resultatindispo = await dialogindispo.ShowAsync();
+                    if (resultatindispo == ContentDialogResult.Primary)
+                    {
+                        this.Frame.Navigate(typeof(PageClient));
+                    }
+                    this.Frame.Navigate(typeof(PageClient));
+                }
+
+            }
+
+
+
+
+        
     }
 }

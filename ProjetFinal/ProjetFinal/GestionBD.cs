@@ -15,6 +15,14 @@ namespace ProjetFinal
         MySqlConnection con;
         ObservableCollection<Trajets> lvliste;// pas automatique , on le fait car on fera un select de liste plustard
         static GestionBD gestionBD = null;// ce qui crée le singleton pour avoir un seul objet à utiliser
+
+        int idUtilisateur;
+        string nom, prenom;
+
+        public int IdUtilisateur { get => idUtilisateur; set => idUtilisateur = value; }
+        public string Nom { get => nom; set => nom = value; }
+        public string Prenom { get => prenom; set => prenom = value; }
+
         public GestionBD()
         {
             con = new MySqlConnection("Server=cours.cegep3r.info;Database=a2022_420326ri_eq17;Uid=2014985;Pwd=2014985;");
@@ -175,6 +183,8 @@ namespace ProjetFinal
         {
             con.Close();
 
+            bool ok = false;
+
             MySqlCommand commande = new MySqlCommand("connexionClient");
             commande.Connection = con;// indique le chemin à commande 
             commande.CommandType = System.Data.CommandType.StoredProcedure;// ce qu,il faut aller chercher
@@ -185,9 +195,14 @@ namespace ProjetFinal
             //commande.Prepare();// empêche les caractères spéciaux donc prends tout ca comme chaine de caractères
             int i = commande.ExecuteNonQuery();
             MySqlDataReader r = commande.ExecuteReader();
- 
-
-            return r.Read();
+            
+            if(r.Read())
+            {
+                idUtilisateur = r.GetInt32("num_client");
+                //nom = r.GetString("nom_client");
+                ok = true;
+            }
+            return ok;
 
 
 
@@ -253,6 +268,43 @@ namespace ProjetFinal
             //con.Close();
             return lvliste;
 
+
+
+
+        }
+        public ObservableCollection<Trajets> Reservationtrajet(int numTrajet)
+        {
+
+            lvliste.Clear();
+            try
+            {
+
+
+                MySqlCommand commande = new MySqlCommand("ReserverTrajet");
+                commande.Connection = con;// indique le chemin à commande 
+                commande.CommandType = System.Data.CommandType.StoredProcedure;
+
+                commande.Parameters.AddWithValue("@numCl", idUtilisateur);// met l'id dans l'espace qui lui a été réservé
+                commande.Parameters.AddWithValue("@numTraj", numTrajet);
+             
+
+
+
+                con.Open();// ouvre la connection 
+                commande.Prepare();// empêche les caractères spéciaux donc prends tout ca comme chaine de caractères
+                int i = commande.ExecuteNonQuery();
+                
+                
+                con.Close();
+            }
+
+            catch (MySqlException ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+            }
+            
+            return lvliste;
 
 
 

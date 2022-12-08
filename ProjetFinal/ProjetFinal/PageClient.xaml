@@ -11,7 +11,7 @@
     <ScrollViewer>
 
 
-        <StackPanel Orientation="Vertical" Background="LightBlue">
+        <StackPanel x:Name="stk" Orientation="Vertical" Background="LightBlue">
 
             <StackPanel Margin="50,100,100,50">
                 <TextBlock HorizontalAlignment="Center" x:Name="tbtexte" Text="Covoiturage pour la planète "  FontSize="25"></TextBlock>
@@ -123,7 +123,7 @@
 
                                 </TextBlock>
                                 <TextBlock Text="{x:Bind Date_Trajet}" Margin="5,5,5,10"/>
-                                <Button x:Name="reserver" Click="reserver_Click" Foreground="OldLace" Background="Orchid" Content="Reserver"></Button>
+                                <Button x:Name="reserver" Tag="{x:Bind Num_Trajet}" Click="reserver_Click" Foreground="OldLace" Background="Orchid" Content="Reserver"></Button>
                             </StackPanel>
                             <StackPanel Grid.Column="2" HorizontalAlignment="Stretch" Background="HotPink" Margin="5">
                                 <TextBlock Text="{x:Bind Ville_Depart,Mode=OneWay}" Margin="5,5,5,10"/>

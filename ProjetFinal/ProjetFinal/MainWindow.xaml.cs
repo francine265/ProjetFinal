@@ -26,6 +26,7 @@ namespace ProjetFinal
         public MainWindow()
         {
             this.InitializeComponent();
+            mainFrame.Navigate(typeof(PagePrincipale));
         }
 
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
