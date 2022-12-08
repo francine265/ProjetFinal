@@ -145,8 +145,7 @@ namespace ProjetFinal
 
             try
             {
-                /// d1 = calendar.Date.Value.Date;
-                /// 
+               
                 d3 = calender3.Date.Value.DateTime;
                
 
@@ -158,9 +157,7 @@ namespace ProjetFinal
             }
 
             try
-            {
-                /// d1 = calendar.Date.Value.Date;
-                /// 
+            { 
 
                 d4 = calender4.Date.Value.DateTime;
 
@@ -177,10 +174,50 @@ namespace ProjetFinal
             {
                 lvliste.ItemsSource = Singleton.getInstance().Montant(d3, d4);
             }
-
-            //d2 = caleder2.Date.Value.DateTime;
-
             
+        }
+
+        private void totalrevenue_Click(object sender, RoutedEventArgs e)
+        {
+
+            DateTime d5 = new DateTime();
+            DateTime d6 = new DateTime();
+            int valide = 0;
+
+
+            try
+            {
+
+                d5 = calender5.Date.Value.DateTime;
+
+
+            }
+            catch (InvalidOperationException ex)
+            {
+                erreurcalender5.Visibility = Visibility.Visible;
+                valide += 1;
+            }
+
+            try
+            {
+
+                d6 = calender6.Date.Value.DateTime;
+
+            }
+            catch (InvalidOperationException ex)
+            {
+                erreurcalender6.Visibility = Visibility.Visible;
+                valide += 1;
+            }
+
+
+
+            if (valide == 0)
+            {
+                lvMontant.ItemsSource = Singleton.getInstance().MotantTotalSociete(d5,d6);
+            }
+           
+
         }
     }
 }

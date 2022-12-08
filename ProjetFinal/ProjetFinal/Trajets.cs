@@ -26,6 +26,7 @@ namespace ProjetFinal
         String etat;
         int num_Conducteur;
         String totalRevenue;
+        String totalRevenueEntreprise;
 
 
    
@@ -51,12 +52,13 @@ namespace ProjetFinal
         public int Montant_total { get => montant_total; set => montant_total = value; }
         public int Montant_compagnie { get => montant_compagnie; set => montant_compagnie = value; }
         public int Montant_chauffeur { get => montant_chauffeur; set => montant_chauffeur = value; }
+        public String TotalRevenueEntreprise { get => totalRevenueEntreprise; set => totalRevenueEntreprise = value; }
 
         public override string ToString()
         {
             return num_Trajet + " " + ville_Depart + " " + ville_Arrivee + " " /*+ heure_Depart + " " + heure_Arrivee*/ + " " + date_Trajet + " " +
            prix_Trajet + " " + arret + " " + nombre_Place_dispo + " " + etat + " " + num_Conducteur + " " + heureDepartString + " " + heureArriveeString + " "+ totalRevenue 
-           + " " +conducteur + " "+ montant_total + " " +Montant_compagnie +" "+ montant_chauffeur;
+           + " " +conducteur + " "+ montant_total + " " +Montant_compagnie +" "+ montant_chauffeur + " " + totalRevenueEntreprise;
         }
 
 

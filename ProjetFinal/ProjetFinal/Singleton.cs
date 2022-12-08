@@ -19,6 +19,7 @@ namespace ProjetFinal
         ObservableCollection<Trajets> listeTrajetsencours;
         ObservableCollection<Trajets> listeAffichetrajetdateT;
         ObservableCollection<Trajets> listeAffichetrajetdate;
+        ObservableCollection<Trajets> listeMontantTotal;
         static Singleton singleton = null;  // creation et initialisation d'un objet static gestionBD de la class GestionBD
 
         public Singleton()
@@ -27,6 +28,7 @@ namespace ProjetFinal
             listeTrajetsencours = new ObservableCollection<Trajets>();
             listeAffichetrajetdateT = new ObservableCollection<Trajets>();
             listeAffichetrajetdate = new ObservableCollection<Trajets>();
+            listeMontantTotal= new ObservableCollection<Trajets>();
         }
         public static Singleton getInstance()
         {
@@ -202,7 +204,6 @@ namespace ProjetFinal
                 {
 
 
-
                     listeAffichetrajetdate.Add(new Trajets()
                     {
                         Num_Trajet = r.GetInt32(0),
@@ -214,14 +215,6 @@ namespace ProjetFinal
                         Montant_chauffeur = r.GetInt32(5),
                         Montant_compagnie = r.GetInt32(6),
 
-                        // HeureDepartString = r.GetString("heure_Depart"),
-                        //HeureArriveeString = r.GetString("heure_Arrivee"),
-                        // Date_Trajet = r.GetString("date_Trajet"),
-                        //Prix_Trajet = r.GetInt32(6),
-                        //Arret = r.GetString(7),
-                        //Etat = r.GetString(9),
-                        //Num_Conducteur = r.GetInt32(10),
-                        // TotalRevenue = r.GetString(11),
                     });
 
                 }
@@ -237,7 +230,51 @@ namespace ProjetFinal
             return listeAffichetrajetdate;
 
         }
-        
+
+
+
+        public ObservableCollection<Trajets> MotantTotalSociete(DateTime date1, DateTime date2)
+        {
+            listeMontantTotal.Clear();
+            try
+            {
+
+                MySqlCommand commande = new MySqlCommand("Revenue_Total_entreprise");
+                commande.Connection = con;
+                commande.CommandType = System.Data.CommandType.StoredProcedure;
+                commande.Parameters.AddWithValue("@date1", date1.ToString("yyyy-MM-dd"));
+                commande.Parameters.AddWithValue("@date2", date2.ToString("yyyy-MM-dd"));
+
+                con.Open();
+                commande.Prepare();
+                int i = commande.ExecuteNonQuery();
+                MySqlDataReader r = commande.ExecuteReader();
+
+
+                while (r.Read())
+                {
+
+
+                    listeMontantTotal.Add(new Trajets()
+                    {
+                        TotalRevenueEntreprise = r.GetString(0),
+                    });
+
+                }
+
+
+                con.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                con.Close();
+            }
+            return listeMontantTotal;
+
+        }
+
+
 
 
 
