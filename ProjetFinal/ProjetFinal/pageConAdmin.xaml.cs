@@ -29,6 +29,8 @@ namespace ProjetFinal
             this.InitializeComponent();
         }
 
+        
+
         private void connexion_Click(object sender, RoutedEventArgs e)
         {
 
@@ -43,7 +45,7 @@ namespace ProjetFinal
 
             }
 
-            if (tbxNom.Text.Trim() == "")
+            if (tbxpwd.Text.Trim() == "")
             {
 
 
@@ -54,7 +56,9 @@ namespace ProjetFinal
 
             if (valide == 0)
             {
-              
+                Singleton.getInstance().connexionadmin(tbxEmail.Text, tbxpwd.Text);
+                
+                this.Frame.Navigate(typeof(PageAdmin));
             }
         }
 

@@ -33,6 +33,7 @@
             <TextBox x:Name="tbxPermisChauffeur" Header="Matricule du permis:"/>
             <TextBox x:Name="tbxGenreChauffeur" Header="Genre:"/>
             <TextBox x:Name="tbxAgeChauffeur" Header="Age:"/>
+            
         </StackPanel>
 
         <!-- Formulaire du Client -->
@@ -40,12 +41,12 @@
             <TextBox x:Name="tbxNomClient" Header="Nom du client:"/>
             <TextBox x:Name="tbxPrenomClient" Header="Prénom du client:"/>
             <TextBox x:Name="tbxEmailClient" Header="Email:"/>
-            <TextBox x:Name="tbxGenreClient" Header="Genre:"/>
+            <TextBox x:Name="tbxpasswordClient" Header="password:"/>
             <TextBox x:Name="tbxAdresseClient" Header="Adresse:"/>
             <TextBox x:Name="tbxTelephoneClient" Header="Numéro du téléphone:"/>
-
+            <Button x:Name="btn" Margin="20,10,10,10" Click="btn_Click" Content="Ajouter" Background="Bisque"/>
         </StackPanel>
 
-        <Button Margin="20" x:Name="btnSumbit" Content="Valider" Click="btnSumbit_Click"/>
+      
     </StackPanel>
 </Page>

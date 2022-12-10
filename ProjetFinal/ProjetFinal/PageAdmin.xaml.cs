@@ -8,6 +8,7 @@ using Microsoft.UI.Xaml.Navigation;
 using MySqlX.XDevAPI.Common;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -36,7 +37,7 @@ namespace ProjetFinal
             //ville vi = cmb.SelectedItem as ville;
 
            
-            DateTime d = new DateTime();
+           // DateTime d = new DateTime();
             int valide = 0;
 
             if (email.Text.Trim() == "")
@@ -217,6 +218,34 @@ namespace ProjetFinal
                 lvMontant.ItemsSource = Singleton.getInstance().MotantTotalSociete(d5,d6);
             }
            
+
+        }
+
+        private async void csecrire_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            var picker = new Windows.Storage.Pickers.FileSavePicker();
+
+            /******************** POUR WINUI3 ***************************/
+            
+            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(Singleton.getInstance().Fenetre);
+            WinRT.Interop.InitializeWithWindow.Initialize(picker, hWnd);
+            /************************************************************/
+
+            picker.SuggestedFileName = "Liste de Trajets";
+            picker.FileTypeChoices.Add("Fichier CSV", new List<string>() { ".csv" });
+
+            //crée le fichier
+            Windows.Storage.StorageFile monFichier = await picker.PickSaveFileAsync();
+
+            var liste = lv.ItemsSource as ObservableCollection<Trajets>;
+            var l = liste.ToList();
+            //var liste = Singleton.getInstance().GetTrajetsdate()
+
+            //écrit dans le fichier chacune des lignes du tableau
+            //une boucle sera faite sur la collection et prendra chacun des objets de celle-ci
+            await Windows.Storage.FileIO.WriteLinesAsync(monFichier, l.ConvertAll(x => x.exportationCSV()), Windows.Storage.Streams.UnicodeEncoding.Utf8);
 
         }
     }

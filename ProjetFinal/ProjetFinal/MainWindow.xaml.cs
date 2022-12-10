@@ -26,6 +26,7 @@ namespace ProjetFinal
         public MainWindow()
         {
             this.InitializeComponent();
+            Singleton.getInstance().Fenetre = this;
         }
 
         private Frame GetMainFrame()
@@ -57,6 +58,15 @@ namespace ProjetFinal
                 case "Con":
                     mainFrame.Navigate(typeof(pageConAdmin));
                     break ;
+                case "ville":
+                    mainFrame.Navigate(typeof(Pageville));
+                    break;
+                case "Trajet":
+                    mainFrame.Navigate(typeof(Pagetrajet));
+                    break;
+                case "Revenue":
+                    mainFrame.Navigate(typeof(Pagerevenue));
+                    break;
                 default:
                     break;
 

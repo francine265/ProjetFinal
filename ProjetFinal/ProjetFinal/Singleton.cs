@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Microsoft.UI.Xaml;
+using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Asn1.X509;
 using System;
 using System.Collections.Generic;
@@ -20,11 +21,14 @@ namespace ProjetFinal
         ObservableCollection<Trajets> listeAffichetrajetdateT;
         ObservableCollection<Trajets> listeAffichetrajetdate;
         ObservableCollection<Trajets> listeMontantTotal;
+        Window fenetre;
         static Singleton singleton = null;  // creation et initialisation d'un objet static gestionBD de la class GestionBD
+
+        public Window Fenetre { get => fenetre; set => fenetre = value; }
 
         public Singleton()
         {
-            con = new MySqlConnection("Server=cours.cegep3r.info;Database=a2022_420326ri_eq17;Uid=2014985;Pwd=2014985;");
+            con = new MySqlConnection("Server=cours.cegep3r.info;Database=a2022_420326ri_eq17;Uid=2100781;Pwd=2100781;");
             listeTrajetsencours = new ObservableCollection<Trajets>();
             listeAffichetrajetdateT = new ObservableCollection<Trajets>();
             listeAffichetrajetdate = new ObservableCollection<Trajets>();
@@ -182,6 +186,69 @@ namespace ProjetFinal
 
         }
 
+        public void Ajoutville(string choixville)
+        {
+
+            try
+            {
+                MySqlCommand commande = new MySqlCommand();
+                commande.Connection = con;
+
+                commande.CommandText = "insert into ville values(@ville) ";
+
+                commande.Parameters.AddWithValue("@ville", choixville);
+
+                con.Open();
+                commande.Prepare();
+                int i = commande.ExecuteNonQuery();
+
+
+                con.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                con.Close();
+            }
+
+
+        }
+
+
+        public void AjouterClient(string nomClient, string prenomClient, string adresse , string email , string numeroPhone , string password)
+        {
+
+            try
+            {
+                MySqlCommand commande = new MySqlCommand("insertionClient");
+                commande.Connection = con;
+
+                commande.Connection = con;
+                commande.CommandType = System.Data.CommandType.StoredProcedure;
+                commande.Parameters.AddWithValue("@nomCl", nomClient);
+                commande.Parameters.AddWithValue("@prenomCl", prenomClient);
+                commande.Parameters.AddWithValue("@adresseCl", adresse);
+                commande.Parameters.AddWithValue("@emailCl", email);
+                commande.Parameters.AddWithValue("@numCl", numeroPhone);
+                commande.Parameters.AddWithValue("@motPasseCl", password);
+
+
+                con.Open();
+                commande.Prepare();
+                int i = commande.ExecuteNonQuery();
+
+
+                con.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                con.Close();
+            }
+
+
+        }
+
         public ObservableCollection<Trajets> Montant(DateTime date1, DateTime date2)
         {
             listeAffichetrajetdate.Clear();
@@ -275,7 +342,34 @@ namespace ProjetFinal
         }
 
 
+        public Boolean connexionadmin(string email, string password)
+        {
+            //con.Close();
 
+            bool ok = false;
+
+            MySqlCommand commande = new MySqlCommand("connexionAdmin");
+            commande.Connection = con;// indique le chemin à commande
+            commande.CommandType = System.Data.CommandType.StoredProcedure;// ce qu,il faut aller chercher
+            commande.Parameters.AddWithValue("@mail", email);
+            commande.Parameters.AddWithValue("@motpass", password);
+
+
+
+            con.Open();// ouvre la connection
+            commande.Prepare();// empêche les caractères spéciaux donc prends tout ca comme chaine de caractères
+            int i = commande.ExecuteNonQuery();
+            MySqlDataReader r = commande.ExecuteReader();
+
+            if (r.Read())
+            {
+                
+                //nom = r.GetString("nom_client");
+                ok = true;
+            }
+            return ok;
+
+        }
 
 
     }

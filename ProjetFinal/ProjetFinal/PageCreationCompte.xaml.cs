@@ -48,9 +48,11 @@ namespace ProjetFinal
             }
         }
 
-        private void btnSumbit_Click(object sender, RoutedEventArgs e)
-        {
+    
 
+        private void btn_Click(object sender, RoutedEventArgs e)
+        {
+            Singleton.getInstance().AjouterClient(tbxNomClient.Text, tbxPrenomClient.Text, tbxAdresseClient.Text, tbxEmailClient.Text, tbxTelephoneClient.Text, tbxpasswordClient.Text);
         }
     }
 }

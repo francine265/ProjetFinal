@@ -26,7 +26,14 @@
 
             <NavigationViewItemSeparator />
 
-            <NavigationViewItem Content="Admin" Tag="Admin" Icon="Admin"/>
+            <NavigationViewItem Content="Admin" Tag="Admin" Icon="Admin">
+            <NavigationViewItem.MenuItems>
+              <NavigationViewItem Content="ville" Tag="ville" Icon="Add"/>
+            <NavigationViewItem Content="Trajet" Tag="Trajet" Icon="Trim"/>
+            <NavigationViewItem Content="Revenue Entreprise" Tag="Revenue" Icon="SaveLocal"/>
+                </NavigationViewItem.MenuItems>
+            </NavigationViewItem>
+
             <NavigationViewItem Content="Chauffeur" Tag="Chauffeur" Icon="ContactInfo"/>
 
             <NavigationViewItemSeparator />

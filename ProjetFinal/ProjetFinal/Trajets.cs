@@ -61,7 +61,10 @@ namespace ProjetFinal
            + " " +conducteur + " "+ montant_total + " " +Montant_compagnie +" "+ montant_chauffeur + " " + totalRevenueEntreprise;
         }
 
-
+        public string exportationCSV()
+        {
+            return num_Trajet + "; " + Ville_Depart + ";" + ville_Arrivee + ";" + date_Trajet + ";" + prix_Trajet + ";" + etat;
+        }
 
 
 
