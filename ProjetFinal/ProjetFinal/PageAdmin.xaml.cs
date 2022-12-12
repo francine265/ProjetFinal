@@ -28,9 +28,6 @@ namespace ProjetFinal
             this.InitializeComponent();
         }
 
-        private void btnAjoutVille_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+     
     }
 }

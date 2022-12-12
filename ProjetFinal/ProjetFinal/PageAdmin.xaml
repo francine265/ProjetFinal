@@ -8,27 +8,9 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel Margin="10">
-
         <!--Ajouter une ville-->
-        <StackPanel x:Name="stckVille" Margin="0,0,0,30">
-            <TextBlock x:Name="tbAjoutVille" Text="Ajouter une ville:"/>
-
-            <StackPanel  VerticalAlignment="Top" HorizontalAlignment="Left"  Orientation="Horizontal" Spacing="10" Margin="10">
-                <TextBox x:Name="tbxAjoutVille"/>
-                <Button x:Name="btnAjoutVille" Content="Ajouter"  Click="btnAjoutVille_Click"/>
-            </StackPanel>
-        </StackPanel>
-
-        <!--Trajets Actuels -->
-        <StackPanel x:Name="stckTrajetsActuels" Margin="0,0,0,30">
-            <TextBlock x:Name="tbTrajetsActuels" Text="Trajets Actuels:"/>
-        </StackPanel>
-
-        <!--Trajets Terminés -->
-        <StackPanel x:Name="stckTrajetsTermines" Margin="0,0,0,30">
-            <TextBlock x:Name="tbTrajetTermines" Text="Trajets Terminés:"/>
-        </StackPanel>
-
-    </StackPanel>
+    <TextBlock Text="Bienvenue sur la page Admnin " FontSize="25" FontStyle="Italic" >
+        
+    </TextBlock>
+       
 </Page>
