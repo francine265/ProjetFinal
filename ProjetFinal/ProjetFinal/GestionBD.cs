@@ -37,7 +37,7 @@ namespace ProjetFinal
         string nom, prenom;
 
 
-
+        public Window Fenetre { get => fenetre; set => fenetre = value; }
         public int IdUtilisateur { get => idUtilisateur; set => idUtilisateur = value; }
         public string Nom { get => nom; set => nom = value; }
         public string Prenom { get => prenom; set => prenom = value; }
