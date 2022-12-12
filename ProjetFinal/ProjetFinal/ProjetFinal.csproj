@@ -14,7 +14,6 @@
   <ItemGroup>
     <None Remove="Connexion.xaml" />
     <None Remove="OptionsConnexions.xaml" />
-    <None Remove="PageAdmin.xaml" />
     <None Remove="PageChauffeur.xaml" />
     <None Remove="PageClient.xaml" />
     <None Remove="pageConAdmin.xaml" />
@@ -76,11 +75,6 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="Connexion.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="PageAdmin.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

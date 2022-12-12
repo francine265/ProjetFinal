@@ -46,9 +46,7 @@ namespace ProjetFinal
 
             switch (item.Tag)
             {
-                case "Admin":
-                    mainFrame.Navigate(typeof(PageAdmin));
-                    break;
+          
                 case "Chauffeur":
                     mainFrame.Navigate(typeof(PageChauffeur));
                     break;

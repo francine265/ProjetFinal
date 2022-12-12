@@ -56,6 +56,8 @@ namespace ProjetFinal
                 {
 
                     GestionBD.getInstance().NviAdmin.Visibility = Visibility.Visible;
+                    GestionBD.getInstance().NviDeConnexion.Visibility = Visibility.Visible;
+                    GestionBD.getInstance().NviConnexion.Visibility = Visibility.Collapsed;
 
                     this.Frame.Navigate(typeof(Pagetrajet));
                 }

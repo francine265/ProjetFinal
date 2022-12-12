@@ -30,6 +30,7 @@ namespace ProjetFinal
             GestionBD.getInstance().NviChauffeur.Visibility=Visibility.Collapsed;
             GestionBD.getInstance().NviClient.Visibility=Visibility.Collapsed;
             GestionBD.getInstance().NviDeConnexion.Visibility=Visibility.Collapsed;
+            GestionBD.getInstance().NviConnexion.Visibility = Visibility.Visible;
             lvListe.ItemsSource= GestionBD.getInstance().GetTrajets();
         }
 
