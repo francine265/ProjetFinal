@@ -521,6 +521,192 @@ namespace ProjetFinal
 
         }
 
+        public void AjoutAdmin(string email, string password)
+        {
+
+            try
+            {
+                MySqlCommand commande = new MySqlCommand();
+                commande.Connection = con;
+
+                commande.CommandText = "insert into administrateur values(null,@email ,@password) ";
+
+
+                commande.Parameters.AddWithValue("@email", email);
+                commande.Parameters.AddWithValue("@password", password);
+
+
+                con.Open();
+                commande.Prepare();
+                int i = commande.ExecuteNonQuery();
+
+
+                con.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                con.Close();
+            }
+
+
+        }
+
+        public void Ajoutville(string choixville)
+        {
+
+            try
+            {
+                MySqlCommand commande = new MySqlCommand();
+                commande.Connection = con;
+
+                commande.CommandText = "insert into ville values(@ville) ";
+
+                commande.Parameters.AddWithValue("@ville", choixville);
+
+                con.Open();
+                commande.Prepare();
+                int i = commande.ExecuteNonQuery();
+
+
+                con.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                con.Close();
+            }
+
+
+        }
+
+
+        public void AjouterClient(string nomClient, string prenomClient, string adresse, string email, string numeroPhone, string password)
+        {
+
+            try
+            {
+                MySqlCommand commande = new MySqlCommand("insertionClient");
+                commande.Connection = con;
+
+                commande.Connection = con;
+                commande.CommandType = System.Data.CommandType.StoredProcedure;
+                commande.Parameters.AddWithValue("@nomCl", nomClient);
+                commande.Parameters.AddWithValue("@prenomCl", prenomClient);
+                commande.Parameters.AddWithValue("@adresseCl", adresse);
+                commande.Parameters.AddWithValue("@emailCl", email);
+                commande.Parameters.AddWithValue("@numCl", numeroPhone);
+                commande.Parameters.AddWithValue("@motPasseCl", password);
+
+
+                con.Open();
+                commande.Prepare();
+                int i = commande.ExecuteNonQuery();
+
+
+                con.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                con.Close();
+            }
+
+
+        }
+
+        public ObservableCollection<Trajets> Montant(DateTime date1, DateTime date2)
+        {
+            listeAffichetrajetdate.Clear();
+            try
+            {
+
+                MySqlCommand commande = new MySqlCommand("Revenue_entreprise");
+                commande.Connection = con;
+                commande.CommandType = System.Data.CommandType.StoredProcedure;
+                commande.Parameters.AddWithValue("@date1", date1.ToString("yyyy-MM-dd"));
+                commande.Parameters.AddWithValue("@date2", date2.ToString("yyyy-MM-dd"));
+
+                con.Open();
+                commande.Prepare();
+                int i = commande.ExecuteNonQuery();
+                MySqlDataReader r = commande.ExecuteReader();
+
+
+                while (r.Read())
+                {
+
+
+                    listeAffichetrajetdate.Add(new Trajets()
+                    {
+                        Num_Trajet = r.GetInt32(0),
+
+                        Ville_Depart = r.GetString(1),
+                        Ville_Arrivee = r.GetString(2),
+                        Conducteur = r.GetString(3),
+                        Montant_total = r.GetInt32(4),
+                        Montant_chauffeur = r.GetInt32(5),
+                        Montant_compagnie = r.GetInt32(6),
+
+                    });
+
+                }
+
+
+                con.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                con.Close();
+            }
+            return listeAffichetrajetdate;
+
+        }
+
+
+
+        public ObservableCollection<Trajets> MotantTotalSociete(DateTime date1, DateTime date2)
+        {
+            listeMontantTotal.Clear();
+            try
+            {
+
+                MySqlCommand commande = new MySqlCommand("Revenue_Total_entreprise");
+                commande.Connection = con;
+                commande.CommandType = System.Data.CommandType.StoredProcedure;
+                commande.Parameters.AddWithValue("@date1", date1.ToString("yyyy-MM-dd"));
+                commande.Parameters.AddWithValue("@date2", date2.ToString("yyyy-MM-dd"));
+
+                con.Open();
+                commande.Prepare();
+                int i = commande.ExecuteNonQuery();
+                MySqlDataReader r = commande.ExecuteReader();
+
+
+                while (r.Read())
+                {
+
+
+                    listeMontantTotal.Add(new Trajets()
+                    {
+                        TotalRevenueEntreprise = r.GetString(0),
+                    });
+
+                }
+
+
+                con.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                con.Close();
+            }
+            return listeMontantTotal;
+
+        }
+
 
 
 
