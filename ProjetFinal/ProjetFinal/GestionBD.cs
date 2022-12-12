@@ -428,7 +428,37 @@ namespace ProjetFinal
 
         }
 
-        
+        public Boolean connexionadmin(string email, string password)
+        {
+            //con.Close();
+
+            bool ok = false;
+
+            MySqlCommand commande = new MySqlCommand("connexionAdmin");
+            commande.Connection = con;// indique le chemin à commande
+            commande.CommandType = System.Data.CommandType.StoredProcedure;// ce qu,il faut aller chercher
+            commande.Parameters.AddWithValue("@mail", email);
+            commande.Parameters.AddWithValue("@motpass", password);
+
+
+
+            con.Open();// ouvre la connection
+            commande.Prepare();// empêche les caractères spéciaux donc prends tout ca comme chaine de caractères
+            int i = commande.ExecuteNonQuery();
+            MySqlDataReader r = commande.ExecuteReader();
+
+            if (r.Read())
+            {
+
+                //nom = r.GetString("nom_client");
+                ok = true;
+            }
+            return ok;
+
+        }
+
+
+
 
     }
 }
