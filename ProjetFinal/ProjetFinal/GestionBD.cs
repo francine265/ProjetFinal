@@ -440,7 +440,7 @@ namespace ProjetFinal
 
         public Boolean connexionadmin(string email, string password)
         {
-            //con.Close();
+            con.Close();
 
             bool ok = false;
 
