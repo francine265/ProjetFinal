@@ -53,6 +53,10 @@ namespace ProjetFinal
         {
             con = new MySqlConnection("Server=cours.cegep3r.info;Database=a2022_420326ri_eq17;Uid=2014985;Pwd=2014985;");
             lvliste = new ObservableCollection<Trajets>();
+            listeTrajetsencours = new ObservableCollection<Trajets>();
+            listeAffichetrajetdateT = new ObservableCollection<Trajets>();
+            listeAffichetrajetdate = new ObservableCollection<Trajets>();
+            listeMontantTotal = new ObservableCollection<Trajets>();
 
         }
         public static GestionBD getInstance()// rapport avec le singleton
