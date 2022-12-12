@@ -23,10 +23,18 @@ namespace ProjetFinal
         int nombre_Place_dispo;
         String etat;
         int num_Conducteur;
-        String nom_Conducteur;
-        String prenom_Conducteur;
         String num_tel_Conducteur;
-        
+        String prenom_Conducteur;
+        String nom_Conducteur;
+
+        double prixTrajet;
+        String conducteur;
+        int montant_total;
+        int montant_compagnie;
+        int montant_chauffeur;
+        String totalRevenue;
+        String totalRevenueEntreprise;
+
 
         public Trajets()
         {
@@ -88,26 +96,26 @@ namespace ProjetFinal
         public string Prenom_Conducteur { get => prenom_Conducteur; set => prenom_Conducteur = value; }
         public string Num_tel_Conducteur { get => num_tel_Conducteur; set => num_tel_Conducteur = value; }
 
+        public string Conducteur { get => conducteur; set => conducteur = value; }
+        public int Montant_total { get => montant_total; set => montant_total = value; }
+        public int Montant_compagnie { get => montant_compagnie; set => montant_compagnie = value; }
+        public int Montant_chauffeur { get => montant_chauffeur; set => montant_chauffeur = value; }
+        public string TotalRevenue { get => totalRevenue; set => totalRevenue = value; }
+        public string TotalRevenueEntreprise { get => totalRevenueEntreprise; set => totalRevenueEntreprise = value; }
+        public double PrixTrajet { get => prixTrajet; set => prixTrajet = value; }
+
         public override string ToString()
         {
             return num_Trajet + " " + ville_Depart + " " + ville_Arrivee + " " /*+ heure_Depart + " " + heure_Arrivee*/ + " " + date_Trajet+" "+
-           prix_Trajet+" "+ arret+" "+ nombre_Place_dispo+" "+ etat+" "+ num_Conducteur +" "+heureDepartString+" "+heureArriveeString+" "+nom_Conducteur+" "+prenom_Conducteur+" "+num_tel_Conducteur;
+           prix_Trajet+" "+ arret+" "+ nombre_Place_dispo+" "+ etat+" "+ num_Conducteur +" "+heureDepartString+" "+heureArriveeString+" "+nom_Conducteur+" "+prenom_Conducteur+" "+num_tel_Conducteur +" "+conducteur+" "+montant_total+" "+montant_compagnie
+           +" "+montant_chauffeur+" "+totalRevenue+" "+totalRevenueEntreprise+ " "+prixTrajet;
         }
 
 
 
-        /*   create table Trajet(
-       num_Trajet int auto_increment primary key,
-       ville_Depart varchar(80),
-       ville_Arrivee varchar(80),
-       heure_Depart time,
-       heure_Arrivee time,
-       date_Trajet date,
-       prix_Trajet double,
-       arret varchar(90),
-       nombre_Place_dispo int,
-       etat varchar(80),
-       num_Conducteur int ,
-    foreign key(num_Conducteur) references conducteur(num_Conducteur)*/
-    }
+      
+
+
+}
+
 }

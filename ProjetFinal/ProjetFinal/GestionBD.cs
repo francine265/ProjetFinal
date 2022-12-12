@@ -497,7 +497,7 @@ namespace ProjetFinal
                         HeureDepartString = r.GetString("heure_Depart"),
                         HeureArriveeString = r.GetString("heure_Arrivee"),
                         Date_Trajet = r.GetString("date_Trajet"),
-                        Prix_Trajet = r.GetInt32(6),
+                        PrixTrajet = r.GetInt32(6),
                         Arret = r.GetString(7),
                         Nombre_Place_dispo = r.GetInt32(10),
                         Etat = r.GetString(8),
