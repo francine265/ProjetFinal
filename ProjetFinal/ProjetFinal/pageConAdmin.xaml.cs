@@ -57,7 +57,7 @@ namespace ProjetFinal
 
                     GestionBD.getInstance().NviAdmin.Visibility = Visibility.Visible;
 
-                    this.Frame.Navigate(typeof(PageAdmin));
+                    this.Frame.Navigate(typeof(Pagetrajet));
                 }
                 else
                 {
