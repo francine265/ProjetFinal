@@ -154,7 +154,7 @@ namespace ProjetFinal
         }
 
 
-        public void Ajouterville(string choixville , string email ,string password)
+        public void AjoutAdmin( string email ,string password)
         {
 
             try
@@ -162,11 +162,10 @@ namespace ProjetFinal
                 MySqlCommand commande = new MySqlCommand();
                 commande.Connection = con;
                
-                commande.CommandText = "insert into administrateur values(null,@email,@choixville ,@password) ";
+                commande.CommandText = "insert into administrateur values(null,@email ,@password) ";
 
               
                 commande.Parameters.AddWithValue("@email", email);
-                commande.Parameters.AddWithValue("@choixville", choixville);
                 commande.Parameters.AddWithValue("@password", password);
 
 

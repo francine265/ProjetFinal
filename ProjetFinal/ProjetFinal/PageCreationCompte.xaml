@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-
+    <ScrollViewer>
     <StackPanel HorizontalAlignment="Center" Margin="20">
 
         <TextBlock x:Name="titreCreation" Text="Création de compte" FontSize="25" Margin="0,0,0,15"/>
@@ -19,6 +19,7 @@
                           SelectedIndex="0" SelectionChanged="rbConnexion_SelectionChanged">
                 <x:String>client</x:String>
                 <x:String>chauffeur</x:String>
+                <x:String>Administrateur</x:String>
             </RadioButtons>
         </StackPanel>
 
@@ -47,6 +48,13 @@
             <Button x:Name="btn" Margin="20,10,10,10" Click="btn_Click" Content="Ajouter" Background="Bisque"/>
         </StackPanel>
 
-      
-    </StackPanel>
+
+        <!-- Formulaire de L'Administration -->
+            <StackPanel x:Name="formAdmin" Visibility="Collapsed" Margin="20,0,00,0">
+                <TextBox x:Name="tbxEmail" Header="Email:"/>
+                <TextBox x:Name="tbxpasswordAmin" Header="password:"/>
+                <Button x:Name="admin" Margin="20,10,10,10" Click="admin_Click" Content="Ajouter" Background="Bisque"/>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
 </Page>

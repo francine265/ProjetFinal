@@ -28,225 +28,225 @@ namespace ProjetFinal
         public PageAdmin()
         {
             this.InitializeComponent();
-           
-           
-        }
 
-        private void btnAjoutVille_Click(object sender, RoutedEventArgs e)
-        {
-            //ville vi = cmb.SelectedItem as ville;
-
-           
-           // DateTime d = new DateTime();
-            int valide = 0;
-
-            if (email.Text.Trim() == "")
-            {
-
-
-                erreuremail.Visibility = Visibility.Visible;
-                valide += 1;
-
-            }
-            if (passwood.Text.Trim() == "")
-            {
-
-
-                erreurpassword.Visibility = Visibility.Visible;
-                valide += 1;
-
-            }
-
-            if (cmb.SelectedValue == null)
-            {
-
-
-                erreurcmb.Visibility = Visibility.Visible;
-                valide += 1;
-
-            }
-
-
-            if (valide == 0)
-            {
-
-                Singleton.getInstance().Ajouterville(cmb.SelectedItem.ToString(), email.Text ,passwood.Text);
-                formville.Visibility = Visibility.Collapsed;
-                tbl_texte.Visibility = Visibility.Visible;
-
-            }
-
-
-           
-        }
-
-
-
-        private void btn_Click(object sender, RoutedEventArgs e)
-        {
-            lv.ItemsSource = Singleton.getInstance().GetTrajets();
-        }
-
-        private void bt_Click(object sender, RoutedEventArgs e)
-        {
-
-            DateTime d1 = new DateTime();
-            DateTime d2 = new DateTime();
-            int valide = 0;
-
-
-            try
-            {
-                /// d1 = calendar.Date.Value.Date;
-                /// 
-                 d1 = calender1.Date.Value.DateTime;
-                
-
-            }
-            catch (InvalidOperationException ex)
-            {
-                erreurcalender1.Visibility = Visibility.Visible;
-                valide += 1;
-            }
-
-            try
-            {
-                /// d1 = calendar.Date.Value.Date;
-                /// 
-                
-                d2 = caleder2.Date.Value.DateTime;
-
-            }
-            catch (InvalidOperationException ex)
-            {
-                erreurcalender2.Visibility = Visibility.Visible;
-                valide += 1;
-            }
-
-
-
-            if (valide == 0)
-            {
-                lv.ItemsSource = Singleton.getInstance().GetTrajetsdate(d1, d2);
-            }
-           
-            //d2 = caleder2.Date.Value.DateTime;
-
-           
-            
-        }
-
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-
-            DateTime d3 = new DateTime();
-            DateTime d4 = new DateTime();
-            int valide = 0;
-
-
-            try
-            {
-               
-                d3 = calender3.Date.Value.DateTime;
-               
-
-            }
-            catch (InvalidOperationException ex)
-            {
-                erreurcalender3.Visibility = Visibility.Visible;
-                valide += 1;
-            }
-
-            try
-            { 
-
-                d4 = calender4.Date.Value.DateTime;
-
-            }
-            catch (InvalidOperationException ex)
-            {
-                erreurcalender4.Visibility = Visibility.Visible;
-                valide += 1;
-            }
-
-
-
-            if (valide == 0)
-            {
-                lvliste.ItemsSource = Singleton.getInstance().Montant(d3, d4);
-            }
-            
-        }
-
-        private void totalrevenue_Click(object sender, RoutedEventArgs e)
-        {
-
-            DateTime d5 = new DateTime();
-            DateTime d6 = new DateTime();
-            int valide = 0;
-
-
-            try
-            {
-
-                d5 = calender5.Date.Value.DateTime;
-
-
-            }
-            catch (InvalidOperationException ex)
-            {
-                erreurcalender5.Visibility = Visibility.Visible;
-                valide += 1;
-            }
-
-            try
-            {
-
-                d6 = calender6.Date.Value.DateTime;
-
-            }
-            catch (InvalidOperationException ex)
-            {
-                erreurcalender6.Visibility = Visibility.Visible;
-                valide += 1;
-            }
-
-
-
-            if (valide == 0)
-            {
-                lvMontant.ItemsSource = Singleton.getInstance().MotantTotalSociete(d5,d6);
-            }
-           
 
         }
 
-        private async void csecrire_Click(object sender, RoutedEventArgs e)
-        {
+        //private void btnAjoutVille_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //ville vi = cmb.SelectedItem as ville;
 
 
-            var picker = new Windows.Storage.Pickers.FileSavePicker();
+        //    // DateTime d = new DateTime();
+        //    int valide = 0;
 
-            /******************** POUR WINUI3 ***************************/
-            
-            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(Singleton.getInstance().Fenetre);
-            WinRT.Interop.InitializeWithWindow.Initialize(picker, hWnd);
-            /************************************************************/
+        //    if (email.Text.Trim() == "")
+        //    {
 
-            picker.SuggestedFileName = "Liste de Trajets";
-            picker.FileTypeChoices.Add("Fichier CSV", new List<string>() { ".csv" });
 
-            //crée le fichier
-            Windows.Storage.StorageFile monFichier = await picker.PickSaveFileAsync();
+        //        erreuremail.Visibility = Visibility.Visible;
+        //        valide += 1;
 
-            var liste = lv.ItemsSource as ObservableCollection<Trajets>;
-            var l = liste.ToList();
-            //var liste = Singleton.getInstance().GetTrajetsdate()
+        //    }
+        //    if (passwood.Text.Trim() == "")
+        //    {
 
-            //écrit dans le fichier chacune des lignes du tableau
-            //une boucle sera faite sur la collection et prendra chacun des objets de celle-ci
-            await Windows.Storage.FileIO.WriteLinesAsync(monFichier, l.ConvertAll(x => x.exportationCSV()), Windows.Storage.Streams.UnicodeEncoding.Utf8);
 
-        }
+        //        erreurpassword.Visibility = Visibility.Visible;
+        //        valide += 1;
+
+        //    }
+
+        //    if (cmb.SelectedValue == null)
+        //    {
+
+
+        //        erreurcmb.Visibility = Visibility.Visible;
+        //        valide += 1;
+
+        //    }
+
+
+        //    if (valide == 0)
+        //    {
+
+        //        Singleton.getInstance().Ajouterville(cmb.SelectedItem.ToString(), email.Text, passwood.Text);
+        //        formville.Visibility = Visibility.Collapsed;
+        //        tbl_texte.Visibility = Visibility.Visible;
+
+        //    }
+
+
+
+        //}
+
+
+
+        //private void btn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    lv.ItemsSource = Singleton.getInstance().GetTrajets();
+        //}
+
+        //private void bt_Click(object sender, RoutedEventArgs e)
+        //{
+
+        //    DateTime d1 = new DateTime();
+        //    DateTime d2 = new DateTime();
+        //    int valide = 0;
+
+
+        //    try
+        //    {
+        //        /// d1 = calendar.Date.Value.Date;
+        //        /// 
+        //        d1 = calender1.Date.Value.DateTime;
+
+
+        //    }
+        //    catch (InvalidOperationException ex)
+        //    {
+        //        erreurcalender1.Visibility = Visibility.Visible;
+        //        valide += 1;
+        //    }
+
+        //    try
+        //    {
+        //        /// d1 = calendar.Date.Value.Date;
+        //        /// 
+
+        //        d2 = caleder2.Date.Value.DateTime;
+
+        //    }
+        //    catch (InvalidOperationException ex)
+        //    {
+        //        erreurcalender2.Visibility = Visibility.Visible;
+        //        valide += 1;
+        //    }
+
+
+
+        //    if (valide == 0)
+        //    {
+        //        lv.ItemsSource = Singleton.getInstance().GetTrajetsdate(d1, d2);
+        //    }
+
+        //    //d2 = caleder2.Date.Value.DateTime;
+
+
+
+        //}
+
+        //private void button_Click(object sender, RoutedEventArgs e)
+        //{
+
+        //    DateTime d3 = new DateTime();
+        //    DateTime d4 = new DateTime();
+        //    int valide = 0;
+
+
+        //    try
+        //    {
+
+        //        d3 = calender3.Date.Value.DateTime;
+
+
+        //    }
+        //    catch (InvalidOperationException ex)
+        //    {
+        //        erreurcalender3.Visibility = Visibility.Visible;
+        //        valide += 1;
+        //    }
+
+        //    try
+        //    {
+
+        //        d4 = calender4.Date.Value.DateTime;
+
+        //    }
+        //    catch (InvalidOperationException ex)
+        //    {
+        //        erreurcalender4.Visibility = Visibility.Visible;
+        //        valide += 1;
+        //    }
+
+
+
+        //    if (valide == 0)
+        //    {
+        //        lvliste.ItemsSource = Singleton.getInstance().Montant(d3, d4);
+        //    }
+
+        //}
+
+        //private void totalrevenue_Click(object sender, RoutedEventArgs e)
+        //{
+
+        //    DateTime d5 = new DateTime();
+        //    DateTime d6 = new DateTime();
+        //    int valide = 0;
+
+
+        //    try
+        //    {
+
+        //        d5 = calender5.Date.Value.DateTime;
+
+
+        //    }
+        //    catch (InvalidOperationException ex)
+        //    {
+        //        erreurcalender5.Visibility = Visibility.Visible;
+        //        valide += 1;
+        //    }
+
+        //    try
+        //    {
+
+        //        d6 = calender6.Date.Value.DateTime;
+
+        //    }
+        //    catch (InvalidOperationException ex)
+        //    {
+        //        erreurcalender6.Visibility = Visibility.Visible;
+        //        valide += 1;
+        //    }
+
+
+
+        //    if (valide == 0)
+        //    {
+        //        lvMontant.ItemsSource = Singleton.getInstance().MotantTotalSociete(d5, d6);
+        //    }
+
+
+        //}
+
+        //private async void csecrire_Click(object sender, RoutedEventArgs e)
+        //{
+
+
+        //    var picker = new Windows.Storage.Pickers.FileSavePicker();
+
+        //    /******************** POUR WINUI3 ***************************/
+
+        //    var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(Singleton.getInstance().Fenetre);
+        //    WinRT.Interop.InitializeWithWindow.Initialize(picker, hWnd);
+        //    /************************************************************/
+
+        //    picker.SuggestedFileName = "Liste de Trajets";
+        //    picker.FileTypeChoices.Add("Fichier CSV", new List<string>() { ".csv" });
+
+        //    //crée le fichier
+        //    Windows.Storage.StorageFile monFichier = await picker.PickSaveFileAsync();
+
+        //    var liste = lv.ItemsSource as ObservableCollection<Trajets>;
+        //    var l = liste.ToList();
+        //    //var liste = Singleton.getInstance().GetTrajetsdate()
+
+        //    //écrit dans le fichier chacune des lignes du tableau
+        //    //une boucle sera faite sur la collection et prendra chacun des objets de celle-ci
+        //    await Windows.Storage.FileIO.WriteLinesAsync(monFichier, l.ConvertAll(x => x.exportationCSV()), Windows.Storage.Streams.UnicodeEncoding.Utf8);
+
+        //}
     }
 }

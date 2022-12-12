@@ -10,9 +10,9 @@
 
     <ScrollViewer Background="AliceBlue">
 
-    <StackPanel Margin="10" HorizontalAlignment="Center">
+    <!--<StackPanel Margin="10" HorizontalAlignment="Center">
 
-        <!--Ajouter une ville-->
+      
         <StackPanel  Margin="20">
             <TextBlock x:Name="tbAjoutVille" Text="Ajouter une ville" FontSize="25" FontFamily="algerian"/>
 
@@ -181,6 +181,6 @@
                 </GridView.ItemTemplate>
             </GridView>
 
-        </StackPanel>
+        </StackPanel>-->
     </ScrollViewer>
 </Page>

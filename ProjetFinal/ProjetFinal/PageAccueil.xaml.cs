@@ -26,7 +26,7 @@ namespace ProjetFinal
         public PageAccueil()
         {
             this.InitializeComponent();
-            Singleton.getInstance().GetTrajets();
+   
         }
     }
 }
