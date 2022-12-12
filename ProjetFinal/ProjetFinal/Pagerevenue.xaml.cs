@@ -27,5 +27,48 @@ namespace ProjetFinal
         {
             this.InitializeComponent();
         }
+        private void revenue_Click(object sender, RoutedEventArgs e)
+        {
+            DateTime d5 = new DateTime();
+            DateTime d6 = new DateTime();
+            int valide = 0;
+
+
+            try
+            {
+
+                d5 = calender5.Date.Value.DateTime;
+
+
+            }
+            catch (InvalidOperationException ex)
+            {
+                erreurcalender5.Visibility = Visibility.Visible;
+                valide += 1;
+            }
+
+            try
+            {
+
+                d6 = calender6.Date.Value.DateTime;
+
+            }
+            catch (InvalidOperationException ex)
+            {
+                erreurcalender6.Visibility = Visibility.Visible;
+                valide += 1;
+            }
+
+
+
+            if (valide == 0)
+            {
+                lvMontant.ItemsSource = GestionBD.getInstance().MotantTotalSociete(d5, d6);
+                lvliste.ItemsSource = GestionBD.getInstance().Montant(d5, d6);
+            }
+
+
+        }
     }
+
 }
