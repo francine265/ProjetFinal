@@ -52,9 +52,18 @@ namespace ProjetFinal
 
             if (valide == 0)
             {
-                GestionBD.getInstance().connexionadmin(tbxEmail.Text, tbxpwd.Text);
+               if( GestionBD.getInstance().connexionadmin(tbxEmail.Text, tbxpwd.Text) ==true)
+                {
 
-                this.Frame.Navigate(typeof(PageAdmin));
+                    GestionBD.getInstance().NviAdmin.Visibility = Visibility.Visible;
+
+                    this.Frame.Navigate(typeof(PageAdmin));
+                }
+                else
+                {
+                    erreuremailpass.Visibility = Visibility.Visible;
+                }
+
             }
         }
 

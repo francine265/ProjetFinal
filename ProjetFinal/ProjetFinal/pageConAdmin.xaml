@@ -21,6 +21,9 @@
             <TextBox x:Name="tbxpwd" Text="sandra123" Header="Mot de Passe:" Margin="0,10,10,0"/>
             <TextBlock x:Name="erreuremail" Text=" Entrer un Email" Foreground="red" FontSize="15" FontStyle="Italic" Visibility="Collapsed"/>
             <Button x:Name="connexion" Content="Connéxion" Click="connexion_Click" Background="Red" Margin="50" />
+            <TextBlock x:Name="erreuremailpass" Text="Adresse Mail ou mot de passe non valide" Foreground="Red" Visibility="Collapsed">
+
+            </TextBlock>
         </StackPanel>
 
         <TextBlock Text=" Je n'est pas de compte!!" Foreground="Black" FontSize="20" FontStyle="Italic" Margin="10,10,10,10"/>
