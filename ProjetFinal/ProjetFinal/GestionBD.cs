@@ -10,12 +10,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.Data;
+using Microsoft.UI.Xaml;
 
 namespace ProjetFinal
 {
     internal class GestionBD
     {
         MySqlConnection con;
+        ObservableCollection<Trajets> listeTrajetsencours;
+        ObservableCollection<Trajets> listeAffichetrajetdateT;
+        ObservableCollection<Trajets> listeAffichetrajetdate;
+        ObservableCollection<Trajets> listeMontantTotal;
+        Window fenetre;
         ObservableCollection<Trajets> lvliste;// pas automatique , on le fait car on fera un select de liste plustard
         static GestionBD gestionBD = null;// ce qui crée le singleton pour avoir un seul objet à utiliser
 
