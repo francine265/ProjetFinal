@@ -456,6 +456,61 @@ namespace ProjetFinal
             return ok;
 
         }
+        public ObservableCollection<Trajets> GetTrajetsdate(DateTime date1, DateTime date2)
+        {
+            listeAffichetrajetdateT.Clear();
+            try
+            {
+
+                MySqlCommand commande = new MySqlCommand("Affiche_trajet_date");
+                commande.Connection = con;
+                commande.CommandType = System.Data.CommandType.StoredProcedure;
+                commande.Parameters.AddWithValue("@date1", date1.ToString("yyyy-MM-dd"));
+                commande.Parameters.AddWithValue("@date2", date2.ToString("yyyy-MM-dd"));
+
+
+                con.Open();
+                commande.Prepare();
+                int i = commande.ExecuteNonQuery();
+                MySqlDataReader r = commande.ExecuteReader();
+                // r.Read();
+                while (r.Read())
+                {
+
+
+
+                    listeAffichetrajetdateT.Add(new Trajets()
+                    {
+                        Num_Trajet = r.GetInt32(0),
+                        Ville_Depart = r.GetString(1),
+                        Ville_Arrivee = r.GetString(2),
+                        HeureDepartString = r.GetString("heure_Depart"),
+                        HeureArriveeString = r.GetString("heure_Arrivee"),
+                        Date_Trajet = r.GetString("date_Trajet"),
+                        Prix_Trajet = r.GetInt32(6),
+                        Arret = r.GetString(7),
+                        Nombre_Place_dispo = r.GetInt32(10),
+                        Etat = r.GetString(8),
+                        Num_Conducteur = r.GetInt32(9)
+                    });
+
+                }
+
+                r.Close();
+                con.Close();
+
+
+            }
+            catch (MySqlException ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+
+            }
+            return listeAffichetrajetdateT;
+
+        }
+
 
 
 
