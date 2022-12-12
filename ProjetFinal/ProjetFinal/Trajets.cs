@@ -111,11 +111,15 @@ namespace ProjetFinal
            +" "+montant_chauffeur+" "+totalRevenue+" "+totalRevenueEntreprise+ " "+prixTrajet;
         }
 
+        public string exportationCSV()
+        {
+            return num_Trajet + "; " + Ville_Depart + ";" + ville_Arrivee + ";" + date_Trajet + ";" + prixTrajet + ";" + etat;
+        }
 
 
-      
 
 
-}
+
+    }
 
 }
