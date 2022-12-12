@@ -21,28 +21,11 @@ namespace ProjetFinal
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class OptionsConnexions : Page
+    public sealed partial class pageConAdmin : Page
     {
-        public OptionsConnexions()
+        public pageConAdmin()
         {
             this.InitializeComponent();
-        }
-
-        private void Connadmin_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(pageConAdmin));
-
-        }
-
-        private void ConnChauffeur_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void connClient_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(Connexion));
-
         }
     }
 }
