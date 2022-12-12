@@ -8,8 +8,25 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <StackPanel></StackPanel>
+    <StackPanel Margin="20" HorizontalAlignment="Center">
 
-    </Grid>
+
+        <TextBlock x:Name="headerFormulaire" Text="Bienvenue a vous!!!" FontStyle="Italic" Foreground="Chocolate" FontSize="20" Margin="0,0,0,15"/>
+
+
+        <!-- Formulaire Admin -->
+        <StackPanel  Margin="20,0,00,0">
+            <TextBox x:Name="tbxEmail" Text="sandra@gmail.com" Header="Email:"/>
+            <TextBlock x:Name="erreurnom" Text=" Entrer un Nom" Foreground="red" FontSize="15" FontStyle="Italic" Visibility="Collapsed"/>
+            <TextBox x:Name="tbxpwd" Text="sandra123" Header="Mot de Passe:" Margin="0,10,10,0"/>
+            <TextBlock x:Name="erreuremail" Text=" Entrer un Email" Foreground="red" FontSize="15" FontStyle="Italic" Visibility="Collapsed"/>
+            <Button x:Name="connexion" Content="Connéxion" Click="connexion_Click" Background="Red" Margin="50" />
+        </StackPanel>
+
+        <TextBlock Text=" Je n'est pas de compte!!" Foreground="Black" FontSize="20" FontStyle="Italic" Margin="10,10,10,10"/>
+        <Button x:Name="inscrire" Click="inscrire_Click" Content="Je souhaite M'Inscrire" Background="Red" Margin="40" />
+
+
+    </StackPanel>
 </Page>
+
