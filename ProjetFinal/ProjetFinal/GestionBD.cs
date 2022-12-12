@@ -8,6 +8,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
+using System.Data;
 
 namespace ProjetFinal
 {
@@ -21,10 +23,14 @@ namespace ProjetFinal
         NavigationViewItem nviChauffeur;
         NavigationViewItem nviClient;
         NavigationViewItem nviDeConnexion;
-        
+        NavigationViewItem nvinom;
+        NavigationViewItem nviConnexion;
+
 
         int idUtilisateur;
         string nom, prenom;
+
+
 
         public int IdUtilisateur { get => idUtilisateur; set => idUtilisateur = value; }
         public string Nom { get => nom; set => nom = value; }
@@ -34,6 +40,8 @@ namespace ProjetFinal
         public NavigationViewItem NviChauffeur { get => nviChauffeur; set => nviChauffeur = value; }
         public NavigationViewItem NviClient { get => nviClient; set => nviClient = value; }
         public NavigationViewItem NviDeConnexion { get => nviDeConnexion; set => nviDeConnexion = value; }
+        public NavigationViewItem Nvinom { get => nvinom; set => nvinom = value; }
+        public NavigationViewItem NviConnexion { get => nviConnexion; set => nviConnexion = value; }
 
         public GestionBD()
         {
@@ -201,7 +209,7 @@ namespace ProjetFinal
             commande.Connection = con;// indique le chemin à commande 
             commande.CommandType = System.Data.CommandType.StoredProcedure;// ce qu,il faut aller chercher
             commande.Parameters.AddWithValue("@mail", emaile);
-            commande.Parameters.AddWithValue("@motpass", passwrd);
+            commande.Parameters.AddWithValue("@motpass", genererSHA256( passwrd));
 
             con.Open();// ouvre la connection 
             //commande.Prepare();// empêche les caractères spéciaux donc prends tout ca comme chaine de caractères
@@ -211,6 +219,8 @@ namespace ProjetFinal
             if(r.Read())
             {
                 idUtilisateur = r.GetInt32("num_client");
+                nom = r.GetString("nom_Client");
+                prenom = r.GetString("prenom_Client");
                 //nom = r.GetString("nom_client");
                 ok = true;
             }
@@ -355,8 +365,70 @@ namespace ProjetFinal
             }
             return compteur;
         }
+        public void Deconnexion()
+        {
+            idUtilisateur = 0;
+            nom = "";
+            prenom = "";
+        }
+        public string genererSHA256(string texte)
+        {
+            var sha256 = SHA256.Create();
+            byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(texte));
+
+            StringBuilder sb = new StringBuilder();
+            foreach (Byte b in bytes)
+                sb.Append(b.ToString("x2"));
+
+            return sb.ToString();
+        }
+
+        public string nomPrenom()
+        {
+           
+
+            return nom +" "+prenom;
+        }
+
+        public void motdepasse()
+        {
+            List<TempClass> list = new List<TempClass>();
+
+            MySqlCommand commande = new MySqlCommand();
+            commande.Connection = con;// indique le chemin à commande 
+            commande.CommandText = "select num_client, motdePasse from client";
+            con.Open();
+            MySqlDataReader r = commande.ExecuteReader();
+
+            while(r.Read())
+            {
+                list.Add(new TempClass
+                {
+                    Id = r.GetInt32(0),
+                    Mdp = genererSHA256( r.GetString(1))
+                });
+
+               
+            }
+
+            r.Close();
+            con.Close();
+
+            foreach(TempClass tempClass in list)
+            {
+                MySqlCommand commande2 = new MySqlCommand();
+                commande2.Connection = con;// indique le chemin à commande 
+                commande2.CommandText = "update client set mdp = '" + tempClass.Mdp + "' where num_client = " + tempClass.Id;
+                con.Open();
+                commande2.ExecuteReader();
+                con.Close();
+
+            }
 
 
+        }
+
+        
 
     }
 }

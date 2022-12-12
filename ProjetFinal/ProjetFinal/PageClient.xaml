@@ -9,13 +9,19 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <ScrollViewer>
+       
 
 
         <StackPanel x:Name="stk" Orientation="Vertical" Background="LightBlue">
 
+            
             <StackPanel Margin="50,100,100,50">
                 <TextBlock HorizontalAlignment="Center" x:Name="tbtexte" Text="Covoiturage pour la planète "  FontSize="25"></TextBlock>
             </StackPanel>
+            <StackPanel Margin="10,20,20,20">
+                <TextBlock HorizontalAlignment="left" x:Name="tbnom"   FontSize="28"></TextBlock>
+            </StackPanel>
+
 
             <Grid>
 

@@ -18,7 +18,7 @@
         </NavigationView.PaneCustomContent>
 
         <NavigationView.MenuItems>
-            <AutoSuggestBox Width="200"  PlaceholderText="Rechercher" QueryIcon="Find"></AutoSuggestBox>
+            <NavigationViewItem x:Name="nvinom"  Tag="Accueil"/>
             <NavigationViewItemHeader Content="Menu"></NavigationViewItemHeader>
 
             <NavigationViewItem x:Name="nviAccueil" Content="Accueil" Tag="Accueil" Icon="Home"/>

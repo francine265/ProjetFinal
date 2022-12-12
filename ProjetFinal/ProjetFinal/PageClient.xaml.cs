@@ -30,6 +30,8 @@ namespace ProjetFinal
         {
             this.InitializeComponent();
             lvListe.ItemsSource = GestionBD.getInstance().detailtrajet();
+            tbnom.Text = GestionBD.getInstance().nomPrenom();
+
         }
 
         private void lvListe_SelectionChanged(object sender, SelectionChangedEventArgs e)

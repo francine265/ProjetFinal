@@ -30,8 +30,9 @@ namespace ProjetFinal
             GestionBD.getInstance().NviChauffeur = nviChauffeur;
             GestionBD.getInstance().NviClient = nviClient;
             GestionBD.getInstance().NviDeConnexion = nviDeConnexion;
+            GestionBD.getInstance().Nvinom=nvinom;
+            GestionBD.getInstance().NviConnexion = nviConnexion;
             mainFrame.Navigate(typeof(PagePrincipale));
-
         }
 
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -59,7 +60,9 @@ namespace ProjetFinal
                     mainFrame.Navigate(typeof(OptionsConnexions));
                     break;
                 case "DeConnexion":
+                    GestionBD.getInstance().Deconnexion();
                     mainFrame.Navigate(typeof(PagePrincipale));
+                    mainFrame.BackStack.Clear();
                     break;
 
                 default:

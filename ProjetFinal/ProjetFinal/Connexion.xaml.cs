@@ -12,6 +12,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using System.Security.Cryptography;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -43,13 +44,17 @@ namespace ProjetFinal
                 erreurpassword.Visibility = Visibility.Visible;
             }
             if (valide == 0)
+
             {
+               
                 if(GestionBD.getInstance().connexionClient(email.Text, epassword.Password)==true)
                 {
                     GestionBD.getInstance().NviAdmin.Visibility = Visibility.Collapsed;
                     GestionBD.getInstance().NviClient.Visibility = Visibility.Collapsed;
                     GestionBD.getInstance().NviChauffeur.Visibility = Visibility.Collapsed;
                     GestionBD.getInstance().NviDeConnexion.Visibility = Visibility.Visible;
+                    GestionBD.getInstance().NviConnexion.Visibility = Visibility.Collapsed;
+                    
                     this.Frame.Navigate(typeof(PageClient));
                 }
                 else
@@ -66,5 +71,6 @@ namespace ProjetFinal
         {
             this.Frame.Navigate(typeof(PageCreationCompte));
         }
+
     }
 }
