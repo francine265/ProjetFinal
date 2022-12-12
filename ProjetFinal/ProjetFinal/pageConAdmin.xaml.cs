@@ -27,5 +27,40 @@ namespace ProjetFinal
         {
             this.InitializeComponent();
         }
+        private void connexion_Click(object sender, RoutedEventArgs e)
+        {
+
+            int valide = 0;
+
+            if (tbxEmail.Text.Trim() == "")
+            {
+
+
+                erreuremail.Visibility = Visibility.Visible;
+                valide += 1;
+
+            }
+
+            if (tbxpwd.Text.Trim() == "")
+            {
+
+
+                erreurnom.Visibility = Visibility.Visible;
+                valide += 1;
+
+            }
+
+            if (valide == 0)
+            {
+                GestionBD.getInstance().connexionadmin(tbxEmail.Text, tbxpwd.Text);
+
+                this.Frame.Navigate(typeof(PageAdmin));
+            }
+        }
+
+        private void inscrire_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
