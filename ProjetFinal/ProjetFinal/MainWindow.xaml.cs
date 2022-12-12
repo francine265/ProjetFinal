@@ -69,6 +69,15 @@ namespace ProjetFinal
                     mainFrame.Navigate(typeof(PagePrincipale));
                     mainFrame.BackStack.Clear();
                     break;
+                case "ville":
+                    mainFrame.Navigate(typeof(Pageville));
+                    break;
+                case "Trajet":
+                    mainFrame.Navigate(typeof(Pagetrajet));
+                    break;
+                case "Revenue":
+                    mainFrame.Navigate(typeof(Pagerevenue));
+                    break;
 
                 default:
                     break;
