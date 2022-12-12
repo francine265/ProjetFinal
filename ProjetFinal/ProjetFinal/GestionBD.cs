@@ -668,6 +668,7 @@ namespace ProjetFinal
 
         public ObservableCollection<Trajets> MotantTotalSociete(DateTime date1, DateTime date2)
         {
+            con.Close();
             listeMontantTotal.Clear();
             try
             {
