@@ -8,7 +8,66 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
 
-    </Grid>
+    <StackPanel>
+
+
+        <StackPanel>
+            <TextBlock HorizontalAlignment="Center" x:Name="tbtexte" Text="Historique des trajets"  FontSize="25"></TextBlock>
+        </StackPanel>
+
+
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <TextBox x:Name="tbxNumChauffeur" Header="entrer un numero de chauffeur"  Margin="5,5,5,10"></TextBox>
+        </StackPanel>
+
+
+        <StackPanel HorizontalAlignment="Center">
+            <Button x:Name="RechercherTrajet" Click="RechercherTrajet_Click" Content="Rechercher un trajet"></Button>
+        </StackPanel>
+
+
+        <GridView x:Name="lvliste">
+
+            <GridView.ItemTemplate>
+
+                <DataTemplate x:DataType="local:Trajets">
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="160"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Orientation="Vertical" Margin="5" HorizontalAlignment="Stretch">
+                            <TextBlock Text="Ville de Depart" Margin="5,5,5,10"></TextBlock>
+                            <TextBlock Text="Ville d'arrivee" Margin="5,5,5,10"></TextBlock>
+                            <TextBlock Text="Heure de depart" Margin="5,5,5,10"></TextBlock>
+                            <TextBlock Text="Heure d'arrivee" Margin="5,5,5,10"></TextBlock>
+                            <TextBlock Text="Arret" Margin="5,5,5,10"></TextBlock>
+                            <TextBlock Text="Places disponibles" Margin="5,5,5,10"></TextBlock>
+                            <TextBlock Text="Places initiales" Margin="5,5,5,10"></TextBlock>
+                        </StackPanel>
+
+
+                        <StackPanel Grid.Column="1" HorizontalAlignment="Stretch"  Margin="5">
+                            <TextBlock Text="{x:Bind Ville_Depart}" Margin="5,5,5,10"/>
+                            <TextBlock Text="{x:Bind Ville_Arrivee}" Margin="5,5,5,10"/>
+                            <TextBlock Text="{x:Bind HeureDepartString}" Margin="5,5,5,10"/>
+                            <TextBlock Text="{x:Bind HeureArriveeString}" Margin="5,5,5,10"/>
+                            <TextBlock Text="{x:Bind Arret}" Margin="5,5,5,10"/>
+                            <TextBlock Text="{x:Bind Nombre_Place_dispo}" Margin="5,5,5,10"/>
+                            <TextBlock Text="{x:Bind Nombre_Place_Initiales}" Margin="5,5,5,10"/>
+                        </StackPanel>
+
+                    </Grid>
+
+                </DataTemplate>
+            </GridView.ItemTemplate>
+
+        </GridView>
+
+
+    </StackPanel>
 </Page>
