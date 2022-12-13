@@ -51,7 +51,7 @@
             <TextBlock  x:Name="ErrMotDePasse" Text="Veuillez creer un mot de passe valide"   Foreground="Red" Visibility="Collapsed"></TextBlock>
 
 
-            <Button x:Name="btAjoutChauffeur" Click="btAjoutChauffeur_Click" Content="Ajouter un nouveau chauffeurs"/>
+            <Button x:Name="ajoutChauffeur" Click="ajoutChauffeur_Click" Content="Ajouter un nouveau chauffeurs"/>
 
 
         </StackPanel>
