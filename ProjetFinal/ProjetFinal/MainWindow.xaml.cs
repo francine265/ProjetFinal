@@ -26,6 +26,7 @@ namespace ProjetFinal
         public MainWindow()
         {
             this.InitializeComponent();
+            //GestionBD.getInstance().motdepasseChauffeur();
             GestionBD.getInstance().NviAdmin = nviAdmin;
             GestionBD.getInstance().NviChauffeur = nviChauffeur;
             GestionBD.getInstance().NviClient = nviClient;

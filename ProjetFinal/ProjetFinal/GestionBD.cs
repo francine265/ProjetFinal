@@ -385,6 +385,8 @@ namespace ProjetFinal
         public void Deconnexion()
         {
             idUtilisateur = 0;
+            idChauffeur=0;
+
             nom = "";
             prenom = "";
         }
@@ -444,6 +446,49 @@ namespace ProjetFinal
 
 
         }
+
+
+        public void motdepasseChauffeur()
+        {
+            List<TempClass> list = new List<TempClass>();
+
+            MySqlCommand commande = new MySqlCommand();
+            commande.Connection = con;// indique le chemin à commande 
+            commande.CommandText = "select num_Conducteur, mot_de_Passe from conducteur";
+            con.Open();
+            MySqlDataReader r = commande.ExecuteReader();
+
+            while (r.Read())
+            {
+                list.Add(new TempClass
+                {
+                    Id = r.GetInt32(0),
+                    Mdp = genererSHA256(r.GetString(1))
+                });
+
+
+            }
+
+            r.Close();
+            con.Close();
+
+            foreach (TempClass tempClass in list)
+            {
+                MySqlCommand commande3 = new MySqlCommand();
+                commande3.Connection = con;// indique le chemin à commande 
+                commande3.CommandText = "update conducteur set mdpc = '" + tempClass.Mdp + "' where num_Conducteur = " + tempClass.Id;
+                con.Open();
+                commande3.ExecuteReader();
+                con.Close();
+
+            }
+
+
+        }
+
+
+
+
 
         public Boolean connexionadmin(string email, string password)
         {
@@ -803,7 +848,7 @@ namespace ProjetFinal
             commande.Connection = con;// indique le chemin à commande
             commande.CommandType = System.Data.CommandType.StoredProcedure;// ce qu,il faut aller chercher
             commande.Parameters.AddWithValue("@emailCond", email);
-            commande.Parameters.AddWithValue("@motDePasseCond", password);
+            commande.Parameters.AddWithValue("@motDePasseCond", genererSHA256(password));
 
 
 
