@@ -23,9 +23,61 @@ namespace ProjetFinal
     /// </summary>
     public sealed partial class PageConChauffeur : Page
     {
+        bool validite = true;
+
+        //  public bool Ok { get => ok; }
+
+
         public PageConChauffeur()
         {
             this.InitializeComponent();
+        }
+
+        private void btConnexion_Click(object sender, RoutedEventArgs e)
+        {
+
+
+
+            if (tbxMail.Text == null || tbxMail.Text == "")
+            {
+                ErrMail.Visibility = Visibility.Visible;
+                validite = false;
+            }
+            else
+            {
+                ErrMail.Visibility = Visibility.Collapsed;
+            }
+
+
+            if (tbxMotDePasse.Password == null || tbxMotDePasse.Password == "")
+            {
+                ErrMotDePasse.Visibility = Visibility.Visible;
+                validite = false;
+            }
+            else
+            {
+                ErrMotDePasse.Visibility = Visibility.Collapsed;
+            }
+
+
+            if (validite == true)
+            {
+                //  Chauffeur c = new Chauffeur()
+                //  {
+                //     Email = tbxMail.Text,
+                //    MotDePasse = tbxMotDePasse.Password
+                //    };
+
+
+                GestionBD.getInstance().connexionChauff(tbxMail.Text, tbxMotDePasse.Password);
+
+                if (GestionBD.getInstance().connexionChauff(tbxMail.Text, tbxMotDePasse.Password))
+                {
+
+                }
+            }
+
+
         }
     }
 }
