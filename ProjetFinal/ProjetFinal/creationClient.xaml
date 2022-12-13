@@ -1,0 +1,24 @@
+﻿<Page
+    x:Class="ProjetFinal.creationClient"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProjetFinal"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <StackPanel HorizontalAlignment="Center" Margin="20" Background="LightBlue">
+
+        <TextBlock x:Name="titreCreation" Text="Création de compte client" FontSize="25" Margin="0,0,0,15"/>
+        <!-- Formulaire du Client -->
+        <StackPanel x:Name="formClient"  Margin="20,0,00,0">
+            <TextBox x:Name="tbxNomClient" Header="Nom du client:"/>
+            <TextBox x:Name="tbxPrenomClient" Header="Prénom du client:"/>
+            <TextBox x:Name="tbxEmailClient" Header="Email:"/>
+            <TextBox x:Name="tbxpasswordClient" Header="password:"/>
+            <TextBox x:Name="tbxAdresseClient" Header="Adresse:"/>
+            <TextBox x:Name="tbxTelephoneClient" Header="Numéro du téléphone:"/>
+            <Button x:Name="btn" Margin="20,10,10,10" Click="btn_Click" Content="Ajouter" Background="Bisque"/>
+        </StackPanel>
+    </StackPanel>
+</Page>

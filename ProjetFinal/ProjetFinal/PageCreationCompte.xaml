@@ -9,52 +9,26 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <ScrollViewer>
-        <StackPanel HorizontalAlignment="Center" Margin="20">
+        <StackPanel HorizontalAlignment="Center" Margin="20" Background="LightBlue">
 
-            <TextBlock x:Name="titreCreation" Text="Création de compte" FontSize="25" Margin="0,0,0,15"/>
-
-            <!-- Radio choisir Chauffeur/Client -->
-            <StackPanel Margin="20,0,00,30">
-                <RadioButtons Header="Choissisez votre role"  x:Name="rbConnexion" 
-                          SelectedIndex="0" SelectionChanged="rbConnexion_SelectionChanged">
-                    <x:String>client</x:String>
-                    <x:String>chauffeur</x:String>
-                    <x:String>Administrateur</x:String>
-                </RadioButtons>
-            </StackPanel>
-
-            <TextBlock x:Name="headerFormulaire" Text="selectionnez un role pour afficher le formulaire d'enregistrement" FontSize="20" Margin="0,0,0,15"/>
-
+            <TextBlock x:Name="titreCreation" Text="Création de compte chauffeur" FontSize="25" Margin="0,0,0,15"/>
 
             <!-- Formulaire du Chauffeur -->
-            <StackPanel x:Name="formChauffeur" Visibility="Collapsed" Margin="20,0,00,0">
+            <StackPanel x:Name="formChauffeur" Margin="20,0,00,0">
                 <TextBox x:Name="tbxNomChauffeur" Header="Nom du chauffeur:"/>
                 <TextBox x:Name="tbxPrenomChauffeur" Header="Prénom du chauffeur:"/>
                 <TextBox x:Name="tbxEmailChauffeur" Header="Email:"/>
                 <TextBox x:Name="tbxPermisChauffeur" Header="Matricule du permis:"/>
                 <TextBox x:Name="tbxGenreChauffeur" Header="Genre:"/>
                 <TextBox x:Name="tbxAgeChauffeur" Header="Age:"/>
+                <Button x:Name="ajoutChauffeur" Click="ajoutChauffeur_Click" Content="Ajouter"></Button>
 
             </StackPanel>
 
-            <!-- Formulaire du Client -->
-            <StackPanel x:Name="formClient" Visibility="Collapsed" Margin="20,0,00,0">
-                <TextBox x:Name="tbxNomClient" Header="Nom du client:"/>
-                <TextBox x:Name="tbxPrenomClient" Header="Prénom du client:"/>
-                <TextBox x:Name="tbxEmailClient" Header="Email:"/>
-                <TextBox x:Name="tbxpasswordClient" Header="password:"/>
-                <TextBox x:Name="tbxAdresseClient" Header="Adresse:"/>
-                <TextBox x:Name="tbxTelephoneClient" Header="Numéro du téléphone:"/>
-                <Button x:Name="btn" Margin="20,10,10,10" Click="btn_Click" Content="Ajouter" Background="Bisque"/>
-            </StackPanel>
+            
 
 
-            <!-- Formulaire de L'Administration -->
-            <StackPanel x:Name="formAdmin" Visibility="Collapsed" Margin="20,0,00,0">
-                <TextBox x:Name="tbxEmail" Header="Email:"/>
-                <TextBox x:Name="tbxpasswordAmin" Header="password:"/>
-                <Button x:Name="admin" Margin="20,10,10,10" Click="admin_Click" Content="Ajouter" Background="Bisque"/>
-            </StackPanel>
+          
         </StackPanel>
     </ScrollViewer>
 </Page>

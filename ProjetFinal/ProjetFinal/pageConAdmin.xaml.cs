@@ -36,7 +36,7 @@ namespace ProjetFinal
             {
 
 
-                erreuremail.Visibility = Visibility.Visible;
+                erreurnom.Visibility = Visibility.Visible;
                 valide += 1;
 
             }
@@ -45,7 +45,7 @@ namespace ProjetFinal
             {
 
 
-                erreurnom.Visibility = Visibility.Visible;
+                erreuremail.Visibility = Visibility.Visible;
                 valide += 1;
 
             }
@@ -71,6 +71,7 @@ namespace ProjetFinal
 
         private void inscrire_Click(object sender, RoutedEventArgs e)
         {
+            this.Frame.Navigate(typeof(pageAdmin));
 
         }
     }

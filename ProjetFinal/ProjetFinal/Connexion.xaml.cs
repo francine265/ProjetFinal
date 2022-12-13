@@ -69,7 +69,7 @@ namespace ProjetFinal
 
         private void einscription_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(PageCreationCompte));
+            this.Frame.Navigate(typeof(creationClient));
         }
 
     }

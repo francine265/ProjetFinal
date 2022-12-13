@@ -21,20 +21,15 @@ namespace ProjetFinal
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class PageCreationCompte : Page
+    public sealed partial class creationClient : Page
     {
-        public PageCreationCompte()
+        public creationClient()
         {
             this.InitializeComponent();
-      
         }
-       
-
-      
-
-        private void ajoutChauffeur_Click(object sender, RoutedEventArgs e)
+        private void btn_Click(object sender, RoutedEventArgs e)
         {
-
+            GestionBD.getInstance().AjouterClient(tbxNomClient.Text, tbxPrenomClient.Text, tbxAdresseClient.Text, tbxEmailClient.Text, tbxTelephoneClient.Text, tbxpasswordClient.Text);
         }
     }
 }
