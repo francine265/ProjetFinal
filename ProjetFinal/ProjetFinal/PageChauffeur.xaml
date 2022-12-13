@@ -8,7 +8,76 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <ScrollViewer>
+        <Grid>
 
-    </Grid>
+
+
+            <!-- Formulaire pour un nouveau trajet-->
+            <StackPanel x:Name="formTrajet" Visibility="Visible" Margin="20,0,00,0">
+
+
+                <TextBox x:Name="tbxVilleDepart" Header="Ville de depart"/>
+                <TextBlock  x:Name="ErrVilleDepart" Text="Veuillez saisir le nom d'un chauffeur"  Foreground="Red" Visibility="Collapsed"></TextBlock>
+
+                <TextBox x:Name="tbxVilleArrive" Header="Ville d'arrivée"/>
+                <TextBlock  x:Name="ErrVilleArrive" Text="Veuillez saisir le prenom d'un chauffeur"  Foreground="Red" Visibility="Collapsed"></TextBlock>
+
+                <TimePicker x:Name="tbxheureDepart" Header="Heure de départ" HorizontalAlignment="Stretch"/>
+                <TextBlock  x:Name="ErrheureDepart" Text="Veuillez saisir l'heure de depart"   Foreground="Red" Visibility="Collapsed"></TextBlock>
+
+
+                <TimePicker x:Name="tbxheureArrive" Header="heure d'arrivée" HorizontalAlignment="Stretch"/>
+                <TextBlock  x:Name="ErrheureArrive" Text="Veuillez saisir l'heure d'arrivé"  Foreground="Red" Visibility="Collapsed"></TextBlock>
+
+
+                <CalendarDatePicker x:Name="calandar" Header="Date du trajet" HorizontalAlignment="Stretch"/>
+                <TextBlock  x:Name="ErrDateTrajet" Text="Veuillez saisir la date du projet"   Foreground="Red" Visibility="Collapsed"></TextBlock>
+
+
+                <TextBox x:Name="tbxPrixTrajet" Header="Entrer le prix du trajet"/>
+                <TextBlock  x:Name="ErrPrixTrajet" Text="Veuillez saisir le prix du trajet"   Foreground="Red" Visibility="Collapsed"></TextBlock>
+
+
+                <TextBox x:Name="tbxArret" Header="Ville d'arrêt"/>
+                <TextBlock  x:Name="ErrArret" Text="Veuillez saisir l'email d'un chauffeur"   Foreground="Red" Visibility="Collapsed"></TextBlock>
+
+
+                <TextBox x:Name="tbxEtat" Header="Etat du trajet(Terminé/En cours)"/>
+                <TextBlock  x:Name="ErrEtat" Text="Veuillez saisir l'etat du trajet"   Foreground="Red" Visibility="Collapsed"></TextBlock>
+
+
+
+                <TextBox x:Name="tbxNumConducteur" Header="Numero du conducteur"/>
+                <TextBlock  x:Name="ErrNumConducteur" Text="Veuillez saisir le numero du conducteur"   Foreground="Red" Visibility="Collapsed"></TextBlock>
+
+
+
+                <TextBox x:Name="tbxNombrePlaceDispo" Header="Nombre de places disponibles"/>
+                <TextBlock  x:Name="ErrNombrePlaceDispo" Text="Veuillez saisir le nombre de places disponibles"   Foreground="Red" Visibility="Collapsed"></TextBlock>
+
+
+
+                <TextBox x:Name="tbxNombrePlaceInitiales" Header="Nombre de places intiales"/>
+                <TextBlock  x:Name="ErrNombrePlaceInitiales" Text="Veuillez saisir le nombre de places initiales"   Foreground="Red" Visibility="Collapsed"></TextBlock>
+
+
+                <Button x:Name="btAjoutTrajet" Click="btAjoutTrajet_Click">Ajouter un trajet</Button>
+
+
+            </StackPanel>
+
+
+
+
+
+
+            <TextBlock x:Name="validation" Text="Ajout d'un nouveau chauffeur réussi !" FontSize="25" Visibility="Collapsed"></TextBlock>
+
+
+
+        </Grid>
+
+    </ScrollViewer>
+
 </Page>
