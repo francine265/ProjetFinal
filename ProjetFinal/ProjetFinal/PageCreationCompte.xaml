@@ -40,20 +40,31 @@
         <!-- Formulaire du Client -->
         <StackPanel x:Name="formClient" Visibility="Collapsed" Margin="20,0,00,0">
             <TextBox x:Name="tbxNomClient" Header="Nom du client:"/>
-            <TextBox x:Name="tbxPrenomClient" Header="Prénom du client:"/>
+                <TextBlock x:Name="erreurnom" Text=" Entrer un Nom" Foreground="red" FontSize="15" FontStyle="Italic" Visibility="Collapsed"/>
+                <TextBox x:Name="tbxPrenomClient" Header="Prénom du client:"/>
+                <TextBlock x:Name="erreurprenom" Text=" Entrer un prenom" Foreground="red" FontSize="15" FontStyle="Italic" Visibility="Collapsed"/>
             <TextBox x:Name="tbxEmailClient" Header="Email:"/>
-            <TextBox x:Name="tbxpasswordClient" Header="password:"/>
-            <TextBox x:Name="tbxAdresseClient" Header="Adresse:"/>
-            <TextBox x:Name="tbxTelephoneClient" Header="Numéro du téléphone:"/>
-            <Button x:Name="btn" Margin="20,10,10,10" Click="btn_Click" Content="Ajouter" Background="Bisque"/>
-        </StackPanel>
+                <TextBlock x:Name="erreurEmail" Text=" Entrer un Email" Foreground="red" FontSize="15" FontStyle="Italic" Visibility="Collapsed"/>
+                <TextBox x:Name="tbxpasswordClient" Header="password:"/>
+                <TextBlock x:Name="erreurpwd" Text=" Entrer un mot de passe" Foreground="red" FontSize="15" FontStyle="Italic" Visibility="Collapsed"/>
+                <TextBox x:Name="tbxAdresseClient" Header="Adresse:"/>
+                <TextBlock x:Name="erreuraddresse" Text=" Entrer un Adresse" Foreground="red" FontSize="15" FontStyle="Italic" Visibility="Collapsed"/>
+                <TextBox x:Name="tbxTelephoneClient" Header="Numéro du téléphone:"/>
+                <TextBlock x:Name="erreurphone" Text=" Entrer un Numéro de Téléphone" Foreground="red" FontSize="15" FontStyle="Italic" Visibility="Collapsed"/>
+                <Button x:Name="btn" Margin="20,10,10,10" Click="btn_Click" Content="Ajouter" Background="Bisque"/>
+                <TextBlock x:Name="ajoutclient" Text=" Ajout d'un Client reussi" Foreground="red" FontSize="15" FontStyle="Italic" Visibility="Collapsed"/>
+
+            </StackPanel>
 
 
         <!-- Formulaire de L'Administration -->
             <StackPanel x:Name="formAdmin" Visibility="Collapsed" Margin="20,0,00,0">
                 <TextBox x:Name="tbxEmail" Header="Email:"/>
+                <TextBlock x:Name="errmail" Text=" Entrer un EMail" Foreground="red" FontSize="15" FontStyle="Italic" Visibility="Collapsed"/>
                 <TextBox x:Name="tbxpasswordAmin" Header="password:"/>
+                <TextBlock x:Name="erreurpwdad" Text=" Entrer un Mot de passe" Foreground="red" FontSize="15" FontStyle="Italic" Visibility="Collapsed"/>
                 <Button x:Name="admin" Margin="20,10,10,10" Click="admin_Click" Content="Ajouter" Background="Bisque"/>
+                <TextBlock x:Name="ajoutadmin" Text="Ajout admin Reussi!!" Foreground="red" FontSize="15" FontStyle="Italic" Visibility="Collapsed"/>
             </StackPanel>
         </StackPanel>
     </ScrollViewer>

@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml;
+﻿using Google.Protobuf.WellKnownTypes;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
@@ -62,11 +63,95 @@ namespace ProjetFinal
 
         private void btn_Click(object sender, RoutedEventArgs e)
         {
-            Singleton.getInstance().AjouterClient(tbxNomClient.Text, tbxPrenomClient.Text, tbxAdresseClient.Text, tbxEmailClient.Text, tbxTelephoneClient.Text, tbxpasswordClient.Text);
+
+            int valide = 0;
+
+            if (tbxNomClient.Text.Trim() == "")
+            {
+
+
+                erreurnom.Visibility = Visibility.Visible;
+                valide += 1;
+
+            }
+
+            if (tbxPrenomClient.Text.Trim() == "")
+            {
+
+
+                erreurprenom.Visibility = Visibility.Visible;
+                valide += 1;
+
+            }
+            if (tbxEmailClient.Text.Trim() == "")
+            {
+
+
+                erreurEmail.Visibility = Visibility.Visible;
+                valide += 1;
+
+            }
+            if (tbxpasswordClient.Text.Trim() == "")
+            {
+
+
+                erreurpwd.Visibility = Visibility.Visible;
+                valide += 1;
+
+            }
+            if (tbxAdresseClient.Text.Trim() == "")
+            {
+
+
+                erreuraddresse.Visibility = Visibility.Visible;
+                valide += 1;
+
+            }
+            if (tbxTelephoneClient.Text.Trim() == "")
+            {
+
+
+                erreurphone.Visibility = Visibility.Visible;
+                valide += 1;
+
+            }
+
+            if (valide == 0)
+            {
+                Singleton.getInstance().AjouterClient(tbxNomClient.Text, tbxPrenomClient.Text, tbxAdresseClient.Text, tbxEmailClient.Text, tbxTelephoneClient.Text, tbxpasswordClient.Text);
+                ajoutclient.Visibility = Visibility.Visible;
+            }
+            
         }
 
         private void admin_Click(object sender, RoutedEventArgs e)
         {
+            int valide =0;
+            if (tbxEmail.Text.Trim() == "")
+            {
+
+
+                errmail.Visibility = Visibility.Visible;
+                valide += 1;
+
+            }
+            if (tbxpasswordAmin.Text.Trim() == "")
+            {
+
+
+                erreurpwdad.Visibility = Visibility.Visible;
+                valide += 1;
+
+            }
+
+            if (valide == 0)
+            {
+                Singleton.getInstance().AjouterClient(tbxNomClient.Text, tbxPrenomClient.Text, tbxAdresseClient.Text, tbxEmailClient.Text, tbxTelephoneClient.Text, tbxpasswordClient.Text);
+                ajoutadmin.Visibility = Visibility.Visible; 
+
+            }
+
+
             Singleton.getInstance().AjoutAdmin(tbxEmail.Text, tbxpasswordAmin.Text);
               
 

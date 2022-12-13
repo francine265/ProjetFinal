@@ -63,7 +63,7 @@ namespace ProjetFinal
 
         public string exportationCSV()
         {
-            return num_Trajet + "; " + Ville_Depart + ";" + ville_Arrivee + ";" + date_Trajet + ";" + prix_Trajet + ";" + etat;
+            return num_Trajet + "; " + Ville_Depart + ";" + ville_Arrivee + ";" + date_Trajet + ";" + prix_Trajet + ";" + etat; 
         }
 
 

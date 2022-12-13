@@ -176,7 +176,7 @@ namespace ProjetFinal
 
                 con.Close();
 
-            }
+             }
             catch (MySqlException ex)
             {
                 con.Close();
