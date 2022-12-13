@@ -19,6 +19,7 @@
     <None Remove="PageChauffeur.xaml" />
     <None Remove="PageClient.xaml" />
     <None Remove="pageConAdmin.xaml" />
+    <None Remove="PageConChauffeur.xaml" />
     <None Remove="PageCreationCompte.xaml" />
     <None Remove="PageHistorique.xaml" />
     <None Remove="Pagerevenue.xaml" />
@@ -50,6 +51,11 @@
   -->
   <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
     <ProjectCapability Include="Msix" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="PageConChauffeur.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="PageHistorique.xaml">
