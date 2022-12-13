@@ -17,6 +17,11 @@ namespace ProjetFinal
     internal class GestionBD
     {
         MySqlConnection con;
+        ObservableCollection<Trajets> listeTrajet;
+        ObservableCollection<Client> listeClient;
+        int idChauffeur;
+
+       
         ObservableCollection<Trajets> listeTrajetsencours;
         ObservableCollection<Trajets> listeAffichetrajetdateT;
         ObservableCollection<Trajets> listeAffichetrajetdate;
@@ -36,7 +41,7 @@ namespace ProjetFinal
         int idUtilisateur;
         string nom, prenom;
 
-
+        public int IdChauffeur { get => idChauffeur; set => idChauffeur = value; }
         public Window Fenetre { get => fenetre; set => fenetre = value; }
         public int IdUtilisateur { get => idUtilisateur; set => idUtilisateur = value; }
         public string Nom { get => nom; set => nom = value; }
