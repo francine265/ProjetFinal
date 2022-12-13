@@ -790,7 +790,7 @@ namespace ProjetFinal
 
         }
 
-        public ObservableCollection<Trajet> AfficheTrajet(string numconducteur)
+        public ObservableCollection<Trajets> AfficheTrajet(string numconducteur)
         {
             listeTrajet.Clear();
 
@@ -809,14 +809,14 @@ namespace ProjetFinal
 
                 while (r.Read())
                 {
-                    listeTrajet.Add(new Trajet()
+                    listeTrajet.Add(new Trajets()
                     {
-                        VilleDepart = r.GetString(1),
-                        VilleArrive = r.GetString(2),
-                        HeureDepart = r.GetString(3),
-                        HeureArrive = r.GetString(4),
+                        Ville_Depart = r.GetString(1),
+                        Ville_Arrivee = r.GetString(2),
+                        HeureDepartString = r.GetString(3),
+                        HeureArriveeString = r.GetString(4),
                         Arret = r.GetString(7),
-                        NombrePlaceDispo = r.GetInt32(10),
+                        Nombre_Place_dispo = r.GetInt32("nombre_place_dispo"),
                         Nombre_Place_Initiales = r.GetInt32(11)
                     });
                 }
