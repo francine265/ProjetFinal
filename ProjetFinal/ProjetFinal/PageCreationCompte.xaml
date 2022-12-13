@@ -8,7 +8,8 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-
+    <Grid>
+        <ScrollViewer>
     <StackPanel HorizontalAlignment="Center" Margin="20">
 
         <TextBlock x:Name="titreCreation" Text="Création de compte" FontSize="25" Margin="0,0,0,15"/>
@@ -27,13 +28,35 @@
 
         <!-- Formulaire du Chauffeur -->
         <StackPanel x:Name="formChauffeur" Visibility="Collapsed" Margin="20,0,00,0">
-            <TextBox x:Name="tbxNomChauffeur" Header="Nom du chauffeur:"/>
-            <TextBox x:Name="tbxPrenomChauffeur" Header="Prénom du chauffeur:"/>
-            <TextBox x:Name="tbxEmailChauffeur" Header="Email:"/>
-            <TextBox x:Name="tbxPermisChauffeur" Header="Matricule du permis:"/>
-            <TextBox x:Name="tbxGenreChauffeur" Header="Genre:"/>
-            <TextBox x:Name="tbxAgeChauffeur" Header="Age:"/>
-        </StackPanel>
+
+
+             <TextBox x:Name="tbxNomChauffeur" Header="Nom"/>
+            <TextBlock  x:Name="ErrNomChauffeur" Text="Veuillez saisir le nom d'un chauffeur"  Foreground="Red" Visibility="Collapsed"></TextBlock>
+            
+            <TextBox x:Name="tbxPrenomChauffeur" Header="Prénom"/>
+            <TextBlock  x:Name="ErrPrenomChauffeur" Text="Veuillez saisir le prenom d'un chauffeur"  Foreground="Red" Visibility="Collapsed"></TextBlock>  
+            
+            <TextBox x:Name="tbxAdresseChauffeur" Header="Adresse"/>
+            <TextBlock  x:Name="ErrAdresseChauffeur" Text="Veuillez saisir l'adresse d'un chauffeur"   Foreground="Red" Visibility="Collapsed"></TextBlock>  
+            
+            <TextBox x:Name="tbxNumeroChauffeur" Header="Numero de telephone(XXX-XXX-XXXX)"/>
+            <TextBlock  x:Name="ErrNumeroChauffeur" Text="Veuillez saisir le numero d'un chauffeur"  Foreground="Red" Visibility="Collapsed"></TextBlock> 
+            
+            <TextBox x:Name="tbxEmailChauffeur" Header="Email"/>
+                <TextBlock  x:Name="ErrEmailChauffeur" Text="Veuillez saisir l'email d'un chauffeur"   Foreground="Red" Visibility="Collapsed"></TextBlock>
+            
+             <TextBox x:Name="tbxNumCompagnie" Header="Numero de la compagnie"/>
+             <TextBlock  x:Name="ErrNumCompagnie" Text="Veuillez saisir le numero de la compagnie (1 car il y'a une seule compagnie)"   Foreground="Red" Visibility="Collapsed"></TextBlock>
+
+              <TextBox x:Name="tbxMotDePasse" Header="Mot de Passe"/>
+              <TextBlock  x:Name="ErrMotDePasse" Text="Veuillez creer un mot de passe valide"   Foreground="Red" Visibility="Collapsed"></TextBlock>
+
+
+               <Button x:Name="btAjoutChauffeur" Click="btAjoutChauffeur_Click" Content="Ajouter un nouveau chauffeurs"/>
+
+
+                </StackPanel>
+        <TextBlock x:Name="validation" Text="Ajout d'un nouveau chauffeur réussi !" FontSize="25" Visibility="Collapsed"></TextBlock>
 
         <!-- Formulaire du Client -->
         <StackPanel x:Name="formClient" Visibility="Collapsed" Margin="20,0,00,0">
@@ -43,9 +66,15 @@
             <TextBox x:Name="tbxGenreClient" Header="Genre:"/>
             <TextBox x:Name="tbxAdresseClient" Header="Adresse:"/>
             <TextBox x:Name="tbxTelephoneClient" Header="Numéro du téléphone:"/>
-
         </StackPanel>
 
-        <Button Margin="20" x:Name="btnSumbit" Content="Valider" Click="btnSumbit_Click"/>
+        
+        
     </StackPanel>
+
+            
+            
+        </ScrollViewer>
+
+    </Grid>
 </Page>

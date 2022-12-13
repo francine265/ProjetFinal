@@ -31,6 +31,13 @@
             <NavigationViewItemSeparator />
             <NavigationViewItem Content="Client" Tag="Client" Icon="Contact"/>
 
+            <NavigationViewItemSeparator />
+            <NavigationViewItem Content="Historique des trajets" Tag="Historique" Icon="Contact"/>
+
+
+            <NavigationViewItemSeparator />
+            <NavigationViewItem Content="Connexion" Tag="Connexion" Icon="OtherUser"/>
+
 
         </NavigationView.MenuItems>
 

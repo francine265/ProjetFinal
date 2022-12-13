@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml;
+﻿using Microsoft.UI;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
@@ -10,6 +11,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text.RegularExpressions;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -32,7 +34,7 @@ namespace ProjetFinal
         {
             if (rbConnexion.SelectedIndex == 0)
             {
-                headerFormulaire.Text = "Remplissez le formulaire pour créer votre compte client: ";
+                headerFormulaire.Text = "Remplissez le formulaire pour créer votre compte client ";
                 formClient.Visibility = Visibility.Visible;
                 formChauffeur.Visibility = Visibility.Collapsed;
 
@@ -40,7 +42,7 @@ namespace ProjetFinal
             }
             if (rbConnexion.SelectedIndex == 1)
             {
-                headerFormulaire.Text = "Remplissez le formulaire pour créer votre compte chauffeur:";
+                headerFormulaire.Text = "Remplissez le formulaire pour créer votre compte chauffeur";
                 formChauffeur.Visibility = Visibility.Visible;
                 formClient.Visibility = Visibility.Collapsed;
 
@@ -48,9 +50,73 @@ namespace ProjetFinal
             }
         }
 
-        private void btnSumbit_Click(object sender, RoutedEventArgs e)
+      
+        private void btAjoutChauffeur_Click(object sender, RoutedEventArgs e)
         {
+                int valide = 0;
+
+                if (tbxNomChauffeur.Text.Trim() == "")
+                {
+                    ErrNomChauffeur.Visibility = Visibility.Visible;
+                    valide += 1;
+                }
+                if (tbxPrenomChauffeur.Text.Trim() == "")
+                {
+                    ErrPrenomChauffeur.Visibility = Visibility.Visible;
+                    valide += 1;
+                }
+                if (tbxAdresseChauffeur.Text.Trim() == "")
+                {
+                    ErrAdresseChauffeur.Visibility = Visibility.Visible;
+                    valide += 1;
+                }
+                if (tbxNumeroChauffeur.Text.Trim() == "")
+                {
+                    ErrNumeroChauffeur.Visibility = Visibility.Visible;
+                    valide += 1;
+                }
+                if (tbxEmailChauffeur.Text.Trim() == "")
+                {
+                    ErrEmailChauffeur.Visibility = Visibility.Visible;
+                    valide += 1;
+                }
+
+                 if (tbxMotDePasse.Text.Trim() == "")
+                  {
+                ErrMotDePasse.Visibility = Visibility.Visible;
+                valide += 1;
+                   }
+
+             //   string expression = "^\\(\\d{ 3}\\)\\d{ 3}-\\d{ 4}$";
+
+               // if (Regex.IsMatch(tbxNumeroChauffeur.Text, expression) == false)
+                //{
+                  //  ErrNumeroChauffeur.Visibility = Visibility.Visible;
+                    //ErrNumeroChauffeur.Text = "Veuillez respecter le format de numéro de téléphone";
+                  //  valide += 1;
+                //}
+
+                if (valide == 0)
+                {
+                    Singleton.getInstance().AjouterChauffeur(tbxNomChauffeur.Text, tbxPrenomChauffeur.Text, tbxAdresseChauffeur.Text, tbxEmailChauffeur.Text, tbxNumeroChauffeur.Text, tbxNumCompagnie.Text, tbxMotDePasse.Text);
+                    formChauffeur.Visibility = Visibility.Collapsed;
+                    validation.Visibility = Visibility.Visible;
+
+                }
+
+            }
+
+
+
+
+
+
+
+
+
+
 
         }
     }
-}
+    
+

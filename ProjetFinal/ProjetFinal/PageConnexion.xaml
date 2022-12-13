@@ -1,0 +1,34 @@
+
+<Page
+    x:Class="ProjetFinal.PageConnexion"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProjetFinal"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+
+
+        <StackPanel>
+            <TextBox x:Name="tbxMail" Header="Entrer l'adresse email"></TextBox>
+            <TextBlock  x:Name="ErrMail" Text="Veuillez saisir l'adresse mail"  Foreground="Red" Visibility="Collapsed"></TextBlock>
+
+
+            <PasswordBox x:Name="tbxMotDePasse" Header="Entrer le mot de passe"></PasswordBox>
+            <TextBlock  x:Name="ErrMotDePasse" Text="Veuillez saisir un mot de passe valide"  Foreground="Red" Visibility="Collapsed"></TextBlock>
+
+
+            <Button x:Name="btConnexion" Click="btConnexion_Click" Content="Connexion"></Button>
+
+        </StackPanel>
+
+
+
+       
+           
+       
+    </Grid>
+</Page>

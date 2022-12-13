@@ -49,6 +49,12 @@ namespace ProjetFinal
                 case "Creation":
                     mainFrame.Navigate(typeof(PageCreationCompte));
                     break;
+                case "Historique":
+                    mainFrame.Navigate(typeof(PageHistorique));
+                    break;
+                case "Connexion":
+                    mainFrame.Navigate(typeof(PageConnexion));
+                    break;
 
                 default:
                     break;
@@ -64,7 +70,7 @@ namespace ProjetFinal
 
             };
         }
-
+     
     }
     
 }
