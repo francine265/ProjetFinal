@@ -708,6 +708,39 @@ namespace ProjetFinal
             return listeMontantTotal;
 
         }
+        public void AjouterChauffeur(string nom, string prenom, string adresse, string email, string numero, string numCompagnie, String motDePasse)
+        {
+
+            try
+            {
+                MySqlCommand commande = new MySqlCommand();
+                commande.Connection = con;
+                commande.CommandText = "insert into conducteur(nom_Conducteur,prenom_Conducteur,adresse_Conducteur,email_Conducteur,num_Telephone,num_Compagnie,mot_de_Passe) values(@nom,@prenom,@adresse,@email,@numero,@numCompagnie,@motDePasse)";
+
+
+                commande.Parameters.AddWithValue("@nom", nom);
+                commande.Parameters.AddWithValue("@prenom", prenom);
+                commande.Parameters.AddWithValue("@adresse", adresse);
+                commande.Parameters.AddWithValue("@email", email);
+                commande.Parameters.AddWithValue("@numero", numero);
+                commande.Parameters.AddWithValue("@numCompagnie", numCompagnie);
+                commande.Parameters.AddWithValue("@motDePasse", motDePasse);
+
+
+                con.Open();
+                commande.Prepare();
+                int i = commande.ExecuteNonQuery();
+
+                con.Close();
+            }
+
+            catch (MySqlException ex)
+            {
+                con.Close();
+            }
+
+
+        }
 
 
 
