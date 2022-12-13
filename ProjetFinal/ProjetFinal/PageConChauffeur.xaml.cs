@@ -69,10 +69,11 @@ namespace ProjetFinal
                 //    };
 
 
-                GestionBD.getInstance().connexionChauff(tbxMail.Text, tbxMotDePasse.Password);
+              //  GestionBD.getInstance().connexionChauff(tbxMail.Text, tbxMotDePasse.Password);
 
-                if (GestionBD.getInstance().connexionChauff(tbxMail.Text, tbxMotDePasse.Password))
+                if (GestionBD.getInstance().connexionChauff(tbxMail.Text, tbxMotDePasse.Password)== true)
                 {
+                    this.Frame.Navigate(typeof(PageHistorique));
 
                 }
             }
