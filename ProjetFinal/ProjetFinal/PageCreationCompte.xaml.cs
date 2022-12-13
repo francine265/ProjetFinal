@@ -87,16 +87,29 @@ namespace ProjetFinal
                 valide += 1;
                    }
 
-             //   string expression = "^\\(\\d{ 3}\\)\\d{ 3}-\\d{ 4}$";
+                string expression = "^\\(\\d{3}\\)\\d{3}-\\d{4}$";
 
-               // if (Regex.IsMatch(tbxNumeroChauffeur.Text, expression) == false)
-                //{
-                  //  ErrNumeroChauffeur.Visibility = Visibility.Visible;
-                    //ErrNumeroChauffeur.Text = "Veuillez respecter le format de numéro de téléphone";
-                  //  valide += 1;
-                //}
+                if (Regex.IsMatch(tbxNumeroChauffeur.Text, expression) == false)
+                {
+                    ErrNumeroChauffeur.Visibility = Visibility.Visible;
+                    ErrNumeroChauffeur.Text = "Veuillez respecter le format de numéro de téléphone";
+                    valide += 1;
+                }
 
-                if (valide == 0)
+
+            string expression2 = "[a-z A-z 0-9_\\-]+[@]+[a-z]+[\\.][a-z]{3,4}$";
+
+            if (Regex.IsMatch(tbxEmailChauffeur.Text, expression2) == false)
+            {
+                ErrEmailChauffeur.Visibility = Visibility.Visible;
+                ErrEmailChauffeur.Text = "Veuillez respecter le format de l'email";
+                valide += 1;
+            }
+
+
+
+
+            if (valide == 0)
                 {
                     Singleton.getInstance().AjouterChauffeur(tbxNomChauffeur.Text, tbxPrenomChauffeur.Text, tbxAdresseChauffeur.Text, tbxEmailChauffeur.Text, tbxNumeroChauffeur.Text, tbxNumCompagnie.Text, tbxMotDePasse.Text);
                     formChauffeur.Visibility = Visibility.Collapsed;
@@ -105,15 +118,6 @@ namespace ProjetFinal
                 }
 
             }
-
-
-
-
-
-
-
-
-
 
 
         }

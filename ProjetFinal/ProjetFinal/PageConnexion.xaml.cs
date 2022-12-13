@@ -43,7 +43,6 @@ namespace ProjetFinal
         {
 
             
-            
                 if (tbxMail.Text == null || tbxMail.Text == "")
                 {
                     ErrMail.Visibility = Visibility.Visible;
