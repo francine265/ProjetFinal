@@ -27,5 +27,28 @@ namespace ProjetFinal
         {
             this.InitializeComponent();
         }
+        private void ville_Click(object sender, RoutedEventArgs e)
+        {
+            int valide = 0;
+            if (cmb.SelectedValue == null)
+            {
+
+
+                erreurcmb.Visibility = Visibility.Visible;
+                valide += 1;
+
+            }
+
+
+            if (valide == 0)
+            {
+
+                GestionBD.getInstance().Ajoutville(cmb.SelectedItem.ToString());
+                formville.Visibility = Visibility.Collapsed;
+                tbl_texte.Visibility = Visibility.Visible;
+
+            }
+
+        }
     }
 }

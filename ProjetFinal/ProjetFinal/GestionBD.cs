@@ -468,6 +468,7 @@ namespace ProjetFinal
         }
         public ObservableCollection<Trajets> GetTrajetsdate(DateTime date1, DateTime date2)
         {
+            con.Close();
             listeAffichetrajetdateT.Clear();
             try
             {
