@@ -11,10 +11,14 @@
         <TextBlock Text="Creation Admin" TextAlignment="Center" FontSize="50">
             
         </TextBlock>
-        <StackPanel x:Name="formAdmin" Margin="100,100,100,100">
-        <TextBox x:Name="tbxEmail" Header="Email:" HorizontalAlignment="Stretch"/>
-        <TextBox x:Name="tbxpasswordAmin" Header="password:" HorizontalAlignment="Stretch"/>
-        <Button x:Name="admin" Margin="20,10,10,10" Click="admin_Click" Content="Ajouter" Background="Bisque"/>
-    </StackPanel>
+        <!-- Formulaire de L'Administration -->
+        <StackPanel x:Name="formAdmin" Visibility="Collapsed" Margin="20,0,00,0">
+            <TextBox x:Name="tbxEmail" Header="Email:"/>
+            <TextBlock x:Name="errmail" Text=" Entrer un EMail" Foreground="red" FontSize="15" FontStyle="Italic" Visibility="Collapsed"/>
+            <TextBox x:Name="tbxpasswordAmin" Header="password:"/>
+            <TextBlock x:Name="erreurpwdad" Text=" Entrer un Mot de passe" Foreground="red" FontSize="15" FontStyle="Italic" Visibility="Collapsed"/>
+            <Button x:Name="admin" Margin="20,10,10,10" Click="admin_Click" Content="Ajouter" Background="Bisque"/>
+            <TextBlock x:Name="ajoutadmin" Text="Ajout admin Reussi!!" Foreground="red" FontSize="15" FontStyle="Italic" Visibility="Collapsed"/>
+        </StackPanel>
     </StackPanel>
 </Page>
