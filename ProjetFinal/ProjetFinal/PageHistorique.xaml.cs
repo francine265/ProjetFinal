@@ -27,5 +27,9 @@ namespace ProjetFinal
         {
             this.InitializeComponent();
         }
+        private void RechercherTrajet_Click(object sender, RoutedEventArgs e)
+        {
+            lvliste.ItemsSource = GestionBD.getInstance().AfficheTrajet(tbxNumChauffeur.Text);
+        }
     }
 }
