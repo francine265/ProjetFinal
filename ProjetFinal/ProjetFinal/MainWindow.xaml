@@ -35,6 +35,7 @@
             </NavigationViewItem>
 
             <NavigationViewItem x:Name="nviChauffeur" Content="Chauffeur" Tag="Chauffeur" Icon="ContactInfo"/>
+            
 
             <NavigationViewItemSeparator />
             <NavigationViewItem x:Name="nviClient" Content="Client" Tag="Client" Icon="Contact"/>
