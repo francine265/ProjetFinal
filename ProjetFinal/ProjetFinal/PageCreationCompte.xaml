@@ -34,7 +34,7 @@
                 <TextBox x:Name="tbxPermisChauffeur" Header="Matricule du permis:"/>
                 <TextBox x:Name="tbxGenreChauffeur" Header="Genre:"/>
                 <TextBox x:Name="tbxAgeChauffeur" Header="Age:"/>
-
+                <Button x:Name="ajoutChauffeur" Click="ajoutChauffeur_Click" Content=" ajouter"></Button>
             </StackPanel>
 
             <!-- Formulaire du Client -->
