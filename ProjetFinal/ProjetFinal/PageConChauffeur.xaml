@@ -11,14 +11,14 @@
     <Grid>
 
 
-        <StackPanel>
+        <StackPanel Background="LightBlue">
             <TextBox x:Name="tbxMail" Header="Entrer l'adresse email"></TextBox>
             <TextBlock  x:Name="ErrMail" Text="Veuillez saisir l'adresse mail"  Foreground="Red" Visibility="Collapsed"></TextBlock>
 
 
             <PasswordBox x:Name="tbxMotDePasse" Header="Entrer le mot de passe"></PasswordBox>
             <TextBlock  x:Name="ErrMotDePasse" Text="Veuillez saisir un mot de passe valide"  Foreground="Red" Visibility="Collapsed"></TextBlock>
-
+            <TextBlock x:Name="errconnexion" Text="le mot de passe ou l'adresse mail n'est pas valide" Foreground="Red" Visibility="Collapsed"/>
 
             <Button x:Name="btConnexion" Click="btConnexion_Click" Content="Connexion"></Button>
 

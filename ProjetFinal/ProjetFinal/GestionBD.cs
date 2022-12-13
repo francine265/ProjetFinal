@@ -62,6 +62,8 @@ namespace ProjetFinal
             listeAffichetrajetdateT = new ObservableCollection<Trajets>();
             listeAffichetrajetdate = new ObservableCollection<Trajets>();
             listeMontantTotal = new ObservableCollection<Trajets>();
+            listeTrajet= new ObservableCollection<Trajets>();
+            listeClient = new ObservableCollection<Client>();
 
         }
         public static GestionBD getInstance()// rapport avec le singleton
@@ -790,8 +792,39 @@ namespace ProjetFinal
 
         }
 
-        public ObservableCollection<Trajets> AfficheTrajet(string numconducteur)
+        public Boolean connexionChauff(string email, string password)
         {
+            con.Close();
+
+            bool ok = false;
+
+
+            MySqlCommand commande = new MySqlCommand("ConnexionChauffeur");
+            commande.Connection = con;// indique le chemin à commande
+            commande.CommandType = System.Data.CommandType.StoredProcedure;// ce qu,il faut aller chercher
+            commande.Parameters.AddWithValue("@emailCond", email);
+            commande.Parameters.AddWithValue("@motDePasseCond", password);
+
+
+
+            con.Open();// ouvre la connection
+            //commande.Prepare();// empêche les caractères spéciaux donc prends tout ca comme chaine de caractères
+            int i = commande.ExecuteNonQuery();
+            MySqlDataReader r = commande.ExecuteReader();
+
+
+            if (r.Read())
+            {
+                idChauffeur = r.GetInt32("num_Conducteur");
+                ok = true;
+            }
+            return ok;
+
+        }
+
+        public ObservableCollection<Trajets> AfficheTrajet()
+        {
+            con.Close();
             listeTrajet.Clear();
 
             try
@@ -799,7 +832,7 @@ namespace ProjetFinal
                 MySqlCommand commande = new MySqlCommand("historiqueTrajet");
                 commande.Connection = con;
                 commande.CommandType = System.Data.CommandType.StoredProcedure;
-                commande.Parameters.AddWithValue("@numconducteur", numconducteur);
+                commande.Parameters.AddWithValue("@numconducteur", idChauffeur);
 
                 con.Open();
 
@@ -836,39 +869,12 @@ namespace ProjetFinal
 
 
 
-        public Boolean connexionChauff(string email, string password)
-        {
-            con.Close();
-
-            bool ok = false;
-
-
-            MySqlCommand commande = new MySqlCommand("ConnexionChauffeur");
-            commande.Connection = con;// indique le chemin à commande
-            commande.CommandType = System.Data.CommandType.StoredProcedure;// ce qu,il faut aller chercher
-            commande.Parameters.AddWithValue("@emailCond", email);
-            commande.Parameters.AddWithValue("@motDePasseCond", password);
-
-
-
-            con.Open();// ouvre la connection
-            //commande.Prepare();// empêche les caractères spéciaux donc prends tout ca comme chaine de caractères
-            int i = commande.ExecuteNonQuery();
-            MySqlDataReader r = commande.ExecuteReader();
-
-
-            if (r.Read())
-            {
-                idChauffeur = r.GetInt32("num_Conducteur");
-                ok = true;
-            }
-            return ok;
-
-        }
+     
 
 
         public ObservableCollection<Client> NomPrenomClient(string numTrajet)
         {
+            con.Close();
             listeClient.Clear();
 
             try

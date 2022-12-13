@@ -14,7 +14,7 @@
 
 
             <!-- Formulaire pour un nouveau trajet-->
-            <StackPanel x:Name="formTrajet" Visibility="Visible" Margin="20,0,00,0">
+            <StackPanel x:Name="formTrajet" Visibility="Visible" Margin="20,0,00,0" Background="LightBlue">
 
 
                 <TextBox x:Name="tbxVilleDepart" Header="Ville de depart"/>

@@ -9,25 +9,10 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
 
-    <StackPanel>
+    <StackPanel Background="LightBlue">
 
 
-        <StackPanel>
-            <TextBlock HorizontalAlignment="Center" x:Name="tbtexte" Text="Historique des trajets"  FontSize="25"></TextBlock>
-        </StackPanel>
-
-
-        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-            <TextBox x:Name="tbxNumChauffeur" Header="entrer un numero de chauffeur"  Margin="5,5,5,10"></TextBox>
-        </StackPanel>
-
-
-        <StackPanel HorizontalAlignment="Center">
-            <Button x:Name="RechercherTrajet" Click="RechercherTrajet_Click" Content="Rechercher un trajet"></Button>
-        </StackPanel>
-
-
-        <GridView x:Name="lvliste">
+        <GridView x:Name="lvliste" >
 
             <GridView.ItemTemplate>
 

@@ -26,10 +26,8 @@ namespace ProjetFinal
         public PageHistorique()
         {
             this.InitializeComponent();
+            lvliste.ItemsSource = GestionBD.getInstance().AfficheTrajet();
         }
-        private void RechercherTrajet_Click(object sender, RoutedEventArgs e)
-        {
-            lvliste.ItemsSource = GestionBD.getInstance().AfficheTrajet(tbxNumChauffeur.Text);
-        }
+       
     }
 }
