@@ -46,6 +46,13 @@
 
         </StackPanel>
 
+        <!-- Formulaire de L'Administration -->
+        <StackPanel x:Name="formAdmin" Visibility="Collapsed" Margin="20,0,00,0">
+            <TextBox x:Name="tbxEmail" Header="Email:"/>
+            <TextBox x:Name="tbxpasswordAmin" Header="password:"/>
+            <Button x:Name="admin" Margin="20,10,10,10" Click="admin_Click" Content="Ajouter Admin" Background="Bisque"/>
+        </StackPanel>
+
         <Button Margin="20" x:Name="btnSumbit" Content="Valider" Click="btnSumbit_Click"/>
     </StackPanel>
 </Page>
