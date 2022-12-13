@@ -46,10 +46,34 @@ namespace ProjetFinal
 
 
             }
+            if (rbConnexion.SelectedIndex == 2)
+            {
+                headerFormulaire.Text = "Remplissez le formulaire pour créer votre compte D'Administrateur:";
+                formAdmin.Visibility = Visibility.Visible;
+                formClient.Visibility = Visibility.Collapsed;
+                formChauffeur.Visibility = Visibility.Collapsed;
+
+
+            }
         }
 
         private void btnSumbit_Click(object sender, RoutedEventArgs e)
         {
+
+        }
+      
+
+
+
+        private void btn_Click(object sender, RoutedEventArgs e)
+        {
+            GestionBD.getInstance().AjouterClient(tbxNomClient.Text, tbxPrenomClient.Text, tbxAdresseClient.Text, tbxEmailClient.Text, tbxTelephoneClient.Text, tbxpasswordClient.Text);
+        }
+
+        private void admin_Click(object sender, RoutedEventArgs e)
+        {
+            GestionBD.getInstance().AjoutAdmin(tbxEmail.Text, tbxpasswordAmin.Text);
+
 
         }
     }
