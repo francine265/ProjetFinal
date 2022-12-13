@@ -34,7 +34,7 @@
             </NavigationViewItem.MenuItems>
             </NavigationViewItem>
 
-            <NavigationViewItem x:Name="nviChauffeur" Content="Chauffeur" Tag="Chauffeur" Icon="ContactInfo"/>
+            <NavigationViewItem x:Name="nviChauffeur" Content="Ajout Trajet" Tag="Chauffeur" Icon="ContactInfo"/>
             
 
             <NavigationViewItemSeparator />

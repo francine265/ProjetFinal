@@ -72,6 +72,10 @@ namespace ProjetFinal
               //  GestionBD.getInstance().connexionChauff(tbxMail.Text, tbxMotDePasse.Password);
 
                 if (GestionBD.getInstance().connexionChauff(tbxMail.Text, tbxMotDePasse.Password)== true)
+                    GestionBD.getInstance().NviDeConnexion.Visibility = Visibility.Visible;
+                GestionBD.getInstance().NviConnexion.Visibility = Visibility.Collapsed;
+                GestionBD.getInstance().NviChauffeur.Visibility = Visibility.Visible;
+               
                 {
                     this.Frame.Navigate(typeof(PageHistorique));
 
