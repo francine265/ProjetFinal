@@ -29,7 +29,64 @@ namespace ProjetFinal
         }
         private void btn_Click(object sender, RoutedEventArgs e)
         {
-            GestionBD.getInstance().AjouterClient(tbxNomClient.Text, tbxPrenomClient.Text, tbxAdresseClient.Text, tbxEmailClient.Text, tbxTelephoneClient.Text, tbxpasswordClient.Text);
+
+            int valide = 0;
+
+            if (tbxNomClient.Text.Trim() == "")
+            {
+
+
+                erreurnom.Visibility = Visibility.Visible;
+                valide += 1;
+
+            }
+
+            if (tbxPrenomClient.Text.Trim() == "")
+            {
+
+
+                erreurprenom.Visibility = Visibility.Visible;
+                valide += 1;
+
+            }
+            if (tbxEmailClient.Text.Trim() == "")
+            {
+
+
+                erreurEmail.Visibility = Visibility.Visible;
+                valide += 1;
+
+            }
+            if (tbxpasswordClient.Text.Trim() == "")
+            {
+
+
+                erreurpwd.Visibility = Visibility.Visible;
+                valide += 1;
+
+            }
+            if (tbxAdresseClient.Text.Trim() == "")
+            {
+
+
+                erreuraddresse.Visibility = Visibility.Visible;
+                valide += 1;
+
+            }
+            if (tbxTelephoneClient.Text.Trim() == "")
+            {
+
+
+                erreurphone.Visibility = Visibility.Visible;
+                valide += 1;
+
+            }
+
+            if (valide == 0)
+            {
+                GestionBD.getInstance().AjouterClient(tbxNomClient.Text, tbxPrenomClient.Text, tbxAdresseClient.Text, tbxEmailClient.Text, tbxTelephoneClient.Text, tbxpasswordClient.Text);
+                ajoutclient.Visibility = Visibility.Visible;
+            }
         }
     }
 }
