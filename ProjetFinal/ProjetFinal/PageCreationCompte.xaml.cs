@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text.RegularExpressions;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -197,14 +198,14 @@ namespace ProjetFinal
                 valide += 1;
             }
 
-            //   string expression = "^\\(\\d{ 3}\\)\\d{ 3}-\\d{ 4}$";
+              string expression = "^\\(\\d{3}\\)\\d{3}-\\d{4}$";
 
-            // if (Regex.IsMatch(tbxNumeroChauffeur.Text, expression) == false)
-            //{
-            //  ErrNumeroChauffeur.Visibility = Visibility.Visible;
-            //ErrNumeroChauffeur.Text = "Veuillez respecter le format de numéro de téléphone";
-            //  valide += 1;
-            //}
+             if (Regex.IsMatch(tbxNumeroChauffeur.Text, expression) == false)
+            {
+              ErrNumeroChauffeur.Visibility = Visibility.Visible;
+            ErrNumeroChauffeur.Text = "Veuillez respecter le format de numéro de téléphone";
+
+            }
 
             if (valide == 0)
             {

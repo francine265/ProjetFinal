@@ -12,7 +12,7 @@
             
         </TextBlock>
         <!-- Formulaire de L'Administration -->
-        <StackPanel x:Name="formAdmin" Visibility="Collapsed" Margin="20,0,00,0">
+        <StackPanel x:Name="formAdmin"  Margin="20,0,00,0">
             <TextBox x:Name="tbxEmail" Header="Email:"/>
             <TextBlock x:Name="errmail" Text=" Entrer un EMail" Foreground="red" FontSize="15" FontStyle="Italic" Visibility="Collapsed"/>
             <TextBox x:Name="tbxpasswordAmin" Header="password:"/>

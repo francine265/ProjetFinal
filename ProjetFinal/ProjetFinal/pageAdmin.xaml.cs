@@ -29,7 +29,35 @@ namespace ProjetFinal
         }
         private void admin_Click(object sender, RoutedEventArgs e)
         {
-            GestionBD.getInstance().AjoutAdmin(tbxEmail.Text, tbxpasswordAmin.Text);
+            int valide = 0;
+            if (tbxEmail.Text.Trim() == "")
+            {
+
+
+                errmail.Visibility = Visibility.Visible;
+                valide += 1;
+
+            }
+            if (tbxpasswordAmin.Text.Trim() == "")
+            {
+
+
+                erreurpwdad.Visibility = Visibility.Visible;
+                valide += 1;
+
+            }
+
+            if (valide == 0)
+            {
+                GestionBD.getInstance().AjoutAdmin(tbxEmail.Text, tbxpasswordAmin.Text);
+                //GestionBD.getInstance().AjouterClient(tbxNomClient.Text, tbxPrenomClient.Text, tbxAdresseClient.Text, tbxEmailClient.Text, tbxTelephoneClient.Text, tbxpasswordClient.Text);
+                ajoutadmin.Visibility = Visibility.Visible;
+
+            }
+
+
+           
+
 
 
         }
