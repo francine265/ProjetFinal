@@ -33,6 +33,10 @@
                             <TextBlock Text="Arret" Margin="5,5,5,10"></TextBlock>
                             <TextBlock Text="Places disponibles" Margin="5,5,5,10"></TextBlock>
                             <TextBlock Text="Places initiales" Margin="5,5,5,10"></TextBlock>
+                            <TextBlock Text="nomClient" Margin="5,5,5,10"></TextBlock>
+                            <TextBlock Text="prenom Client" Margin="5,5,5,10"></TextBlock>
+                            <TextBlock Text="PersonnesTrajets" Margin="5,5,5,10"></TextBlock>
+                            <TextBlock Text="GainChauffeur" Margin="5,5,5,10"></TextBlock>
                         </StackPanel>
 
 
@@ -44,6 +48,11 @@
                             <TextBlock Text="{x:Bind Arret}" Margin="5,5,5,10"/>
                             <TextBlock Text="{x:Bind Nombre_Place_dispo}" Margin="5,5,5,10"/>
                             <TextBlock Text="{x:Bind Nombre_Place_Initiales}" Margin="5,5,5,10"/>
+                            <TextBlock Text="{x:Bind NomClient}" Margin="5,5,5,10"/>
+                            <TextBlock Text="{x:Bind PrenomClient}" Margin="5,5,5,10"/>
+                            <TextBlock Text="{x:Bind PersonnesTrajets}" Margin="5,5,5,10"/>
+                            <TextBlock Text="{x:Bind GainsChauffeur}" Margin="5,5,5,10"/>
+                            
                         </StackPanel>
 
                     </Grid>

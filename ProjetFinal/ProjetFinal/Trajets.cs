@@ -36,6 +36,10 @@ namespace ProjetFinal
         String totalRevenueEntreprise;
 
         int nombre_Place_Initiales;
+        string nomClient;
+        string prenomClient;
+        int personnesTrajets;
+        int gainsChauffeur;
 
 
         public Trajets()
@@ -106,12 +110,16 @@ namespace ProjetFinal
         public string TotalRevenueEntreprise { get => totalRevenueEntreprise; set => totalRevenueEntreprise = value; }
         public double PrixTrajet { get => prixTrajet; set => prixTrajet = value; }
         public int Nombre_Place_Initiales { get => nombre_Place_Initiales; set => nombre_Place_Initiales = value; }
+        public string NomClient { get => nomClient; set => nomClient = value; }
+        public string PrenomClient { get => prenomClient; set => prenomClient = value; }
+        public int PersonnesTrajets { get => personnesTrajets; set => personnesTrajets = value; }
+        public int GainsChauffeur { get => gainsChauffeur; set => gainsChauffeur = value; }
 
         public override string ToString()
         {
             return num_Trajet + " " + ville_Depart + " " + ville_Arrivee + " " /*+ heure_Depart + " " + heure_Arrivee*/ + " " + date_Trajet + " " +
            prix_Trajet + " " + arret + " " + nombre_Place_dispo + " " + etat + " " + num_Conducteur + " " + heureDepartString + " " + heureArriveeString + " " + nom_Conducteur + " " + prenom_Conducteur + " " + num_tel_Conducteur + " " + conducteur + " " + montant_total + " " + montant_compagnie
-           + " " + montant_chauffeur + " " + totalRevenue + " " + totalRevenueEntreprise + " " + prixTrajet + " " + nombre_Place_Initiales;
+           + " " + montant_chauffeur + " " + totalRevenue + " " + totalRevenueEntreprise + " " + prixTrajet + " " + nombre_Place_Initiales+""+ nomClient+""+prenomClient+" "+gainsChauffeur+" "+personnesTrajets;
         }
 
         public string exportationCSV()

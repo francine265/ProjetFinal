@@ -8,10 +8,10 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
 
+    <StackPanel HorizontalAlignment="Stretch" Background="LightBlue" Orientation="Vertical" Margin="20">
 
-        <StackPanel Background="LightBlue">
+        <StackPanel  Margin="20,0,00,0" HorizontalAlignment="Stretch">
             <TextBox x:Name="tbxMail" Header="Entrer l'adresse email"></TextBox>
             <TextBlock  x:Name="ErrMail" Text="Veuillez saisir l'adresse mail"  Foreground="Red" Visibility="Collapsed"></TextBlock>
 
@@ -28,7 +28,7 @@
 
 
 
-
-    </Grid>
+        </StackPanel>
+    
 
 </Page>

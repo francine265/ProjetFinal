@@ -874,10 +874,10 @@ namespace ProjetFinal
 
             try
             {
-                MySqlCommand commande = new MySqlCommand("historiqueTrajet");
+                MySqlCommand commande = new MySqlCommand("personnesparTrajets");
                 commande.Connection = con;
                 commande.CommandType = System.Data.CommandType.StoredProcedure;
-                commande.Parameters.AddWithValue("@numconducteur", idChauffeur);
+                commande.Parameters.AddWithValue("@numConduct", idChauffeur);
 
                 con.Open();
 
@@ -889,13 +889,17 @@ namespace ProjetFinal
                 {
                     listeTrajet.Add(new Trajets()
                     {
-                        Ville_Depart = r.GetString(1),
-                        Ville_Arrivee = r.GetString(2),
-                        HeureDepartString = r.GetString(3),
-                        HeureArriveeString = r.GetString(4),
-                        Arret = r.GetString(7),
+                        Ville_Depart = r.GetString("ville_Depart"),
+                        Ville_Arrivee = r.GetString("ville_Arrivee"),
+                        HeureDepartString = r.GetString("heure_Depart"),
+                        HeureArriveeString = r.GetString("heure_Arrivee"),
+                        Arret = r.GetString("arret"),
                         Nombre_Place_dispo = r.GetInt32("nombre_place_dispo"),
-                        Nombre_Place_Initiales = r.GetInt32(11)
+                        Nombre_Place_Initiales = r.GetInt32("nombre_Place_initales"),
+                        NomClient=r.GetString("nom_Client"),
+                        PrenomClient=r.GetString("prenom_Client"),
+                        GainsChauffeur=r.GetInt32("gainChauffeur"),
+                        PersonnesTrajets=r.GetInt32("personnesTrajet")
                     });
                 }
                 r.Close();

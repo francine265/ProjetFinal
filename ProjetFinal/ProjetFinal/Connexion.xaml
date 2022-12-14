@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel Orientation="Vertical" Background="LightBlue">
+    <StackPanel Orientation="Vertical" Background="LightBlue" Margin="20">
         
             <StackPanel Margin="50,100,100,50">
             <TextBlock HorizontalAlignment="Center" x:Name="tbtexte" Text=" Bienvenue à FriendZoneExpress "  FontSize="25"></TextBlock>
@@ -60,7 +60,7 @@
                 </TextBlock>
             </StackPanel>
             <StackPanel Orientation="Vertical" Grid.Column="3" Margin="5,5,5,10">
-                    <TextBox x:Name="email" Text="honliassoYohann73@gmail.com" HorizontalAlignment="Stretch">
+                    <TextBox x:Name="email"  HorizontalAlignment="Stretch">
 
                 </TextBox>
                     <TextBlock x:Name="erreuremail" Text="Adresse Mail Requise" Foreground="Red" Visibility="Collapsed">
@@ -70,7 +70,7 @@
                 </StackPanel>
 
             <StackPanel Orientation="Vertical" Grid.Column="3" Grid.Row="1" Margin="5,5,5,10">
-                <PasswordBox x:Name="epassword" Password="nounou12" HorizontalAlignment="Stretch" >
+                <PasswordBox x:Name="epassword"  HorizontalAlignment="Stretch" >
 
                 </PasswordBox>
                     <TextBlock x:Name="erreurpassword" Text="mot de passe Requis" Foreground="Red" Visibility="Collapsed">
