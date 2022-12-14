@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text.RegularExpressions;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -152,9 +153,18 @@ namespace ProjetFinal
             }
 
 
-            Singleton.getInstance().AjoutAdmin(tbxEmail.Text, tbxpasswordAmin.Text);
-              
 
+            string validationRegexpMail = "[a-z A-z 0-9_\\-]+[@]+[a-z]+[\\.][a-z]{3,4}$";
+
+            if(Regex.IsMatch(tbxEmail.Text, validationRegexpMail) == false)
+            {
+                errmail.Visibility = Visibility.Visible;
+                errmail.Text = "Veuillez respecter le format de l'email";
+                valide += 1;
+            }
+
+            
+            Singleton.getInstance().AjoutAdmin(tbxEmail.Text, tbxpasswordAmin.Text);           
         }
     }
 }
